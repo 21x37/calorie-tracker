@@ -1,21 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import HomePage from '../components/HomePage';
-import Header from '../components/Header';
-import CalorieList from '../components/CalorieList';
-import EditCalories from '../components/EditCalories';
+import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import DashboardPage from '../components/DashboardPage';
+import NotFoundPage from '../components/NotFoundPage';
+import LoginPage from '../components/LoginPage';
+import PrivateRoute from '../routers/PrivateRoute';
+import PublicRoute from '../routers/PublicRoute';
+
+export const history = createHistory();
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>
         <div>
-            <Header />
             <Switch>
-                <Route path='/' component={HomePage} exact={true}/>
-                <Route path='/calories' component={CalorieList}/>
-                <Route path='/edit/:id' component={EditCalories}/>
+                <Route path="/" component={DashboardPage}/>
+                <Route component={NotFoundPage}/>
             </Switch>
         </div>
-    </BrowserRouter>
-);
+    </Router>
+)
 
-export default AppRouter; 
+//<PublicRoute path="/" component={LoginPage} exact={true} />
+
+export default AppRouter;
