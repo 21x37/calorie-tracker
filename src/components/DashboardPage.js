@@ -1,8 +1,11 @@
 import React from 'react';
-import CalorieSummary from './CalorieSummary';
-import AddCalorieItem from './AddCalorieItem';
-import SetGoal from './SetGoal';
-import CalorieItemList from './CalorieItemList';
+//------------------------------//
+import CalorieSummary from './calorieComponents/CalorieSummary';
+import AddCalorieItem from './calorieComponents/AddCalorieItem';
+import SetGoal from './calorieComponents/SetGoal';
+import CalorieItemList from './calorieComponents/CalorieItemList';
+//------------------------------//
+import NewsFeed from './newsFeedComponents/Newsfeed';
 
 const DashboardPage = () => (
     <div>
@@ -10,7 +13,12 @@ const DashboardPage = () => (
         <AddCalorieItem />
         <SetGoal />
         <CalorieItemList />
+        <NewsFeed />
     </div>
 );
+
+
+
+
 
 export default DashboardPage;

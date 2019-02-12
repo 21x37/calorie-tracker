@@ -1,5 +1,5 @@
 import React from 'react';
-import { setGoal } from '../actions/nutritionGoals';
+import { setGoal } from '../../actions/nutritionGoals';
 import { connect } from 'react-redux';
 
 // SET NUTRITION GOAL
@@ -39,12 +39,14 @@ class SetGoal extends React.Component {
         const carbs = parseInt(this.state.carbs);
         const fats = parseInt(this.state.fats);
         this.props.setGoal(calories, protein, carbs, fats);
-
+        const form = document.getElementById('setGoalForm');
+        form.reset();
     };
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                <h2>Set Calorie Goal</h2>
+                <form id='setGoalForm' onSubmit={this.onSubmit}>
                     <input type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
                     <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
                     <input type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>

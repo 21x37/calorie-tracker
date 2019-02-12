@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { addCalorie } from '../actions/calorieItem';
+import { addCalorie } from '../../actions/calorieItem';
 
 
 // INDIVIDUAL CALORIE ITEM
@@ -46,12 +46,15 @@ class AddCalorieItem extends React.Component {
                 fats: this.state.fats,
                 protein: this.state.protein
             });
+            const form = document.getElementById('calorieItemForm');
+            form.reset();
         };
     };
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                <h2>Log a calorie</h2>
+                <form id='calorieItemForm'onSubmit={this.onSubmit}>
                     <input type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
                     <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
                     <input type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>

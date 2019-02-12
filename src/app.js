@@ -19,25 +19,25 @@ const store = configureStore();
 //-----------------------------------
 // CALORIE TESTS
 
-const calorieMockup = {
-    id: 0,
-    calories: 0,
-    fats: 0,
-    protein: 0,
-    carbs: 0
-};
+// const calorieMockup = {
+//     id: 0,
+//     calories: 0,
+//     fats: 0,
+//     protein: 0,
+//     carbs: 0
+// };
 
-const calorieMockup1 = {
-    id: 1,
-    calories: 200,
-    fats: 10,
-    protein: 5,
-    carbs: 15
-};
+// const calorieMockup1 = {
+//     id: 1,
+//     calories: 200,
+//     fats: 10,
+//     protein: 5,
+//     carbs: 15
+// };
 
 // CALORIE ITEM DISPATCHES
-store.dispatch(addCalorie(calorieMockup));
-store.dispatch(addCalorie(calorieMockup1));
+// store.dispatch(addCalorie(calorieMockup));
+// store.dispatch(addCalorie(calorieMockup1));
 
 store.dispatch(setGoal(3000, 160, 300, 80))
 //-----------------------------------
