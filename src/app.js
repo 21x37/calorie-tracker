@@ -9,7 +9,7 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from'./firebase/firebase';
 import LoadingPage from './components/LoadingPage';
-import { addCalorieItem, setGoal } from './playground/react-redux-store';
+import { addCalorie, setGoal } from './playground/react-redux-store';
 
 
 const store = configureStore();
@@ -17,7 +17,7 @@ const store = configureStore();
 
 
 //-----------------------------------
-
+// CALORIE TESTS
 
 const calorieMockup = {
     id: 0,
@@ -36,8 +36,8 @@ const calorieMockup1 = {
 };
 
 // CALORIE ITEM DISPATCHES
-store.dispatch(addCalorieItem(calorieMockup));
-store.dispatch(addCalorieItem(calorieMockup1));
+store.dispatch(addCalorie(calorieMockup));
+store.dispatch(addCalorie(calorieMockup1));
 
 store.dispatch(setGoal(3000, 160, 300, 80))
 //-----------------------------------

@@ -1,11 +1,15 @@
 import React from 'react';
 import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { addCalorie } from '../actions/calorieItem';
 
+
+// INDIVIDUAL CALORIE ITEM
 class AddCalorieItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: uuid(),
+            id: '',
             calories: 0,
             carbs: 0,
             fats: 0,
@@ -30,10 +34,24 @@ class AddCalorieItem extends React.Component {
         const protein = e.target.value;
         this.setState({ protein });
     };
+    onSubmit = (e) => {
+        // DISPATCHES CURRENT STATE TO REDUX STATE
+        e.preventDefault();
+        console.log(this.props);
+        if (true) {
+            this.props.addCalorie({
+                id: uuid(),
+                calories: this.state.calories,
+                carbs: this.state.carbs,
+                fats: this.state.fats,
+                protein: this.state.protein
+            });
+        };
+    };
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.onSubmit}>
                     <input type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
                     <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
                     <input type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
@@ -41,8 +59,14 @@ class AddCalorieItem extends React.Component {
                     <button>Submit</button>
                 </form>
             </div>
-        )
+        );
     };
 };
 
-export default AddCalorieItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addCalorie: (calorieData) => dispatch(addCalorie(calorieData))
+    };
+};
+
+export default connect(undefined, mapDispatchToProps)(AddCalorieItem);

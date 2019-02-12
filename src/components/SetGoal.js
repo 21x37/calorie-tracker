@@ -1,6 +1,8 @@
 import React from 'react';
-import { setGoal } from '../playground/react-redux-store';
+import { setGoal } from '../actions/nutritionGoals';
 import { connect } from 'react-redux';
+
+// SET NUTRITION GOAL
 
 class SetGoal extends React.Component {
     constructor(props) {
@@ -11,7 +13,7 @@ class SetGoal extends React.Component {
             carbs: 0,
             fats: 0
         }
-    }
+    };
     onCaloriesChange = (e) => {
         const calories = e.target.value;
         if (!calories || calories.match(/^[0-9]*$/)){
@@ -38,7 +40,7 @@ class SetGoal extends React.Component {
         const fats = parseInt(this.state.fats);
         this.props.setGoal(calories, protein, carbs, fats);
 
-    }
+    };
     render() {
         return (
             <div>
@@ -51,7 +53,7 @@ class SetGoal extends React.Component {
                 </form>
             </div>
         )
-    }
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
