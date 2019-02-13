@@ -10,7 +10,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from'./firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 import { addCalorie, setGoal } from './playground/react-redux-store';
-
+import { addStatus } from './actions/postStatus';
 
 const store = configureStore();
 
@@ -40,6 +40,11 @@ const store = configureStore();
 // store.dispatch(addCalorie(calorieMockup1));
 
 store.dispatch(setGoal(3000, 160, 300, 80))
+store.dispatch(addStatus({
+    id: 1,
+    description: "Lorem ipsum",
+    createdAt: 'today'
+}));
 //-----------------------------------
 
 const jsx = (
@@ -57,17 +62,17 @@ const renderApp = () => {
 };
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
 
-
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        store.dispatch(login(user.uid));
-        renderApp();
-        if (history.location.pathname === '/') {
-            history.push('/dashboard');
-        }
-    } else {
-        store.dispatch(logout());
-        renderApp();
-        history.push('/');
-    }
-});
+ReactDOM.render(jsx, document.getElementById('app'));
+// firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//         store.dispatch(login(user.uid));
+//         renderApp();
+//         if (history.location.pathname === '/') {
+//             history.push('/dashboard');
+//         }
+//     } else {
+//         store.dispatch(logout());
+//         renderApp();
+//         history.push('/');
+//     }
+// });

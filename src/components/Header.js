@@ -10,6 +10,8 @@ import { startLogout } from '../actions/auth';
                 <Link className='header__title' to="/dashboard">
                     <h1>Boilerplate</h1>
                 </Link>
+                <Link to='/add-calorie'>Add Calorie</Link>
+                <Link to='profile'>Profile</Link>
                 <button className='button--link button'onClick={startLogout}>Logout</button>
             </div>
         </div>

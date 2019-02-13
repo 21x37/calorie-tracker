@@ -4,8 +4,8 @@ const postStatusReducer = (state = postStatusReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_STATUS':
             return [
-                ...state,
-                action.status
+                action.status,
+                ...state
             ];
         case 'DELETE_STATUS':
             return state.filter(statusItem => {
