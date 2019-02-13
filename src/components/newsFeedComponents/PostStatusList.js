@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startDeleteStatus } from '../../actions/postStatus';
+import Comment from '../Comment';
 
 class PostStatusList extends React.Component {
     constructor(props) {
@@ -16,13 +17,7 @@ class PostStatusList extends React.Component {
                             <button onClick={() => {
                                 this.props.startDeleteStatus({id: status.id})
                             }}>Delete</button>
-                            <form>
-                                <input type='text'></input>
-                                <button>Comment</button>
-                            </form>
-                            <div>
-                                
-                            </div>
+                            <Comment parentId={status.id}/>
                         </div>
                     )
                 })}
