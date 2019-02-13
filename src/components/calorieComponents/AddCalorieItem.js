@@ -40,7 +40,6 @@ class AddCalorieItem extends React.Component {
         console.log(this.props);
         if (true) {
             this.props.startAddCalorie({
-                id: uuid(),
                 calories: this.state.calories,
                 carbs: this.state.carbs,
                 fats: this.state.fats,

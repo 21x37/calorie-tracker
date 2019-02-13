@@ -9,8 +9,9 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from'./firebase/firebase';
 import LoadingPage from './components/LoadingPage';
-import { addCalorie, setGoal } from './playground/react-redux-store';
 import { addStatus } from './actions/postStatus';
+import { addCalorie, removeCalorieItem } from './actions/calorieItem';
+import { setGoal } from './actions/nutritionGoals';
 
 const store = configureStore();
 
@@ -19,25 +20,28 @@ const store = configureStore();
 //-----------------------------------
 // CALORIE TESTS
 
-// const calorieMockup = {
-//     id: 0,
-//     calories: 0,
-//     fats: 0,
-//     protein: 0,
-//     carbs: 0
-// };
+const calorieMockup = {
+    id: 0,
+    calories: 0,
+    fats: 0,
+    protein: 0,
+    carbs: 0
+};
 
-// const calorieMockup1 = {
-//     id: 1,
-//     calories: 200,
-//     fats: 10,
-//     protein: 5,
-//     carbs: 15
-// };
+const calorieMockup1 = {
+    id: 1,
+    calories: 200,
+    fats: 10,
+    protein: 5,
+    carbs: 15
+};
 
 // CALORIE ITEM DISPATCHES
-// store.dispatch(addCalorie(calorieMockup));
-// store.dispatch(addCalorie(calorieMockup1));
+store.dispatch(addCalorie(calorieMockup));
+store.dispatch(addCalorie(calorieMockup1));
+console.log(store.getState());
+store.dispatch(removeCalorieItem(calorieMockup1));
+console.log(store.getState());
 
 store.dispatch(setGoal(3000, 160, 300, 80))
 store.dispatch(addStatus({

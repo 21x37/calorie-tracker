@@ -18,10 +18,18 @@ export const startAddCalorie = (calorieData) => {
     };
 };
 
-export const removeCalorieItem = ({ id }) => ({
+export const removeCalorieItem = ({ id }) => ({ 
     type: 'REMOVE_CALORIE_ITEM',
     id
 });
+
+export const startRemoveCalorieItem = ({ id }) => {
+    return (dispatch) => {
+        return database.ref(`calorieItem/${id}`).remove().then(() => {
+            dispatch(removeCalorieItem({ id }))
+        })
+    };
+};
 
 export const editCalorieItem = (id, edit) => ({
     type: 'EDIT_CALORIE_ITEM',

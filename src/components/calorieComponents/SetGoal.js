@@ -1,5 +1,5 @@
 import React from 'react';
-import { setGoal } from '../../actions/nutritionGoals';
+import { startSetGoal } from '../../actions/nutritionGoals';
 import { connect } from 'react-redux';
 
 // SET NUTRITION GOAL
@@ -38,7 +38,7 @@ class SetGoal extends React.Component {
         const protein = parseInt(this.state.protein);
         const carbs = parseInt(this.state.carbs);
         const fats = parseInt(this.state.fats);
-        this.props.setGoal(calories, protein, carbs, fats);
+        this.props.startSetGoal(calories, protein, carbs, fats);
         const form = document.getElementById('setGoalForm');
         form.reset();
     };
@@ -60,7 +60,7 @@ class SetGoal extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setGoal: (calories, protein, carbs, fats) => dispatch(setGoal(calories, protein, carbs, fats))
+        startSetGoal: (calories, protein, carbs, fats) => dispatch(startSetGoal(calories, protein, carbs, fats))
     }
 }
 

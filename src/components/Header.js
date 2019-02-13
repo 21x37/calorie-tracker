@@ -8,10 +8,11 @@ import { startLogout } from '../actions/auth';
         <div className='content-container'>
             <div className='header__content'>
                 <Link className='header__title' to="/">
-                    <h1>Lorem Ipsum</h1>
+                    <h1>TrainingPal</h1>
                 </Link>
-                <Link to='/add-calorie'>Add Calorie</Link>
-                <Link to='profile'>Profile</Link>
+                <Link className='header__title' to='/add-calorie'>Add Calorie</Link>
+                <Link className='header__title' to='/create-routine'>Routine</Link>
+                <Link className='header__title' to='profile/1'>Profile</Link>
                 <button className='button--link button'onClick={startLogout}>Logout</button>
             </div>
         </div>

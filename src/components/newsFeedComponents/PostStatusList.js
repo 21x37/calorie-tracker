@@ -1,19 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { startDeleteStatus } from '../../actions/postStatus';
 
-const PostStatusList = (props) => {
-    console.log(props.statusItem)
-    return(
-        <div>
-            {props.statusItem.map(status => {
-                return (
-                    <div key={status.id}>
-                        <h1>{status.description} : {status.createdAt}</h1>
-                    </div>
-                )
-            })}
-        </div>
-    );
+class PostStatusList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                {this.props.statusItem.map(status => {
+                    return (
+                        <div key={status.id}>
+                            <h1>{status.description} : {status.createdAt}</h1>
+                            <button onClick={() => {
+                                this.props.startDeleteStatus({id: status.id})
+                            }}>Delete</button>
+                            <form>
+                                <input type='text'></input>
+                                <button>Comment</button>
+                            </form>
+                            <div>
+                                
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        );
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        startDeleteStatus: statusItem => dispatch(startDeleteStatus(statusItem))
+    };
+
 };
 
 const mapStateToProps = (state) => {
@@ -22,5 +44,5 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(PostStatusList);
+export default connect(mapStateToProps, mapDispatchToProps)(PostStatusList);
 

@@ -2,13 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import moment from 'moment'
-import { addStatus } from '../../actions/postStatus';
+import { startAddStatus } from '../../actions/postStatus';
 
 class PostStatus extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
             description: '',
             createdAt: '',
         
@@ -22,8 +21,7 @@ class PostStatus extends React.Component {
         e.preventDefault();
         const date = moment();
         // DISPATCH POSTSTATUS STATE TO REDUX STATE
-        this.props.addStatus({
-            id: uuid(),
+        this.props.startAddStatus({
             description: this.state.description,
             createdAt: date.format()
         });
@@ -48,7 +46,7 @@ class PostStatus extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    addStatus: (statusObj) => dispatch(addStatus(statusObj))
+    startAddStatus: (statusObj) => dispatch(startAddStatus(statusObj))
 });
 
 export default connect(undefined, mapDispatchToProps)(PostStatus);
