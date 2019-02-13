@@ -7,8 +7,8 @@ import { startLogout } from '../actions/auth';
     <header className='header'>
         <div className='content-container'>
             <div className='header__content'>
-                <Link className='header__title' to="/dashboard">
-                    <h1>Boilerplate</h1>
+                <Link className='header__title' to="/">
+                    <h1>Lorem Ipsum</h1>
                 </Link>
                 <Link to='/add-calorie'>Add Calorie</Link>
                 <Link to='profile'>Profile</Link>

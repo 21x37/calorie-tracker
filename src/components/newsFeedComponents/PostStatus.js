@@ -20,11 +20,6 @@ class PostStatus extends React.Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
-        alert('Are you sure you want to post this status?');
-        
-
-    };
-    onAccept = (e) => {
         const date = moment();
         // DISPATCH POSTSTATUS STATE TO REDUX STATE
         this.props.addStatus({
@@ -34,6 +29,9 @@ class PostStatus extends React.Component {
         });
         const form = document.getElementById('postStatusForm');
         form.reset();
+    };
+    onAccept = (e) => {
+
     }
     render() {
         return (

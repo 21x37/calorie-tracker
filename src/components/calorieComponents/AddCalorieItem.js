@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { addCalorie } from '../../actions/calorieItem';
+import { startAddCalorie } from '../../actions/calorieItem';
 
 
 // INDIVIDUAL CALORIE ITEM
@@ -39,7 +39,7 @@ class AddCalorieItem extends React.Component {
         e.preventDefault();
         console.log(this.props);
         if (true) {
-            this.props.addCalorie({
+            this.props.startAddCalorie({
                 id: uuid(),
                 calories: this.state.calories,
                 carbs: this.state.carbs,
@@ -68,7 +68,7 @@ class AddCalorieItem extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addCalorie: (calorieData) => dispatch(addCalorie(calorieData))
+        startAddCalorie: (calorieData) => dispatch(startAddCalorie(calorieData))
     };
 };
 

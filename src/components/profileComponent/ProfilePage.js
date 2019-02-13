@@ -1,27 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PostStatus from '../newsFeedComponents/PostStatus';
+import ProfilePageStatusList from './ProfilePageStatusList';
+import Header from '../Header';
 
-const ProfilePage = (props) => {
-    console.log(props.statusItem);
+const ProfilePage = () => {
     return (
         <div>
-            <PostStatus />
-            {props.statusItem.map(status => {
-                return (
-                    <div key={status.id}>
-                        <p>{status.description}</p>
-                    </div>
-                )
-            })}
-            <p>This is my proflie page</p>
+            <Header />
+            <ProfilePageStatusList />
         </div>
     )
-};
+}
 
-const mapStateToProps = (state) => ({
-    statusItem: state.statusItem
-})
-
-export default connect(mapStateToProps)(ProfilePage);
-
+export default ProfilePage;
