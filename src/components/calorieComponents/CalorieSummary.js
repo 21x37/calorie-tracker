@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { selectCaloriesTotal, selectProteinTotal } from '../../selectors/totalCalories';
 
 export const CalorieSummary = (props) => {
-    console.log(props.nutritionGoals);
     return (
         <div>
             <h1>Calorie Goal: {props.caloriesTotal} / {props.nutritionGoals.calorieGoal}</h1>

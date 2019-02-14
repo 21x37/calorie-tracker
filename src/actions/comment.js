@@ -21,6 +21,14 @@ export const removeComment = ({ id }) => ({
     id
 });
 
+export const startRemoveComment = (parentId, { id }) => {
+    return (dispatch) => {
+        return database.ref(`status/${parentId}/comment/${id}`).remove().then(() => {
+            dispatch(removeComment({ id }))
+        })
+    };
+};
+
 const commentMockup = {
     id: 0,
     description: '',

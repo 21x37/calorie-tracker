@@ -39,15 +39,15 @@ const calorieMockup1 = {
 // CALORIE ITEM DISPATCHES
 store.dispatch(addCalorie(calorieMockup));
 store.dispatch(addCalorie(calorieMockup1));
-console.log(store.getState());
+//console.log(store.getState());
 store.dispatch(removeCalorieItem(calorieMockup1));
-console.log(store.getState());
+//console.log(store.getState());
 
 store.dispatch(setGoal(3000, 160, 300, 80))
 store.dispatch(addStatus({
     id: 1,
-    description: "Lorem ipsum",
-    createdAt: 'today'
+    description: "This is a status",
+    createdAt: 'February 13'
 }));
 //-----------------------------------
 

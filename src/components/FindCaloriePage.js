@@ -6,7 +6,6 @@ import {appID, apiKey} from '../../apiKey';
 
 axios.get(`https://api.nutritionix.com/v1_1/search/chicken?results=0:20&appId=${appID}&appKey=${apiKey}`)
     .then((res) => {
-        console.log(res);
     })
 
 //https://api.nutritionix.com/v1_1/search?q=chicken

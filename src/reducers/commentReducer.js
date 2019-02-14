@@ -3,6 +3,7 @@ const defaultCommentState = []
 const commentReducer = (state = defaultCommentState, action) => {
     switch(action.type) {
         case 'ADD_COMMENT':
+            console.log('add')
             return [
                 ...state,
                 action.comment

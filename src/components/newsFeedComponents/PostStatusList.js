@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startDeleteStatus } from '../../actions/postStatus';
-import Comment from '../Comment';
+import Comment from '../commentComponent/Comment';
 
 class PostStatusList extends React.Component {
     constructor(props) {

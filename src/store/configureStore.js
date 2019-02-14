@@ -4,7 +4,7 @@ import authReducer from '../reducers/auth';
 import nutritionGoalsReducer from '../reducers/nutritionGoalsReducer';
 import calorieItemReducer from '../reducers/calorieItemReducer';
 import postStatusReducer from '../reducers/postStatusReducer';
-import commentReducer from '../reducers/calorieItemReducer';
+import commentReducer from '../reducers/commentReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
