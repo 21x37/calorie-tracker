@@ -1,19 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PostStatus from '../newsFeedComponents/PostStatus';
+import Comment from '../commentComponent/Comment';
+
 
 const ProfilePageStatusList = (props) => {
     console.log(props.statusItem);
     return (
         <div>
-            <PostStatus />
             {props.statusItem.map(status => {
                 return (
                     <div key={status.id}>
                         <p>{status.description}</p>
+                        <Comment parentId={status.id}/>
                     </div>
                 )
-            })}
+            })};
             <p>This is my proflie page</p>
         </div>
     )
@@ -21,7 +22,7 @@ const ProfilePageStatusList = (props) => {
 
 const mapStateToProps = (state) => ({
     statusItem: state.statusItem
-})
+});
 
 export default connect(mapStateToProps)(ProfilePageStatusList);
 

@@ -10,8 +10,9 @@ class PostStatus extends React.Component {
         this.state = {
             description: '',
             createdAt: '',
+            likes: 0
         
-        }
+        };
     };
     onDescriptionChange = (e) => {
         const description = e.target.value;
@@ -23,7 +24,8 @@ class PostStatus extends React.Component {
         // DISPATCH POSTSTATUS STATE TO REDUX STATE
         this.props.startAddStatus({
             description: this.state.description,
-            createdAt: date.format()
+            createdAt: date.format(),
+            likes: 0
         });
         const form = document.getElementById('postStatusForm');
         form.reset();

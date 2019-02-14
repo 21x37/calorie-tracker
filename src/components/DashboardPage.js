@@ -13,9 +13,6 @@ const DashboardPage = () => (
     <div>
         <Header />
         <CalorieSummary />
-        <AddCalorieItem />
-        <SetGoal />
-        <CalorieItemList />
         <NewsFeed />
     </div>
 );

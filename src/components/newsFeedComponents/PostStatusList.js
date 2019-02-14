@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startDeleteStatus } from '../../actions/postStatus';
 import Comment from '../commentComponent/Comment';
+import LikeStatus from '../likeComponent/LikeStatus';
 
 class PostStatusList extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class PostStatusList extends React.Component {
         return (
             <div>
                 {this.props.statusItem.map(status => {
+
                     return (
                         <div key={status.id}>
                             <h1>{status.description} : {status.createdAt}</h1>
@@ -19,6 +21,7 @@ class PostStatusList extends React.Component {
                                 console.log(status)
                                 this.props.startDeleteStatus({id: status.id})
                             }}>Delete</button>
+                            <LikeStatus likes={status.likes} />
                             <Comment parentId={status.id}/>
                         </div>
                     )
