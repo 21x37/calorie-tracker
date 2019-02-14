@@ -1,19 +1,19 @@
-import React from 'react';
-import axios from 'axios';
-import {appID, apiKey} from '../../apiKey';
+// import React from 'react';
+// import axios from 'axios';
+// import {appID, apiKey} from '../../apiKey';
 
-//https://api.edamam.com/api/food-database/nutrients
+// //https://api.edamam.com/api/food-database/nutrients
 
-axios.get(`https://api.nutritionix.com/v1_1/search/chicken?results=0:20&appId=${appID}&appKey=${apiKey}`)
-    .then((res) => {
-    })
+// axios.get(`https://api.nutritionix.com/v1_1/search/chicken?results=0:20&appId=${appID}&appKey=${apiKey}`)
+//     .then((res) => {
+//     })
 
-//https://api.nutritionix.com/v1_1/search?q=chicken
+// //https://api.nutritionix.com/v1_1/search?q=chicken
 
-const FindCaloriePage = () => {
-    return (
-        <div></div>
-    )
-};
+// const FindCaloriePage = () => {
+//     return (
+//         <div></div>
+//     )
+// };
 
-export default FindCaloriePage;
+// export default FindCaloriePage;

@@ -18,6 +18,8 @@ export const calorieItemReducer = (state = calorieReducerDefaultState, action) =
                     };
                 };
             });
+        case 'SET_CALORIE':
+            return action.calorie
         default:
             return state;
     };

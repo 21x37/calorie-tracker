@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import CommentList from './CommentList';
-import { addComment } from '../../actions/comment';
+import { startAddComment } from '../../actions/comment';
 
 class Comment extends React.Component {
     constructor(props) {
@@ -18,33 +18,33 @@ class Comment extends React.Component {
         this.setState({ description })
     }
     onClick() {
-        this.props.addComment({
-            id: uuid(),
+        this.props.startAddComment({
             parentId: this.props.parentId,
             ...this.state
         });
+        const form = document.getElementById('comment-form');
+        form.reset();
     }
     onSubmit(e) {
         e.preventDefault();
     }
     render() {
-        console.log(this.props.parentId)
         return (
             <div>
                 <CommentList parentId={this.props.parentId} />
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} id='comment-form'>
                     <input type='text' onChange={this.onDescriptionChange}/>
                     <button onClick={this.onClick}>Comment!</button>
                 </form>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addComment: comment => dispatch(addComment(comment))
-    }
-}
+        startAddComment: comment => dispatch(startAddComment(comment))
+    };
+};
 
 export default connect(undefined, mapDispatchToProps)(Comment);

@@ -31,6 +31,29 @@ export const startDeleteStatus = ({id}) => {
     };
 };
 
+export const setStatus = (status) => ({
+    type: 'SET_STATUS',
+    status
+});
+
+export const startSetStatus = () => {
+    return(dispatch) => {
+        return database.ref('statusItem').once('value').then((snapshot) => {
+            const status = [];
+
+            snapshot.forEach((childSnapshot) => {
+                status.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            
+            dispatch(setStatus(status));
+        });
+    };
+};
+
+
 export const editStatus = ({id, updates}) => ({
     type: 'EDIT_STATUS',
     id,

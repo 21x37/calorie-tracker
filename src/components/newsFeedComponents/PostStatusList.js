@@ -8,6 +8,7 @@ class PostStatusList extends React.Component {
         super(props);
     }
     render() {
+        console.log(this.props.statusItem)
         return (
             <div>
                 {this.props.statusItem.map(status => {
@@ -15,6 +16,7 @@ class PostStatusList extends React.Component {
                         <div key={status.id}>
                             <h1>{status.description} : {status.createdAt}</h1>
                             <button onClick={() => {
+                                console.log(status)
                                 this.props.startDeleteStatus({id: status.id})
                             }}>Delete</button>
                             <Comment parentId={status.id}/>

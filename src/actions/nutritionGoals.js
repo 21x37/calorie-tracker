@@ -18,6 +18,29 @@ export const startSetGoal = (calorieGoal, proteinGoal, carbsGoal, fatsGoal) => {
     }
 }
 
+export const renderGoal = (goal) => ({
+    type: 'RENDER_GOAL',
+    goal
+});
+
+export const startRenderGoal = () => {
+    return (dispatch) => {
+        return database.ref('nutritionGoal').once('value').then((snapshot) => {
+            if(snapshot.val()) {
+                dispatch(renderGoal(snapshot.val()))
+            } else {
+                dispatch(renderGoal({
+                    calorieGoal: 0,
+                    proteinGoal: 0,
+                    carbsGoal: 0,
+                    fatsGoal: 0
+                }));
+            };
+
+        });
+    };
+};
+
 
 export const editGoal = (edit) => ({
     type: 'EDIT_GOAL',

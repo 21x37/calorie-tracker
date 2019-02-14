@@ -12,6 +12,10 @@ import LoadingPage from './components/LoadingPage';
 import { addStatus } from './actions/postStatus';
 import { addCalorie, removeCalorieItem } from './actions/calorieItem';
 import { setGoal } from './actions/nutritionGoals';
+import { startRenderGoal } from './actions/nutritionGoals';
+import { startSetCalorie } from './actions/calorieItem';
+import { startSetStatus } from './actions/postStatus';
+import { startSetComment } from './actions/comment';
 
 const store = configureStore();
 
@@ -65,7 +69,10 @@ const renderApp = () => {
     }
 };
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
-
+store.dispatch(startRenderGoal());
+store.dispatch(startSetCalorie());
+store.dispatch(startSetStatus());
+store.dispatch(startSetComment());
 ReactDOM.render(jsx, document.getElementById('app'));
 // firebase.auth().onAuthStateChanged((user) => {
 //     if (user) {

@@ -9,6 +9,8 @@ const postStatusReducer = (state = postStatusReducerDefaultState, action) => {
             ];
         case 'DELETE_STATUS':
             return state.filter(statusItem => statusItem.id !== action.id);
+        case 'SET_STATUS':
+            return action.status;
         default:
             return state;
     };

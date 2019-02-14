@@ -31,6 +31,28 @@ export const startRemoveCalorieItem = ({ id }) => {
     };
 };
 
+export const setCalorie = (calorie) => ({
+    type: 'SET_CALORIE',
+    calorie
+});
+
+export const startSetCalorie = () => {
+    return (dispatch) => {
+        return database.ref('calorieItem').once('value').then((snapshot) => {
+            const calorieData = [];
+
+            snapshot.forEach((childSnapshot) => {
+                calorieData.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+
+            dispatch(setCalorie(calorieData));
+        });
+    };
+};
+
 export const editCalorieItem = (id, edit) => ({
     type: 'EDIT_CALORIE_ITEM',
     id,

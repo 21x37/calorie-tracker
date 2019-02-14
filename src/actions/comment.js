@@ -5,13 +5,33 @@ export const addComment = (comment) => ({
     comment
 });
 
-export const startAddComment = (parentId, comment) => {
+export const startAddComment = (comment) => {
     return (dispatch) => {
-        return database.ref(`status/${parentId}/comment`).push(comment).then((ref) => {
-            dispatch(addComent({
+        return database.ref(`comments`).push(comment).then((ref) => {
+            dispatch(addComment({
                 id: ref.key,
                 ...comment
             }));
+        });
+    };
+};
+
+export const setComment = (comment) => ({
+    type: 'SET_COMMENT',
+    comment
+});
+
+export const startSetComment = () => {
+    return (dispatch) => {
+        return database.ref(`comments`).once('value').then((snapshot) => {
+            const comments = [];
+            snapshot.forEach(childSnapshot => {
+                comments.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setComment(comments))
         });
     };
 };
@@ -21,16 +41,12 @@ export const removeComment = ({ id }) => ({
     id
 });
 
-export const startRemoveComment = (parentId, { id }) => {
+
+export const startRemoveComment = (comment) => {
+    console.log(comment.id);
     return (dispatch) => {
-        return database.ref(`status/${parentId}/comment/${id}`).remove().then(() => {
-            dispatch(removeComment({ id }))
+        return database.ref(`statusItem/${comment.parentId}/comments/${comment.id}`).remove().then(() => {
+            dispatch(removeComment({ id: comment.id }))
         })
     };
 };
-
-const commentMockup = {
-    id: 0,
-    description: '',
-    createdAt: ''
-}
