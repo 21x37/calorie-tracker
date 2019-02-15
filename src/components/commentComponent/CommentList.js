@@ -16,7 +16,7 @@ class CommentList extends React.Component {
                 {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {
                     return (
                         <div key={comment.id}>
-                        {comment.description}
+                        <h4>{comment.description}</h4>
                         <LikeStatus  dbLocation={'comments'} parentId={comment.id} likes={comment.likes}/>
                         <button onClick={() => {
                             this.props.startRemoveComment(comment)

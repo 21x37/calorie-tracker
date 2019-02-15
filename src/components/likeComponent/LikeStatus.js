@@ -35,7 +35,7 @@ class LikeStatus extends React.Component {
     render() {
         return (
             <div>
-                {this.state.likes}<button onClick={this.onClick}>Like</button>
+                {this.state.likes} Likes <button onClick={this.onClick}>Like</button>
             </div>
         );
     };

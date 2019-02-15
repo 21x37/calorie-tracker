@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Comment from '../commentComponent/Comment';
+import LikeStatus from '../likeComponent/LikeStatus';
 
 
 const ProfilePageStatusList = (props) => {
@@ -10,12 +11,12 @@ const ProfilePageStatusList = (props) => {
             {props.statusItem.map(status => {
                 return (
                     <div key={status.id}>
-                        <p>{status.description}</p>
+                        <h2>{status.description}</h2>
+                        <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
                         <Comment parentId={status.id}/>
                     </div>
                 )
-            })};
-            <p>This is my proflie page</p>
+            })}
         </div>
     )
 };

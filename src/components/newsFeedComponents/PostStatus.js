@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import moment from 'moment'
 import { startAddStatus } from '../../actions/postStatus';
+import { startAddHashtags } from '../../actions/statusFeatures';
 
 class PostStatus extends React.Component {
     constructor(props) {
@@ -27,6 +28,18 @@ class PostStatus extends React.Component {
             createdAt: date.format(),
             likes: 0
         });
+        // SEARCHING FOR STRING FOR HASHTAG
+        const description = this.state.description
+
+        if(description.search(/(#[a-z0-9][a-z0-9\-_]*)/ig) > 0) {
+            description.match(/(#[a-z0-9][a-z0-9\-_]*)/ig).forEach((hashtag) => {
+                this.props.startAddHashtags(hashtag);
+            });
+
+        }
+
+
+
         const form = document.getElementById('postStatusForm');
         form.reset();
     };
@@ -48,7 +61,8 @@ class PostStatus extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddStatus: (statusObj) => dispatch(startAddStatus(statusObj))
+    startAddStatus: (statusObj) => dispatch(startAddStatus(statusObj)),
+    startAddHashtags: (hashtag) => dispatch(startAddHashtags(hashtag))
 });
 
 export default connect(undefined, mapDispatchToProps)(PostStatus);

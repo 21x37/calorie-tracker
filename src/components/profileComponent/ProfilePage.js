@@ -3,11 +3,13 @@ import ProfilePageStatusList from './ProfilePageStatusList';
 import PostStatus from '../newsFeedComponents/PostStatus';
 import Header from '../Header';
 import CalorieSummay from '../calorieComponents/CalorieSummary';
+import UserProfileInfo from './UserProfileInfo';
 
 const ProfilePage = () => {
     return (
         <div>
             <Header />
+            <UserProfileInfo />
             <CalorieSummay />
             <PostStatus />
             <ProfilePageStatusList />

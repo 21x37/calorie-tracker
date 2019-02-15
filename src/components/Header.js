@@ -10,8 +10,9 @@ import { startLogout } from '../actions/auth';
                 <Link className='header__title' to="/">
                     <h1>TrainingPal</h1>
                 </Link>
+                <Link className='header__title' to='/'>Home</Link>
                 <Link className='header__title' to='/calories'>Log Calorie</Link>
-                <Link className='header__title' to='profile/1'>Profile</Link>
+                <Link className='header__title' to='/profile/1'>Profile</Link>
                 <button className='button--link button'onClick={startLogout}>Logout</button>
             </div>
         </div>
@@ -20,6 +21,6 @@ import { startLogout } from '../actions/auth';
 
 const mapDispatchToProps = (dispatch) => ({
     startLogout: () => dispatch(startLogout())
-})
+});
 
 export default connect(undefined, mapDispatchToProps)(Header);

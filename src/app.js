@@ -16,6 +16,7 @@ import { startRenderGoal } from './actions/nutritionGoals';
 import { startSetCalorie } from './actions/calorieItem';
 import { startSetStatus } from './actions/postStatus';
 import { startSetComment } from './actions/comment';
+import { startSetHashtags } from './actions/statusFeatures';
 
 const store = configureStore();
 
@@ -71,6 +72,7 @@ const renderApp = () => {
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
 store.dispatch(startRenderGoal());
 store.dispatch(startSetCalorie());
+store.dispatch(startSetHashtags());
 store.dispatch(startSetStatus());
 store.dispatch(startSetComment());
 ReactDOM.render(jsx, document.getElementById('app'));

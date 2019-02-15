@@ -8,11 +8,14 @@ import CalorieItemList from './calorieComponents/CalorieItemList';
 import NewsFeed from './newsFeedComponents/Newsfeed';
 //---------------------------------//
 import Header from './Header';
+// --------------------------------- //
+import TrendingList from './newsFeedComponents/TrendingList';
 
 const DashboardPage = () => (
     <div>
         <Header />
         <CalorieSummary />
+        <TrendingList />
         <NewsFeed />
     </div>
 );
