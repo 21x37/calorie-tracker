@@ -21,7 +21,7 @@ class PostStatusList extends React.Component {
                                 console.log(status)
                                 this.props.startDeleteStatus({id: status.id})
                             }}>Delete</button>
-                            <LikeStatus likes={status.likes} />
+                            <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
                             <Comment parentId={status.id}/>
                         </div>
                     )

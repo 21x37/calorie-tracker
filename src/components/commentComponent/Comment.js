@@ -8,7 +8,8 @@ class Comment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            description: ''
+            description: '',
+            likes: 0
         }
         this.onDescriptionChange =  this.onDescriptionChange.bind(this);
         this.onClick = this.onClick.bind(this);

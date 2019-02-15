@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { startSetLike } from '../../actions/statusFeatures';
 
 class LikeStatus extends React.Component {
     constructor(props) {
@@ -23,9 +25,13 @@ class LikeStatus extends React.Component {
                     liked: true
                 }
             }
-
+            
+        }, () => {
+            this.props.startSetLike(this.props.dbLocation, this.props.parentId, this.state.likes);
         });
-    }
+
+    };
+
     render() {
         return (
             <div>
@@ -35,4 +41,8 @@ class LikeStatus extends React.Component {
     };
 };
 
-export default LikeStatus;
+const mapDispatchToProps = (dispatch) => ({
+    startSetLike: (location, parentId, likes) => dispatch(startSetLike(location, parentId, likes))
+})
+
+export default connect(undefined, mapDispatchToProps)(LikeStatus);

@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startRemoveComment } from '../../actions/comment';
+import LikeStatus from '../likeComponent/LikeStatus';
 
 class CommentList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            parentNodeId: this.props.parentId
+            parentNodeId: this.props.parentId,
         };
     };
     render() {
@@ -15,7 +16,9 @@ class CommentList extends React.Component {
                 {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {
                     return (
                         <div key={comment.id}>
-                        {comment.description}<button onClick={() => {
+                        {comment.description}
+                        <LikeStatus  dbLocation={'comments'} parentId={comment.id} likes={comment.likes}/>
+                        <button onClick={() => {
                             this.props.startRemoveComment(comment)
                         }}>Remove Comment</button>
                        </div>

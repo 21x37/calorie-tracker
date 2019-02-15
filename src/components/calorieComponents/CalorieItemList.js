@@ -14,7 +14,7 @@ class CalorieItemList extends React.Component {
                 console.log(calorie.id);
                 return (
                     <div key={calorie.id}>
-                        <p>Calorie:{calorie.calories} Protein: {calorie.protein} Carbs: {calorie.carbs} Fats: {calorie.fats}</p>
+                        <p>Description:{calorie.description} Calorie:{calorie.calories} Protein: {calorie.protein} Carbs: {calorie.carbs} Fats: {calorie.fats}</p>
                         <button onClick={() => {
                             this.props.startRemoveCalorieItem({id: calorie.id})
                         }}>Remove</button>

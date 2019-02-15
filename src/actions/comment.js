@@ -45,7 +45,7 @@ export const removeComment = ({ id }) => ({
 export const startRemoveComment = (comment) => {
     console.log(comment.id);
     return (dispatch) => {
-        return database.ref(`statusItem/${comment.parentId}/comments/${comment.id}`).remove().then(() => {
+        return database.ref(`comments/${comment.id}`).remove().then(() => {
             dispatch(removeComment({ id: comment.id }))
         })
     };

@@ -12,6 +12,7 @@ class AddCalorieItem extends React.Component {
             id: '',
             calories: 0,
             carbs: 0,
+            description: '',
             fats: 0,
             protein: 0
         }
@@ -34,6 +35,10 @@ class AddCalorieItem extends React.Component {
         const protein = e.target.value;
         this.setState({ protein });
     };
+    onDescriptionChange = (e) => {
+        const description = e.target.value;
+        this.setState({ description })
+    }
     onSubmit = (e) => {
         // DISPATCHES CURRENT STATE TO REDUX STATE
         e.preventDefault();
@@ -42,6 +47,7 @@ class AddCalorieItem extends React.Component {
             this.props.startAddCalorie({
                 calories: this.state.calories,
                 carbs: this.state.carbs,
+                description: this.state.description,
                 fats: this.state.fats,
                 protein: this.state.protein
             });
@@ -54,10 +60,11 @@ class AddCalorieItem extends React.Component {
             <div>
                 <h2>Log a calorie</h2>
                 <form id='calorieItemForm'onSubmit={this.onSubmit}>
-                    <input type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
-                    <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
-                    <input type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
-                    <input type='text-input' onChange={this.onFatsChange} type='text' placeholder='Fats'/>
+                    <input onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
+                    <input onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
+                    <input onChange={this.onProteinChange} type='text' placeholder='Protein'/>
+                    <input onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
+                    <input onChange={this.onFatsChange} type='text' placeholder='Fats'/>
                     <button>Submit</button>
                 </form>
             </div>
