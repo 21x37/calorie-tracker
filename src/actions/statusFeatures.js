@@ -13,8 +13,8 @@ const addHashTag = (hashtag) => ({
 
 export const startAddHashtags = (hashtag) => {
     return (dispatch) => {
-        return database.ref(`trending-hashtags`).push(hashtag).then(() => {
-            dispatch(addHashTag(hashtag));
+        return database.ref(`trending-hashtags`).push(hashtag).then((snapshot) => {
+            dispatch(addHashTag({hashtag, id: snapshot.key}));
         });
     };
 };
@@ -22,7 +22,7 @@ export const startAddHashtags = (hashtag) => {
 export const setHashtags = (trendingList) => ({
     type: 'SET_HASHTAG',
     trendingList
-})
+});
 
 export const startSetHashtags = () => {
     return (dispatch) => {
@@ -32,6 +32,19 @@ export const startSetHashtags = () => {
                 trendingList.push({hashtag: childSnapshot.val(), id: childSnapshot.key});
             })
             dispatch(setHashtags(trendingList));
-        })
-    }
-}
+        });
+    };
+};
+
+export const removeHashtag = ({ id }) => ({
+    type: 'REMOVE_HASHTAG',
+    id
+});
+
+export const startRemoveHashtag = ({ id }) => {
+    return(dispatch) => {
+        return database.ref(`trending-hashtags/${id}`).remove().then(() => {
+            dispatch(removeHashtag({ id }));
+        });
+    };
+};

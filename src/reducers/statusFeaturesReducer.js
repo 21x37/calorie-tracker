@@ -3,10 +3,9 @@ const statusFeaturesReducerDefaultState = [];
 const statusFeaturesReducer = (state=statusFeaturesReducerDefaultState, action) => {
     switch(action.type) {
         case 'ADD_HASHTAG':
-            return [
-                ...state,
-                action.hashtag
-            ];
+            return [...state, action.hashtag]
+        case 'REMOVE_HASHTAG':
+            return state.filter((hashtag) => hashtag.id !== action.id);
         case 'SET_HASHTAG':
             return action.trendingList;
         default:

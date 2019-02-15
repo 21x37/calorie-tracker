@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
+import countEachHastag from '../../selectors/trendingHashtags';
 
 const TrendingList = (props) => {
     return (
         <div>
             <h3>Trending Hashtags</h3>
-            {props.hashtags.map(hashtag => {
+            {props.hashtagCount.map(hashtag => {
+                console.log('HASHTAG ID', hashtag.id)
                 return (
-                    <div key={hashtag.id}>{hashtag.hashtag}</div>
+                    <div key={uuid()}>{hashtag.hashtag} posted {hashtag.count}</div>
                 )
             })}
         </div>
@@ -15,7 +18,8 @@ const TrendingList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    hashtags: state.hashtags
-})
+    hashtags: state.hashtags,
+    hashtagCount: countEachHastag(state.hashtags)
+});
 
 export default connect(mapStateToProps)(TrendingList);
