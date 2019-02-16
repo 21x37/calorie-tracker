@@ -9,6 +9,7 @@ class PostStatus extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            sortBy: 'newest',
             description: '',
             createdAt: '',
             likes: 0
@@ -24,6 +25,7 @@ class PostStatus extends React.Component {
         const date = moment();
         // DISPATCH POSTSTATUS STATE TO REDUX STATE
         this.props.startAddStatus({
+            sortBy: 'newest',
             description: this.state.description,
             createdAt: date.format(),
             likes: 0

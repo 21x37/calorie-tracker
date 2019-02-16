@@ -12,8 +12,8 @@ export const startAddStatus = (status) => {
              dispatch(addStatus({
                  id: ref.key,
                  ...status
-             }))
-         })
+             }));
+         });
     };
 };
 

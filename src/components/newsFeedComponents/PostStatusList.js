@@ -4,8 +4,8 @@ import { startDeleteStatus } from '../../actions/postStatus';
 import { startRemoveHashtag } from '../../actions/statusFeatures';
 import Comment from '../commentComponent/Comment';
 import LikeStatus from '../likeComponent/LikeStatus';
-import database from '../../firebase/firebase';
 import { startRemoveComment } from '../../actions/comment';
+import showHashtags from '../../selectors/showHashtags';
 
 class PostStatusList extends React.Component {
     constructor(props) {
@@ -22,8 +22,8 @@ class PostStatusList extends React.Component {
                 }
             } catch (e) {
                 break
-            }
-        }
+            };
+        };
     };
     removeComment(statusId) {
         this.props.commentItem.forEach(comment => {
@@ -53,7 +53,7 @@ class PostStatusList extends React.Component {
                 })}
             </div>
         );
-    }
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -67,9 +67,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        statusItem: state.statusItem,
+        statusItem: showHashtags(state.statusItem, state.hashtagFilter),
         commentItem: state.commentItem,
-        hashtags: state.hashtags
+        hashtags: state.hashtags,
+        queryHashtags: showHashtags(state.statusItem, state.hashtagFilter)
     };
 };
 

@@ -6,6 +6,7 @@ import calorieItemReducer from '../reducers/calorieItemReducer';
 import postStatusReducer from '../reducers/postStatusReducer';
 import commentReducer from '../reducers/commentReducer';
 import statusFeaturesReducer from '../reducers/statusFeaturesReducer';
+import hashtagFilterReducer from '../reducers/hashtagFilterReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,6 +18,7 @@ export default () => {
             statusItem: postStatusReducer,
             commentItem: commentReducer,
             hashtags: statusFeaturesReducer,
+            hashtagFilter: hashtagFilterReducer,
             auth: authReducer
         }),
         composeEnhancers(applyMiddleware(thunk))
