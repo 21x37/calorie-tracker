@@ -10,13 +10,15 @@ export const calorieItemReducer = (state = calorieReducerDefaultState, action) =
         case 'REMOVE_CALORIE_ITEM':
             return state.filter(calorieItem => calorieItem.id !== action.id);
         case 'EDIT_CALORIE_ITEM':
-            return state.map(calorieItem => {
-                if (calorieItem.id === action.id) {
+            return state.map(calorie => {
+                if (calorie.id === action.id) {
                     return {
-                        ...calorieItem,
-                        ...action.edit
-                    };
-                };
+                        ...calorie,
+                        ...action.updates
+                    }
+                } else {
+                    return calorie;
+                }
             });
         case 'SET_CALORIE':
             return action.calorie

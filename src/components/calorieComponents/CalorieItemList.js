@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { startRemoveCalorieItem } from '../../actions/calorieItem';
 
 
@@ -14,15 +15,16 @@ class CalorieItemList extends React.Component {
                 console.log(calorie.id);
                 return (
                     <div key={calorie.id}>
-                        <p>Description:{calorie.description} Calorie:{calorie.calories} Protein: {calorie.protein} Carbs: {calorie.carbs} Fats: {calorie.fats}</p>
+                        <Link to={`/calories/${calorie.id}`} >
+                            <p>Description:{calorie.description} Calorie:{calorie.calories} Protein: {calorie.protein} Carbs: {calorie.carbs} Fats: {calorie.fats}</p>
+                            <button>Edit</button>
+                        </Link>
                         <button onClick={() => {
                             this.props.startRemoveCalorieItem({id: calorie.id})
                         }}>Remove</button>
                     </div>
-
-    
-                )
-            })}
+                );
+            })};
         </div>
         )
     };

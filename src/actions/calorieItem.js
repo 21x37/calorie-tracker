@@ -53,8 +53,16 @@ export const startSetCalorie = () => {
     };
 };
 
-export const editCalorieItem = (id, edit) => ({
+export const editCalorieItem = (id, updates) => ({
     type: 'EDIT_CALORIE_ITEM',
     id,
-    edit
+    updates
 });
+
+export const startEditCalorieItem = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`calorieItem/${id}`).update(updates).then(() => {
+            dispatch(editCalorieItem(id, updates));
+        })
+    }
+}

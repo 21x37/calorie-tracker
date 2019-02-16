@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import { Link } from 'react-router-dom';
 import countEachHastag from '../../selectors/trendingHashtags';
-import { queryHashtags } from '../../actions/hashtagFilter';
+import { queryHashtags, resetQuery } from '../../actions/hashtagFilter';
 
 class TrendingList extends React.Component {
     constructor(props) {
         super(props);
-    };
-    onClick() {
-        console.log('clicked');
     };
     render() {
         return (
@@ -29,6 +26,10 @@ class TrendingList extends React.Component {
                         </div>
                     )
                 })}
+                {this.props.hashtagFilter.sortBy !== 'newest' && 
+                <div>
+                    <button onClick={() => {this.props.resetQuery()}}>Reset Search</button>
+                </div>}
             </div>
         );
     };
@@ -52,12 +53,14 @@ class TrendingList extends React.Component {
 // };
 
 const mapDispatchToProps = (dispatch) => ({
-    queryHashtags: query => dispatch(queryHashtags(query))
+    queryHashtags: query => dispatch(queryHashtags(query)),
+    resetQuery: () => dispatch(resetQuery())
 })
 
 const mapStateToProps = (state) => ({
     hashtags: state.hashtags,
-    hashtagCount: countEachHastag(state.hashtags)
+    hashtagCount: countEachHastag(state.hashtags),
+    hashtagFilter: state.hashtagFilter
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrendingList);
