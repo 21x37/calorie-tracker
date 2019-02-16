@@ -17,6 +17,7 @@ import { startSetCalorie } from './actions/calorieItem';
 import { startSetStatus } from './actions/postStatus';
 import { startSetComment } from './actions/comment';
 import { startSetHashtags } from './actions/statusFeatures';
+import { startSetImages } from './actions/postStatus';
 
 const store = configureStore();
 
@@ -75,6 +76,7 @@ store.dispatch(startSetCalorie());
 store.dispatch(startSetHashtags());
 store.dispatch(startSetStatus());
 store.dispatch(startSetComment());
+store.dispatch(startSetImages());
 ReactDOM.render(jsx, document.getElementById('app'));
 // firebase.auth().onAuthStateChanged((user) => {
 //     if (user) {

@@ -1,5 +1,6 @@
 import database from '../firebase/firebase';
 
+
 export const startSetLike = (dbLocation, parentId, likes) => {
     return() => {
         return database.ref(`${dbLocation}/${parentId}`).update({ likes })
@@ -40,6 +41,7 @@ export const removeHashtag = ({ id }) => ({
     type: 'REMOVE_HASHTAG',
     id
 });
+
 
 export const startRemoveHashtag = ({ id }) => {
     return(dispatch) => {
