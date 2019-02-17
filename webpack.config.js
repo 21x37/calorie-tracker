@@ -7,9 +7,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (process.env.NODE_ENV === 'test') {
     require('dotenv').config({ path: '.env.test' });
-} else if (process.env.NODE_ENV === 'development') {
+  } else {
     require('dotenv').config({ path: '.env.development' });
-}
+  }
 
 // entry point -> output
 
@@ -57,7 +57,9 @@ module.exports = (env) => {
                 'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL),
                 'process.env.FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
                 'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
-                'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
+                'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID),
+                'process.env.NUTRITIONIX_APP_ID': JSON.stringify(process.env.NUTRITIONIX_APP_ID),
+                'process.env.NUTRITIONIX_APP_KEY': JSON.stringify(process.env.NUTRITIONIX_APP_KEY)
             })
         ],
         devtool:  isProduction? 'source-map' : 'inline-source-map',
