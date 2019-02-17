@@ -6,6 +6,7 @@ import Comment from '../commentComponent/Comment';
 import LikeStatus from '../likeComponent/LikeStatus';
 import { startRemoveComment } from '../../actions/comment';
 import showHashtags from '../../selectors/showHashtags';
+import sortByNewest from '../../selectors/sortByNewest';
 
 class PostStatusList extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class PostStatusList extends React.Component {
         return (
             <div>
                 {this.props.statusItem.map(status => {
-                    if(status.description) {
+                    if(status.type === 'post') {
                         return (
                             <div key={status.id}>
                                 <h1>{status.description} : {status.createdAt}</h1>
@@ -50,13 +51,15 @@ class PostStatusList extends React.Component {
                                 <Comment parentId={status.id}/>
                             </div>
                         )
-                    } else if (status.url) {
+                    } else if (status.type === 'image') {
                         return (
                             <div key={status.id}>
-                                <h1>{status.caption}</h1>
+                                <h1>{status.description}</h1>
                                 <img src={status.url} style={{width: '17%', height: '17%'}}></img>
                                 <button onClick={() => {
                                     this.props.startDeleteImage(status.id, status.name)
+                                    this.removeHashtag(status.description)
+                                    this.removeComment(status.id)
                                 }}>Remove</button>
                                 <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likes={status.likes} />
                                 <Comment parentId={status.id}/>
@@ -81,7 +84,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        statusItem: showHashtags(state.statusItem, state.hashtagFilter),
+        statusItem: sortByNewest(showHashtags(state.statusItem, state.hashtagFilter)),
         commentItem: state.commentItem,
         hashtags: state.hashtags,
         queryHashtags: showHashtags(state.statusItem, state.hashtagFilter)

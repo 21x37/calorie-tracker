@@ -69,29 +69,35 @@ export const uploadImage = (image) => ({
     image
 
 });
-export const storeImageNames = (selectedFile, url, caption) => {
-        return database.ref('uploadedImages').push({name: selectedFile.name, url, caption, likes: 0 });
+export const storeImageNames = (imageStatus) => {
+        return database.ref('uploadedImages').push({
+            name: imageStatus.uploadedImage.name,
+            url: imageStatus.url,
+            description: imageStatus.description,
+            type: 'image',
+            likes: 0,
+            createdAt: imageStatus.createdAt
+        });
 };
 
-export const startUploadImage = (selectedFile, caption) => {
+export const startUploadImage = (imageStatus) => {
     return (dispatch) => {
-        return storageRef.child(`images/${selectedFile.name}`).put(selectedFile).on('state_changed', (snapshot) => {
+        // ADDING IMAGE TO FIREBASE STORAGE
+        return storageRef.child(`images/${imageStatus.uploadedImage.name}`).put(imageStatus.uploadedImage).on('state_changed', (snapshot) => {
             
         },(e) => {
             console.log(e);
         }, () => {
-            console.log('uploaded');
-            storageRef.child(`images/${selectedFile.name}`).getDownloadURL().then((url) => {
-
-                storeImageNames(selectedFile, url, caption).then((ref) => {
-                    const date = moment();
+            // ONCE ADDED, FETCHING THE DOWNLOAD URL
+            storageRef.child(`images/${imageStatus.uploadedImage.name}`).getDownloadURL().then((url) => {
+                // STORE THE IMAGE IN DATABASE WITH URL
+                storeImageNames({...imageStatus, url}).then((ref) => {
                     const image = {
+                        ...imageStatus,
+                        type: 'image',
                         id: ref.key,
-                        name: selectedFile.name,
-                        createdAt: date.format,
-                        url,
-                        caption,
-                        likes: 0
+                        name: imageStatus.uploadedImage.name,
+                        url
                     };
                     dispatch(uploadImage(image))
                 });

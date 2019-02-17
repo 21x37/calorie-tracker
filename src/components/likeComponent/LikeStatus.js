@@ -5,7 +5,6 @@ import { startSetLike } from '../../actions/statusFeatures';
 class LikeStatus extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props.likes);
         this.state = {
             likes: this.props.likes,
             liked: false
@@ -35,7 +34,7 @@ class LikeStatus extends React.Component {
     render() {
         return (
             <div>
-                {this.state.likes} Likes <button onClick={this.onClick}>Like</button>
+                {this.state.likes}{this.state.likes > 1 ? " Likes" : " Like"}<button onClick={this.onClick}>Like</button>
             </div>
         );
     };

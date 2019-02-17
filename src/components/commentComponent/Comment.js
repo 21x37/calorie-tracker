@@ -11,6 +11,7 @@ class Comment extends React.Component {
             description: '',
             likes: 0
         }
+        this.form;
         this.onDescriptionChange =  this.onDescriptionChange.bind(this);
         this.onClick = this.onClick.bind(this);
     };
@@ -23,7 +24,7 @@ class Comment extends React.Component {
             parentId: this.props.parentId,
             ...this.state
         });
-        const form = document.getElementById('comment-form');
+        const form = document.getElementById(`comment-form-${this.props.parentId}`);
         form.reset();
     }
     onSubmit(e) {
@@ -33,7 +34,7 @@ class Comment extends React.Component {
         return (
             <div>
                 <CommentList parentId={this.props.parentId} />
-                <form onSubmit={this.onSubmit} id='comment-form'>
+                <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
                     <input type='text' onChange={this.onDescriptionChange}/>
                     <button onClick={this.onClick}>Comment!</button>
                 </form>

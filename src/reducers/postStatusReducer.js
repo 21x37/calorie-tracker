@@ -10,9 +10,7 @@ const postStatusReducer = (state = postStatusReducerDefaultState, action) => {
         case 'DELETE_STATUS':
             return state.filter(statusItem => statusItem.id !== action.id);
         case 'SET_STATUS':
-            // FLIPPING ARR TO ACHEIVE NEWEST STATUS'S FIRST IN NEWS FEED
-            const flippedArr = action.status.reverse()
-            return flippedArr;
+            return action.status;
         case 'UPLOAD_IMAGE':
             return [
                 action.image,

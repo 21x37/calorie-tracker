@@ -10,12 +10,16 @@ class PostStatus extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sortBy: 'newest',
             description: '',
-            createdAt: '',
-            likes: 0
+            sortBy: 'date',
+            likes: 0,
+            createdAt: moment(),
+
+            error: ''
         
         };
+        this.error = '';
+        // CLASS DECLARED VARIABLE FOR USE IN handleFileUpload AND uploadImage
         this.uploadedImage;
     };
     onDescriptionChange = (e) => {
@@ -24,69 +28,73 @@ class PostStatus extends React.Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
-        const date = moment();
-        // DISPATCH POSTSTATUS STATE TO REDUX STATE
-        this.props.startAddStatus({
-            sortBy: 'newest',
-            description: this.state.description,
-            createdAt: date.format(),
-            likes: 0
-        });
-        // SEARCHING FOR STRING FOR HASHTAG
-        const description = this.state.description
+        if (!this.uploadedImage) {
+            if (this.state.description) {
+                // DISPATCH POSTSTATUS TO DB AND REDUX STATE
+                this.props.startAddStatus({
+                    type: 'post',
+                    description: this.state.description,
+                    sortBy: this.state.sortBy,
+                    likes: this.state.likes,
+                    createdAt: this.state.createdAt.valueOf()
+                });
+                // SEARCHING FOR STRING FOR HASHTAG
+                const description = this.state.description
+                // ADDING ANY HASHTAGGED WORD TO HASHTAG DB
+                if(description.search(/(#[a-z0-9][a-z0-9\-_]*)/ig) > 0) {
+                    description.match(/(#[a-z0-9][a-z0-9\-_]*)/ig).forEach((hashtag) => {
+                        this.props.startAddHashtags(hashtag);
+                    });
 
-        // ADDING ANY HASHTAGGED WORD TO HASHTAG DB
-        if(description.search(/(#[a-z0-9][a-z0-9\-_]*)/ig) > 0) {
-            description.match(/(#[a-z0-9][a-z0-9\-_]*)/ig).forEach((hashtag) => {
-                this.props.startAddHashtags(hashtag);
+                }
+                const form = document.getElementById('postStatusForm');
+                form.reset();
+                this.setState({error: ''})
+            } else {
+                this.setState({error: 'You need to provide a status or photo to post!'})
+            }
+
+        } else if (this.uploadedImage) {
+            e.preventDefault();
+            const date = moment();
+            // UPLOAD IMAGE TO STORAGE, DB, AND REDUX STATE WITH CAPTION
+            this.props.startUploadImage({
+                type: 'image',
+                uploadedImage: this.uploadedImage,
+                description: this.state.description,
+                sortBy: this.state.sortBy,
+                likes: this.state.likes,
+                createdAt: this.state.createdAt.valueOf()
             });
-
+            // SEARCHING FOR STRING FOR HASHTAG
+            const description = this.state.description
+            // ADDING ANY HASHTAGGED WORD TO HASHTAG DB
+            if(description.search(/(#[a-z0-9][a-z0-9\-_]*)/ig) > 0) {
+                description.match(/(#[a-z0-9][a-z0-9\-_]*)/ig).forEach((hashtag) => {
+                    this.props.startAddHashtags(hashtag);
+                });
+    
+            };
+            const statusForm = document.getElementById('postStatusForm');
+            statusForm.reset();
+            this.setState({error: ''})
+            this.uploadedImage = null;
         }
-
-
-
-        const form = document.getElementById('postStatusForm');
-        form.reset();
     };
     handleFileUploadChange = (e) => {
         this.uploadedImage = e.target.files[0];
-
-    };
-    uploadImage = (e) => {
-        e.preventDefault();
-        console.log(this.uploadedImage);
-        const date = moment();
-        const image = {
-            sortBy: 'date',
-            caption: this.state.description,
-            createdAt: date.format(),
-            likes: 0
-        }
-        this.props.startUploadImage(this.uploadedImage, this.state.description);
-
-
-        const form = document.getElementById('uploadImageForm');
-        form.reset(); 
-    };
-    testDelete = () => {
-        console.log(this.uploadedImage);
-        this.props.startDeleteImage(this.uploadedImage.name);
-        console.log('deleted');
+        // CHANGE FILEUPLOADED STATE TO TRUE FOR UPLOAD BUTTON
     };
     render() {
         return (
             <div>
                 <h2>Post a Status!</h2>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form id='postStatusForm' onSubmit={this.onSubmit}>
                     <input type='text' onChange={this.onDescriptionChange}/>
                     <button>Post!</button>
+                    <input type="file" accept="image/*" onChange={this.handleFileUploadChange}/>
                 </form>
-                <div id="filesubmit">
-                    <form onSubmit={this.uploadImage} id='uploadImageForm'>
-                        <input type="file" accept="image/*" onChange={this.handleFileUploadChange}/>
-                        <button>Upload Image</button>
-                    </form>
-                </div>
             </div>
         )
     };

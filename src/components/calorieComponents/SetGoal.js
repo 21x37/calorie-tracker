@@ -11,7 +11,8 @@ class SetGoal extends React.Component {
             calories: 0,
             protein: 0,
             carbs: 0,
-            fats: 0
+            fats: 0,
+            error: ''
         }
     };
     onCaloriesChange = (e) => {
@@ -34,18 +35,24 @@ class SetGoal extends React.Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
-        const calories = parseInt(this.state.calories);
-        const protein = parseInt(this.state.protein);
-        const carbs = parseInt(this.state.carbs);
-        const fats = parseInt(this.state.fats);
-        this.props.startSetGoal(calories, protein, carbs, fats);
-        const form = document.getElementById('setGoalForm');
-        form.reset();
+        if (this.state.calories && this.state.protein && this.state.carbs && this.state.fats) {
+            const calories = parseInt(this.state.calories);
+            const protein = parseInt(this.state.protein);
+            const carbs = parseInt(this.state.carbs);
+            const fats = parseInt(this.state.fats);
+            this.props.startSetGoal(calories, protein, carbs, fats);
+            const form = document.getElementById('setGoalForm');
+            form.reset();
+        } else {
+            this.setState({error: 'Please fill out all of the goals!'})
+        }
+
     };
     render() {
         return (
             <div>
                 <h2>Set Calorie Goal</h2>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form id='setGoalForm' onSubmit={this.onSubmit}>
                     <input type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
                     <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>

@@ -14,9 +14,16 @@ class AddCalorieItem extends React.Component {
             carbs: 0,
             description: '',
             fats: 0,
-            protein: 0
+            protein: 0,
+            error: ''
         }
     };
+    allowNumbersOnly = (e) => {
+        var code = (e.which) ? e.which : e.keyCode;
+        if (code > 31 && (code < 48 || code > 57)) {
+            e.preventDefault();
+        }
+    }
     onCaloriesChange = (e) => {
         const calories = e.target.value;
         if (!calories || calories.match(/^[0-9]*$/)){
@@ -43,28 +50,32 @@ class AddCalorieItem extends React.Component {
         // DISPATCHES CURRENT STATE TO REDUX STATE
         e.preventDefault();
         console.log(this.props);
-        if (true) {
+        if (this.state.calories || this.state.carbs || this.state.fats || this.state.protein) {
             this.props.startAddCalorie({
-                calories: this.state.calories,
-                carbs: this.state.carbs,
+                calories: this.state.calories ? this.state.calories : 0,
+                carbs: this.state.carbs ? this.state.carbs : 0,
                 description: this.state.description,
-                fats: this.state.fats,
-                protein: this.state.protein
+                fats: this.state.fats ? this.state.fats : 0,
+                protein: this.state.protein ? this.state.protein : 0,
             });
             const form = document.getElementById('calorieItemForm');
             form.reset();
-        };
+            this.setState({error: ''});
+        } else {
+            this.setState({error: 'Enter something to log!'});
+        }
     };
     render() {
         return (
             <div>
-                <h2>Log a calorie</h2>
+                <h2>Log a Calorie</h2>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form id='calorieItemForm'onSubmit={this.onSubmit}>
                     <input onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
-                    <input onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
-                    <input onChange={this.onProteinChange} type='text' placeholder='Protein'/>
-                    <input onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
-                    <input onChange={this.onFatsChange} type='text' placeholder='Fats'/>
+                    <input onChange={this.onCaloriesChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Calories'/>
+                    <input onChange={this.onProteinChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Protein'/>
+                    <input onChange={this.onCarbsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Carbs'/>
+                    <input onChange={this.onFatsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Fats'/>
                     <button>Submit</button>
                 </form>
             </div>
