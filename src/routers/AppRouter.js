@@ -10,6 +10,7 @@ import PublicRoute from '../routers/PublicRoute';
 import ProfilePage from '../components/profileComponent/ProfilePage';
 import CaloriePage from '../components/CaloriePage';
 import EditCalorie from '../components/calorieComponents/EditCalorie';
+import CalorieLookUp from '../components/calorieLookUp/CalorieLookUp';
 
 export const history = createHistory();
 
@@ -20,6 +21,7 @@ const AppRouter = () => (
                 <Route path="/" component={DashboardPage} exact={true}/>
                 <Route path='/profile/:id' component={ProfilePage} />
                 <Route path='/calories' component={CaloriePage} exact={true}/>
+                <Route path='/foodsearch' component={CalorieLookUp} />
                 <Route path='/calories/:id' component={EditCalorie} />
                 <Route component={NotFoundPage}/>
             </Switch>
