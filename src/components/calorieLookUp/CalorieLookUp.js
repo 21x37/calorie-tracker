@@ -5,7 +5,6 @@ import CalorieLookUpList from './CalorieLookUpList';
 import { calorieLookUp } from '../../actions/calorieLookUp';
 import Header from '../Header';
 import CalorieSummary from '../calorieComponents/CalorieSummary';
-// https://trackapi.nutritionix.com/v2/natural/nutrients
 
 const appId = process.env.NUTRITIONIX_APP_ID;
 const appKey = process.env.NUTRITIONIX_APP_KEY;
