@@ -55,7 +55,7 @@ class CalorieLookUp extends React.Component {
             <div>
                 <Header />
                 <CalorieSummary query={this.query}/>
-                <h1>Search For a Calorie Item!</h1>
+                <h1>Search For a Food!</h1>
                 <form onSubmit={this.onSubmit} id='calorieSearchForm'>
                     <input type='text' onChange={this.onChange}/>
                     <button>Search</button>

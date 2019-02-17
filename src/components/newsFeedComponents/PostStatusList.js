@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { startDeleteStatus, startDeleteImage } from '../../actions/postStatus';
 import { startRemoveHashtag } from '../../actions/statusFeatures';
 import Comment from '../commentComponent/Comment';
@@ -40,7 +41,7 @@ class PostStatusList extends React.Component {
                     if(status.type === 'post') {
                         return (
                             <div key={status.id}>
-                                <h1>{status.description} : {status.createdAt}</h1>
+                                <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
                                 <button onClick={() => {
                                     //console.log(status)
                                     this.props.startDeleteStatus({id: status.id})
@@ -54,7 +55,7 @@ class PostStatusList extends React.Component {
                     } else if (status.type === 'image') {
                         return (
                             <div key={status.id}>
-                                <h1>{status.description}</h1>
+                                <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
                                 <img src={status.url} style={{width: '17%', height: '17%'}}></img>
                                 <button onClick={() => {
                                     this.props.startDeleteImage(status.id, status.name)
