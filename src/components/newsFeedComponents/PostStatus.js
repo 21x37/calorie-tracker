@@ -36,7 +36,9 @@ class PostStatus extends React.Component {
                     description: this.state.description,
                     sortBy: this.state.sortBy,
                     likes: this.state.likes,
-                    createdAt: this.state.createdAt.valueOf()
+                    createdAt: this.state.createdAt.valueOf(),
+                    createdBy: this.props.currentUser.id,
+                    author: this.props.currentUser
                 });
                 // SEARCHING FOR STRING FOR HASHTAG
                 const description = this.state.description
@@ -64,7 +66,9 @@ class PostStatus extends React.Component {
                 description: this.state.description,
                 sortBy: this.state.sortBy,
                 likes: this.state.likes,
-                createdAt: this.state.createdAt.valueOf()
+                createdAt: this.state.createdAt.valueOf(),
+                createdBy: this.props.currentUser.id,
+                author: this.props.currentUser
             });
             // SEARCHING FOR STRING FOR HASHTAG
             const description = this.state.description
@@ -108,4 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
     startDeleteImage: (id) => dispatch(startDeleteImage(id))
 });
 
-export default connect(undefined, mapDispatchToProps)(PostStatus);
+const mapStateToProps = (state) => ({
+    currentUser: state.currentUser
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostStatus);

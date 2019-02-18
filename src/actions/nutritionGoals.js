@@ -10,9 +10,9 @@ export const setGoal = (calorieGoal, proteinGoal, carbsGoal, fatsGoal) => ({
     fatsGoal
 });
 
-export const startSetGoal = (calorieGoal, proteinGoal, carbsGoal, fatsGoal) => {
+export const startSetGoal = (ref, calorieGoal, proteinGoal, carbsGoal, fatsGoal) => {
     return (dispatch) => {
-        return database.ref('nutritionGoal').set({calorieGoal, proteinGoal, carbsGoal, fatsGoal}).then((ref) => {
+        return database.ref(`users/${ref}/goals`).set({calorieGoal, proteinGoal, carbsGoal, fatsGoal}).then((ref) => {
             dispatch(setGoal(calorieGoal, proteinGoal, carbsGoal, fatsGoal))
         })
     }
@@ -23,9 +23,9 @@ export const renderGoal = (goal) => ({
     goal
 });
 
-export const startRenderGoal = () => {
+export const startRenderGoal = (ref) => {
     return (dispatch) => {
-        return database.ref('nutritionGoal').once('value').then((snapshot) => {
+        return database.ref(`users/${ref}/goals`).once('value').then((snapshot) => {
             if(snapshot.val()) {
                 dispatch(renderGoal(snapshot.val()))
             } else {

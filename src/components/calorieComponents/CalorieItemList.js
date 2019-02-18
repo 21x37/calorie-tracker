@@ -20,7 +20,7 @@ class CalorieItemList extends React.Component {
                             <button>Edit</button>
                         </Link>
                         <button onClick={() => {
-                            this.props.startRemoveCalorieItem({id: calorie.id})
+                            this.props.startRemoveCalorieItem(this.props.currentUser.id, {id: calorie.id})
                         }}>Remove</button>
                     </div>
                 );
@@ -32,13 +32,14 @@ class CalorieItemList extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startRemoveCalorieItem: calorieItem => dispatch(startRemoveCalorieItem(calorieItem)) 
+        startRemoveCalorieItem: (ref, calorieItem) => dispatch(startRemoveCalorieItem(ref, calorieItem)) 
     };
 };
 
 const mapStateToProps = (state) => {
     return {
-        calorieItem: state.calorieItem
+        calorieItem: state.calorieItem,
+        currentUser: state.currentUser
     };
 };
 

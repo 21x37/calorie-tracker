@@ -40,7 +40,7 @@ class SetGoal extends React.Component {
             const protein = parseInt(this.state.protein);
             const carbs = parseInt(this.state.carbs);
             const fats = parseInt(this.state.fats);
-            this.props.startSetGoal(calories, protein, carbs, fats);
+            this.props.startSetGoal(this.props.currentUser.id, calories, protein, carbs, fats);
             const form = document.getElementById('setGoalForm');
             form.reset();
         } else {
@@ -67,9 +67,15 @@ class SetGoal extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startSetGoal: (calories, protein, carbs, fats) => dispatch(startSetGoal(calories, protein, carbs, fats))
+        startSetGoal: (ref, calories, protein, carbs, fats) => dispatch(startSetGoal(ref, calories, protein, carbs, fats))
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser
     }
 }
 
 
-export default connect(undefined, mapDispatchToProps)(SetGoal);
+export default connect(mapStateToProps, mapDispatchToProps)(SetGoal);

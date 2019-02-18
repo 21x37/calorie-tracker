@@ -1,6 +1,5 @@
 
 export const selectCaloriesTotal = (caloriesItem) => {
-    console.log('calorie item', caloriesItem);
     return caloriesItem
         .map(calorie => parseInt(calorie.calories))
         .reduce((sum, value) => sum + value, 0);

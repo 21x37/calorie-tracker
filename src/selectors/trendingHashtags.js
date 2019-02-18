@@ -28,8 +28,7 @@ const countEachHastag = (obj) => {
     obj.forEach(hashtag => {
         hashtags.push(hashtag.hashtag);
     })
-    return count(hashtags);
+    return count(hashtags)
 }
 
 export default countEachHastag;
-console.log(countEachHastag([{id: 1, hashtag: '#sam'}, {id: 2, hashtag: 'foo'}, {id: 1, hashtag: 'stop'}, {id: 2, hashtag: 'foo'}]))

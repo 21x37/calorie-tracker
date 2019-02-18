@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Comment from '../commentComponent/Comment';
 import LikeStatus from '../likeComponent/LikeStatus';
-import { startDeleteImage } from '../../actions/postStatus';
+import { startDeleteImage, startDeleteStatus } from '../../actions/postStatus';
 import { startRemoveHashtag } from '../../actions/statusFeatures';
 import sortByNewest from '../../selectors/sortByNewest';
 import showHashtags from '../../selectors/showHashtags';
+import { startSetUser } from '../../actions/user';
+import { startRemoveComment } from '../../actions/comment';
 
 
 class ProfilePageStatusList extends React.Component {
@@ -34,38 +36,48 @@ class ProfilePageStatusList extends React.Component {
         });
     };
     render() {
-        return (
-            <div>
-                {this.props.statusItem.map(status => {
-                    if(status.type === 'post') {
-                        return (
-                            <div key={status.id}>
-                                <h2>{status.description}</h2>
-                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
-                                <Comment parentId={status.id}/>
-                            </div>
-                        )
-                    } else if (status.type === 'image') {
-                        return (
-                        <div key={status.id}>
-                            <h1>{status.description}</h1>
-                            <img src={status.url} style={{width: '17%', height: '17%'}}></img>
-                            <button onClick={() => {
-                                this.props.startDeleteImage(status.id, status.name)
-                                this.props.startDeleteImage(status.id, status.name)
-                                this.removeHashtag(status.description)
-                                this.removeComment(status.id)
-    
-                            }}>Remove</button>
-                            <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likes={status.likes} />
-                            <Comment parentId={status.id}/>
-                        </div>
-                        )
-                    }
-    
-                })}
-            </div>
-        )
+        const id = window.location.href.split('/')[4];
+        this.props.startSetUser(id, this.props.user);
+
+        if (this.props.user) {
+            return (
+                <div>
+                    {this.props.statusItem.map(status => {
+                        if(status.createdBy === this.props.user.id) {
+                            if(status.type === 'post') {
+                                return (
+                                    <div key={status.id}>
+                                        <h2>{status.description}</h2>
+                                        {status.createdBy === this.props.currentUser.id && <button onClick={() => {
+                                            this.props.startDeleteStatus(status)
+                                            this.removeHashtag(status.description)
+                                            this.removeComment(status.id)
+                                        }}>Remove</button> }
+                                        <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
+                                        <Comment parentId={status.id}/>
+                                    </div>
+                                )
+                            } else if (status.type === 'image') {
+                                return (
+                                <div key={status.id}>
+                                    <h1>{status.description}</h1>
+                                    <img src={status.url} style={{width: '17%', height: '17%'}}></img>
+                                    <button onClick={() => {
+                                        this.props.startDeleteStatus(status)
+                                        this.removeHashtag(status.description)
+                                        this.removeComment(status.id)
+            
+                                    }}>Remove</button>
+                                    <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likes={status.likes} />
+                                    <Comment parentId={status.id}/>
+                                </div>
+                                )
+                            }  
+                        }        
+                    })}
+                </div>
+            )
+        }
     }
 }
 
@@ -75,13 +87,19 @@ const mapDispatchToProps = (dispatch) => {
         startDeleteStatus: statusItem => dispatch(startDeleteStatus(statusItem)),
         startRemoveHashtag: id => dispatch(startRemoveHashtag(id)),
         startRemoveComment: comment => dispatch(startRemoveComment(comment)),
-        startDeleteImage: (id, name) => dispatch(startDeleteImage(id, name))
+        startDeleteImage: (id, name) => dispatch(startDeleteImage(id, name)),
+        startSetUser: (id, user) => dispatch(startSetUser(id, user))
     };
 
 };
 
 const mapStateToProps = (state) => ({
-    statusItem: sortByNewest(showHashtags(state.statusItem, state.hashtagFilter))
+    statusItem: sortByNewest(showHashtags(state.statusItem, state.hashtagFilter)),
+    commentItem: state.commentItem,
+    currentUser: state.currentUser,
+    hashtags: state.hashtags,
+    queryHashtags: showHashtags(state.statusItem, state.hashtagFilter),
+    user: state.user
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePageStatusList);

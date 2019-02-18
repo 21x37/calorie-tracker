@@ -67,7 +67,7 @@ class EditCalorie extends React.Component {
         e.preventDefault();
         console.log(this.props);
         if (true) {
-            this.props.startEditCalorieItem(this.state.id, {
+            this.props.startEditCalorieItem(this.props.currentUser.id, this.state.id, {
                 calories: this.state.calories,
                 carbs: this.state.carbs,
                 description: this.state.description,
@@ -102,13 +102,14 @@ class EditCalorie extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startEditCalorieItem: (id, calorieData) => dispatch(startEditCalorieItem(id, calorieData))
+        startEditCalorieItem: (ref, id, calorieData) => dispatch(startEditCalorieItem(ref, id, calorieData))
     };
 };
 
 const mapStateToProps = (state) => {
     return {
-        calorieItem: state.calorieItem
+        calorieItem: state.calorieItem,
+        currentUser: state.currentUser
     }
 }
 

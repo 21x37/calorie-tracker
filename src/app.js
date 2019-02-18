@@ -18,6 +18,7 @@ import { startSetStatus } from './actions/postStatus';
 import { startSetComment } from './actions/comment';
 import { startSetHashtags } from './actions/statusFeatures';
 import { startSetImages } from './actions/postStatus';
+import { startSetCurrentUser } from './actions/currentUser';
 
 const store = configureStore();
 
@@ -71,23 +72,33 @@ const renderApp = () => {
     }
 };
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
-store.dispatch(startRenderGoal());
-store.dispatch(startSetCalorie());
-store.dispatch(startSetHashtags());
-store.dispatch(startSetStatus());
-store.dispatch(startSetComment());
-store.dispatch(startSetImages());
+// store.dispatch(startRenderGoal());
+// store.dispatch(startSetCalorie());
+// store.dispatch(startSetHashtags());
+// store.dispatch(startSetStatus());
+// store.dispatch(startSetComment());
+// store.dispatch(startSetImages());
 ReactDOM.render(jsx, document.getElementById('app'));
-// firebase.auth().onAuthStateChanged((user) => {
-//     if (user) {
-//         store.dispatch(login(user.uid));
-//         renderApp();
-//         if (history.location.pathname === '/') {
-//             history.push('/dashboard');
-//         }
-//     } else {
-//         store.dispatch(logout());
-//         renderApp();
-//         history.push('/');
-//     }
-// });
+
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log(user.email);
+        store.dispatch(startSetCurrentUser(user.email));
+        store.dispatch(login(user.uid));
+
+        
+        renderApp();
+
+        console.log('log in');
+
+        if (history.location.pathname === '/login') {
+            history.push('/');
+        }
+    } else {
+        console.log('log out');
+        store.dispatch(logout());
+        renderApp();
+        history.push('/login');
+    }
+});

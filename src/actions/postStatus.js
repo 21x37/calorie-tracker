@@ -76,7 +76,9 @@ export const storeImageNames = (imageStatus) => {
             description: imageStatus.description,
             type: 'image',
             likes: 0,
-            createdAt: imageStatus.createdAt
+            createdAt: imageStatus.createdAt,
+            createdBy: imageStatus.createdBy,
+            author: imageStatus.author
         });
 };
 
@@ -138,8 +140,11 @@ export const deleteImage = (id) => ({
 
 export const startDeleteImage = (id, name) => {
     return (dispatch) => {
+        console.log(name)
         return storageRef.child(`images/${name}`).delete().then(() => {
+            console.log(2)
             database.ref(`uploadedImages/${id}`).remove().then(() => {
+                console.log(3)
                 dispatch(deleteImage(id));
             })
         });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import { startDeleteStatus, startDeleteImage } from '../../actions/postStatus';
 import { startRemoveHashtag } from '../../actions/statusFeatures';
 import Comment from '../commentComponent/Comment';
@@ -41,13 +42,17 @@ class PostStatusList extends React.Component {
                     if(status.type === 'post') {
                         return (
                             <div key={status.id}>
+                                <Link to={`/profiles/${status.createdBy}`}>
+                                    <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                    <h3>{status.author.name}</h3>
+                                </Link>
                                 <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
-                                <button onClick={() => {
+                                {status.createdBy === this.props.currentUser.id && <button onClick={() => {
                                     //console.log(status)
                                     this.props.startDeleteStatus({id: status.id})
                                     this.removeHashtag(status.description)
                                     this.removeComment(status.id)
-                                }}>Delete</button>
+                                }}>Delete</button> }
                                 <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
                                 <Comment parentId={status.id}/>
                             </div>
@@ -55,13 +60,17 @@ class PostStatusList extends React.Component {
                     } else if (status.type === 'image') {
                         return (
                             <div key={status.id}>
+                                <Link to={`/profiles/${status.createdBy}`}>
+                                    <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                    <h3>{status.author.name}</h3>
+                                </Link>
                                 <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
                                 <img src={status.url} style={{width: '17%', height: '17%'}}></img>
-                                <button onClick={() => {
+                                {status.createdBy === this.props.currentUser.id && <button onClick={() => {
                                     this.props.startDeleteImage(status.id, status.name)
                                     this.removeHashtag(status.description)
                                     this.removeComment(status.id)
-                                }}>Remove</button>
+                                }}>Remove</button> }
                                 <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likes={status.likes} />
                                 <Comment parentId={status.id}/>
                             </div>
@@ -88,7 +97,8 @@ const mapStateToProps = (state) => {
         statusItem: sortByNewest(showHashtags(state.statusItem, state.hashtagFilter)),
         commentItem: state.commentItem,
         hashtags: state.hashtags,
-        queryHashtags: showHashtags(state.statusItem, state.hashtagFilter)
+        queryHashtags: showHashtags(state.statusItem, state.hashtagFilter),
+        currentUser: state.currentUser
     };
 };
 

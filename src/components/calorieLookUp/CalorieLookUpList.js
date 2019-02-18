@@ -22,7 +22,8 @@ const CalorieLookUpList = (props) => {
                         <p>Carbs: {carbs}</p>
                         <p>Fats: {fats}</p>
                         <button onClick={() => {
-                            props.startAddCalorie({
+                            console.log(props.currentUser.id);
+                            props.startAddCalorie(props.currentUser.id, {
                                 calories,
                                 carbs,
                                 description: calorieName,
@@ -39,11 +40,12 @@ const CalorieLookUpList = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddCalorie: calorieObj => dispatch(startAddCalorie(calorieObj))
+    startAddCalorie: (id, calorieObj) => dispatch(startAddCalorie(id, calorieObj))
 })
 
 const mapStateToProps = (state) => ({
-    calorieLookUp: state.calorieLookUp
+    calorieLookUp: state.calorieLookUp,
+    currentUser: state.currentUser
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalorieLookUpList);

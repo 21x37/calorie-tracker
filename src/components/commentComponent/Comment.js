@@ -22,6 +22,8 @@ class Comment extends React.Component {
     onClick() {
         this.props.startAddComment({
             parentId: this.props.parentId,
+            createdBy: this.props.currentUser.id,
+            author: this.props.currentUser,
             ...this.state
         });
         const form = document.getElementById(`comment-form-${this.props.parentId}`);
@@ -49,4 +51,8 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(undefined, mapDispatchToProps)(Comment);
+const mapStateToProps = (state) => ({
+    currentUser: state.currentUser
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);

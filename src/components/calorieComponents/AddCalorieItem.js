@@ -51,7 +51,7 @@ class AddCalorieItem extends React.Component {
         e.preventDefault();
         console.log(this.props);
         if (this.state.calories || this.state.carbs || this.state.fats || this.state.protein) {
-            this.props.startAddCalorie({
+            this.props.startAddCalorie(this.props.currentUser.id, {
                 calories: this.state.calories ? this.state.calories : 0,
                 carbs: this.state.carbs ? this.state.carbs : 0,
                 description: this.state.description,
@@ -85,8 +85,14 @@ class AddCalorieItem extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startAddCalorie: (calorieData) => dispatch(startAddCalorie(calorieData))
+        startAddCalorie: (id, calorieData) => dispatch(startAddCalorie(id, calorieData))
     };
 };
 
-export default connect(undefined, mapDispatchToProps)(AddCalorieItem);
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCalorieItem);

@@ -6,10 +6,10 @@ export const addCalorie = (calorieData) => ({
     calorieData
 });
 
-export const startAddCalorie = (calorieData) => {
+export const startAddCalorie = (ref, calorieData) => {
     return (dispatch, getState) => {
 
-        return database.ref('calorieItem').push(calorieData).then((ref) => {
+        return database.ref(`users/${ref}/calories`).push(calorieData).then((ref) => {
             dispatch(addCalorie({
                 id: ref.key,
                 ...calorieData
@@ -23,9 +23,9 @@ export const removeCalorieItem = ({ id }) => ({
     id
 });
 
-export const startRemoveCalorieItem = ({ id }) => {
+export const startRemoveCalorieItem = (ref, { id }) => {
     return (dispatch) => {
-        return database.ref(`calorieItem/${id}`).remove().then(() => {
+        return database.ref(`users/${ref}/calories/${id}`).remove().then(() => {
             dispatch(removeCalorieItem({ id }))
         })
     };
@@ -36,9 +36,9 @@ export const setCalorie = (calorie) => ({
     calorie
 });
 
-export const startSetCalorie = () => {
+export const startSetCalorie = (ref) => {
     return (dispatch) => {
-        return database.ref('calorieItem').once('value').then((snapshot) => {
+        return database.ref(`users/${ref}/calories`).once('value').then((snapshot) => {
             const calorieData = [];
 
             snapshot.forEach((childSnapshot) => {
@@ -47,7 +47,6 @@ export const startSetCalorie = () => {
                     ...childSnapshot.val()
                 });
             });
-
             dispatch(setCalorie(calorieData));
         });
     };
@@ -59,9 +58,9 @@ export const editCalorieItem = (id, updates) => ({
     updates
 });
 
-export const startEditCalorieItem = (id, updates) => {
+export const startEditCalorieItem = (ref, id, updates) => {
     return (dispatch) => {
-        return database.ref(`calorieItem/${id}`).update(updates).then(() => {
+        return database.ref(`users/${ref}/calories/${id}`).update(updates).then(() => {
             dispatch(editCalorieItem(id, updates));
         })
     }

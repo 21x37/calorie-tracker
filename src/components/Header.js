@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 
- export const Header = ({ startLogout }) => (
+ export const Header = (props) => (
     <header className='header'>
         <div className='content-container'>
             <div className='header__content'>
@@ -13,8 +13,8 @@ import { startLogout } from '../actions/auth';
                 <Link className='header__title' to='/'>Home</Link>
                 <Link className='header__title' to='/foodsearch'>Search Foods</Link>
                 <Link className='header__title' to='/calories'>Calorie Summary</Link>
-                <Link className='header__title' to='/profile/1'>Profile</Link>
-                <button className='button--link button'onClick={startLogout}>Logout</button>
+                <Link className='header__title' to={`/profile/${props.currentUser.id}`}>Profile</Link>
+                <button className='button--link button'onClick={props.startLogout}>Logout</button>
             </div>
         </div>
     </header>
@@ -24,4 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
     startLogout: () => dispatch(startLogout())
 });
 
-export default connect(undefined, mapDispatchToProps)(Header);
+const mapStateToProps = (state) => ({
+    currentUser: state.currentUser
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
