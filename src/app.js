@@ -18,7 +18,7 @@ import { startSetStatus } from './actions/postStatus';
 import { startSetComment } from './actions/comment';
 import { startSetHashtags } from './actions/statusFeatures';
 import { startSetImages } from './actions/postStatus';
-import { startSetCurrentUser } from './actions/currentUser';
+import { startSetCurrentUser, startRemoveCurrentUser } from './actions/currentUser';
 
 const store = configureStore();
 
@@ -83,11 +83,9 @@ ReactDOM.render(jsx, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log(user.email);
         store.dispatch(startSetCurrentUser(user.email));
         store.dispatch(login(user.uid));
 
-        
         renderApp();
 
         console.log('log in');
@@ -100,5 +98,6 @@ firebase.auth().onAuthStateChanged((user) => {
         store.dispatch(logout());
         renderApp();
         history.push('/login');
+        store.dispatch(startRemoveCurrentUser())
     }
 });

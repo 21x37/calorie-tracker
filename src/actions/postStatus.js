@@ -43,10 +43,12 @@ export const startSetStatus = () => {
         return database.ref('statusItem').once('value').then((snapshot) => {
             const status = [];
 
+
+            
             snapshot.forEach((childSnapshot) => {
                 status.push({
                     id: childSnapshot.key,
-                    ...childSnapshot.val()
+                    ...childSnapshot.val(),
                 });
             });
             
@@ -122,7 +124,8 @@ export const startSetImages = () => {
             snapshot.forEach(childSnpashot => {
                 images.push({
                     ...childSnpashot.val(),
-                    id: childSnpashot.key
+                    id: childSnpashot.key,
+                    likes: Object.values(childSnapshot.val().likes)
                 })
             })
             dispatch(setImages(images));
@@ -150,4 +153,8 @@ export const startDeleteImage = (id, name) => {
         });
     };
 };
+
+export const startRemoveAllStatuses = () => ({
+    type: 'REMOVE_ALL_STATUSES'
+})
 

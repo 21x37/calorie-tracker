@@ -27,6 +27,8 @@ export const nutritionGoalsReducer = (state = nutritionGoalsReducerDefaultState,
             return { ...nutritionGoalsReducerDefaultState }
         case 'RENDER_GOAL':
             return action.goal;
+        case 'REMOVE_GOAL':
+            return nutritionGoalsReducerDefaultState;
         default:
             return state;
     };

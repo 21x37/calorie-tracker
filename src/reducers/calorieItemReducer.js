@@ -22,6 +22,10 @@ export const calorieItemReducer = (state = calorieReducerDefaultState, action) =
             });
         case 'SET_CALORIE':
             return action.calorie
+        case 'REMOVE_ALL_CALORIES':
+            return calorieReducerDefaultState;
+        case 'REMOVE_CALORIE':
+            return calorieReducerDefaultState;
         default:
             return state;
     };

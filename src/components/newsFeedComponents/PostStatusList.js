@@ -53,7 +53,7 @@ class PostStatusList extends React.Component {
                                     this.removeHashtag(status.description)
                                     this.removeComment(status.id)
                                 }}>Delete</button> }
-                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
+                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes} />
                                 <Comment parentId={status.id}/>
                             </div>
                         )
@@ -71,7 +71,7 @@ class PostStatusList extends React.Component {
                                     this.removeHashtag(status.description)
                                     this.removeComment(status.id)
                                 }}>Remove</button> }
-                                <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likes={status.likes} />
+                                <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
                                 <Comment parentId={status.id}/>
                             </div>
                         )

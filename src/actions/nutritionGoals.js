@@ -51,3 +51,7 @@ export const discardGoal = () => ({
     type: 'DISCARD_GOAL'
 });
 
+export const startRemoveGoal = () => ({
+    type: 'REMOVE_GOAL'
+})
+

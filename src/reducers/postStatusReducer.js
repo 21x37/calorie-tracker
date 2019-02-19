@@ -23,6 +23,13 @@ const postStatusReducer = (state = postStatusReducerDefaultState, action) => {
             ]
         case 'DELETE_IMAGE':
             return state.filter(statusItem => statusItem.id !== action.id);
+        case 'ADD_LIKE':
+            return [
+                ...state,
+                action.like
+            ]
+        case 'REMOVE_ALL_STATUSES':
+            return postStatusReducerDefaultState;
         default:
             return state;
     };

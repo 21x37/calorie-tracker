@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startRemoveCalorieItem } from '../../actions/calorieItem';
+import { startRemoveCalorieItem, startRemoveAllCalories } from '../../actions/calorieItem';
 
 
 class CalorieItemList extends React.Component {
@@ -11,8 +11,12 @@ class CalorieItemList extends React.Component {
     render() {
         return (
             <div>
+            {/* CHECKING IF THERE ARE CALORIES IF THERE IS CALORIES SHOW REMOVE BUTTON */}
+            {this.props.calorieItem && <button onClick={() => {
+                this.props.startRemoveAllCalories(this.props.currentUser.id)
+            }}>Remove All Calories</button> } 
+            {/* RENDERING ALL CALORIES IN REDUX STATE */}
             {this.props.calorieItem.map(calorie => {
-                console.log(calorie.id);
                 return (
                     <div key={calorie.id}>
                         <Link to={`/calories/${calorie.id}`} >
@@ -23,8 +27,8 @@ class CalorieItemList extends React.Component {
                             this.props.startRemoveCalorieItem(this.props.currentUser.id, {id: calorie.id})
                         }}>Remove</button>
                     </div>
-                );
-            })};
+                )
+            })}
         </div>
         )
     };
@@ -32,7 +36,8 @@ class CalorieItemList extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startRemoveCalorieItem: (ref, calorieItem) => dispatch(startRemoveCalorieItem(ref, calorieItem)) 
+        startRemoveCalorieItem: (ref, calorieItem) => dispatch(startRemoveCalorieItem(ref, calorieItem)) ,
+        startRemoveAllCalories: (ref) => dispatch(startRemoveAllCalories(ref)) 
     };
 };
 

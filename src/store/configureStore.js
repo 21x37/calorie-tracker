@@ -10,6 +10,8 @@ import hashtagFilterReducer from '../reducers/hashtagFilterReducer';
 import calorieLookUpReducer from '../reducers/calorieLookUpReducer';
 import userReducer from '../reducers/userReducer';
 import currentUserReducer from '../reducers/currentUserReducer';
+import currentUserLikesReducer from '../reducers/currentUserLikesReducer';
+import totalLikesReducer from '../reducers/totalLikesReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,6 +27,8 @@ export default () => {
             calorieLookUp: calorieLookUpReducer,
             user: userReducer,
             currentUser: currentUserReducer,
+            userLikes: currentUserLikesReducer,
+            totalLikes: totalLikesReducer,
             auth: authReducer
         }),
         composeEnhancers(applyMiddleware(thunk))

@@ -64,4 +64,20 @@ export const startEditCalorieItem = (ref, id, updates) => {
             dispatch(editCalorieItem(id, updates));
         })
     }
+};
+
+export const removeAllCalories = () => ({
+    type: 'REMOVE_ALL_CALORIES'
+})
+
+export const startRemoveAllCalories = (ref) => {
+    return (dispatch) => {
+        return database.ref(`users/${ref}/calories`).remove(() => {
+            dispatch(removeAllCalories());
+        })
+    }
 }
+
+export const startRemoveCalorie = () =>  ({
+    type: 'REMOVE_CALORIE'
+});
