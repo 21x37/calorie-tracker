@@ -34,7 +34,7 @@ class LikeStatus extends React.Component {
                 likedBy: this.props.currentUser.id,
                 parentId: this.props.parentId,
                 likesAmount: this.props.likesAmount
-            }, this.props.dbLocation).then((test) => {
+            }, this.props.dbLocation, this.props.type).then((test) => {
                 console.log('TEST', test);
                 this.setState((state) => {
                     return {
@@ -56,7 +56,7 @@ class LikeStatus extends React.Component {
                             disabled: true
                         };
                     });
-                    this.props.startRemoveLike(this.props.currentUser.id, this.state.userLikesInfo[i].id, this.state.likes, this.props.parentId, this.props.dbLocation).then(() => {
+                    this.props.startRemoveLike(this.props.currentUser.id, this.state.userLikesInfo[i].id, this.state.likes, this.props.parentId, this.props.dbLocation, this.props.type).then(() => {
                         this.setState((state) => {
                             return {
                                 likes: state.likes - 1,
@@ -90,8 +90,8 @@ class LikeStatus extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     startSetLike: (location, parentId, likes) => dispatch(startSetLike(location, parentId, likes)),
-    startAddLike: (like, dbLocation) => dispatch(startAddLike(like, dbLocation)),
-    startRemoveLike: (currentUser, id, likeAmount, parentId, dbLocation) => dispatch(startRemoveLike(currentUser, id, likeAmount, parentId, dbLocation)),
+    startAddLike: (like, dbLocation, type) => dispatch(startAddLike(like, dbLocation, type)),
+    startRemoveLike: (currentUser, id, likeAmount, parentId, dbLocation, type) => dispatch(startRemoveLike(currentUser, id, likeAmount, parentId, dbLocation, type)),
     startAddTotalLike: (like) => dispatch(startAddTotalLike(like))
 });
 

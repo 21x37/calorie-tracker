@@ -40,9 +40,10 @@ class PostStatusList extends React.Component {
             <div>
                 {this.props.statusItem.map(status => {
                     if(status.type === 'post') {
+                        console.log(status.author, 'POST STATUS COMPONENT')
                         return (
                             <div key={status.id}>
-                                <Link to={`/profiles/${status.createdBy}`}>
+                                <Link to={`/profile/${status.createdBy}`}>
                                     <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
                                     <h3>{status.author.name}</h3>
                                 </Link>
@@ -53,14 +54,14 @@ class PostStatusList extends React.Component {
                                     this.removeHashtag(status.description)
                                     this.removeComment(status.id)
                                 }}>Delete</button> }
-                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes} />
-                                <Comment parentId={status.id}/>
+                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
+                                <Comment parentId={status.id} author={status.author.id} />
                             </div>
                         )
                     } else if (status.type === 'image') {
                         return (
                             <div key={status.id}>
-                                <Link to={`/profiles/${status.createdBy}`}>
+                                <Link to={`/profile/${status.createdBy}`}>
                                     <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
                                     <h3>{status.author.name}</h3>
                                 </Link>
@@ -72,7 +73,7 @@ class PostStatusList extends React.Component {
                                     this.removeComment(status.id)
                                 }}>Remove</button> }
                                 <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
-                                <Comment parentId={status.id}/>
+                                <Comment parentId={status.id}  author={status.author.id}/>
                             </div>
                         )
                     }

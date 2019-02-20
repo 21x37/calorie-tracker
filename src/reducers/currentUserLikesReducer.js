@@ -7,7 +7,14 @@ const currentUserLikesReducer = (state = likesReducerDefaultState, action) => {
                 ...state,
                 action.like
             ];
+        case 'ADD_COMMENT_LIKE':
+            return [
+                ...state,
+                action.like
+            ];
         case 'REMOVE_LIKE':
+            return state.filter(likes => likes.id !== action.id);
+        case 'REMOVE_COMMENT_LIKE':
             return state.filter(likes => likes.id !== action.id);
         case 'SET_LIKES':
             return action.likes;

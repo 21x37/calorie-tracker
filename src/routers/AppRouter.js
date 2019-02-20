@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import uuid from 'uuid';
 import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
 import NotFoundPage from '../components/NotFoundPage';
@@ -20,9 +21,8 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={DashboardPage} exact={true}/>
                 <Route path='/login' component={LoginPage} />
-                <Route path='/profile/' component={ProfilePage} />
-                <Route path='/profile/:id' component={ProfilePage} />
-                <Route path='/profiles/:id' component={ProfilePage} />
+
+                <Route path='/profile/:id' render={() => (<ProfilePage key={uuid()}/>)}/>
                 <Route path='/calories' component={CaloriePage} exact={true}/>
                 <Route path='/foodsearch' component={CalorieLookUp} />
                 <Route path='/calories/:id' component={EditCalorie} />

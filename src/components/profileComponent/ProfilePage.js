@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfilePageStatusList from './ProfilePageStatusList';
-import PostStatus from '../newsFeedComponents/PostStatus';
 import Header from '../Header';
 import CalorieSummay from '../calorieComponents/CalorieSummary';
 import UserProfileInfo from './UserProfileInfo';
@@ -11,11 +10,11 @@ const ProfilePage = () => {
         <div>
             <Header />
             <UserProfileInfo />
-            <CalorieSummay />
-            <PostStatus />
             <ProfilePageStatusList />
         </div>
     )
 }
 
+
+// <CalorieSummay />
 export default ProfilePage;

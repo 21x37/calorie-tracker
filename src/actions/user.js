@@ -18,3 +18,16 @@ export const startSetUser = (id, user) => {
         };
     };
 };
+
+export const setBio = (bio) => ({
+    type: 'SET_BIO',
+    bio
+});
+
+export const startSetBio = (id, bio) => {
+    return (dispatch) => {
+        return database.ref(`users/${id}`).update({bio}).then(() => {
+            dispatch(setBio(bio));
+        });
+    };
+};

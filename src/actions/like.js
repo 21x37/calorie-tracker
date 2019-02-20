@@ -2,17 +2,31 @@ import database from '../firebase/firebase';
 
 export const addLike = (like) => ({
     type: 'ADD_LIKE',
-    like
+    like,
+    parentId: like.parentId
 });
 
-export const startAddLike = (like, dbLocation) => {
+export const startAddCommentLike = (like) => ({
+    type: 'ADD_COMMENT_LIKE',
+    like
+})
+
+export const startAddLike = (like, dbLocation, type) => {
     return (dispatch) => {
         return database.ref(`users/${like.likedBy}/likes`).push(like).then((ref) => {
-            dispatch(addLike({
-                ...like,
-                id: ref.key
-            }));
-            database.ref(`${dbLocation}/${like.parentId}`).update({likes: parseInt(like.likesAmount) + 1});
+            if (type) {
+                dispatch(startAddCommentLike({
+                    ...like,
+                    id: ref.key
+                }))
+                database.ref(`${dbLocation}/${like.parentId}`).update({likes: parseInt(like.likesAmount) + 1});
+            }else {
+                dispatch(addLike({
+                    ...like,
+                    id: ref.key
+                }));
+                database.ref(`${dbLocation}/${like.parentId}`).update({likes: parseInt(like.likesAmount) + 1});
+            }
         });
     };
 };
@@ -45,11 +59,24 @@ export const removeLike = (id, parentId) => ({
     parentId
 });
 
-export const startRemoveLike = (currentUser, id, likesAmount, parentId, dbLocation) => {
+export const removeCommentLike = (id, parentId) => ({
+    type: 'REMOVE_COMMENT_LIKE',
+    id,
+    parentId
+})
+
+export const startRemoveLike = (currentUser, id, likesAmount, parentId, dbLocation, type) => {
     return (dispatch) => {
         return database.ref(`users/${currentUser}/likes/${id}`).remove().then(() => {
-            dispatch(removeLike(id, parentId));
-            database.ref(`${dbLocation}/${parentId}`).update({likes: likesAmount - 1});
+            if (type) {
+                dispatch(removeCommentLike(id, parentId))
+
+                database.ref(`${dbLocation}/${parentId}`).update({likes: likesAmount - 1});
+            } else {
+                dispatch(removeLike(id, parentId));
+                database.ref(`${dbLocation}/${parentId}`).update({likes: likesAmount - 1});
+            }
+
         })
     };
 };

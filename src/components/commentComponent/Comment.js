@@ -33,9 +33,10 @@ class Comment extends React.Component {
         e.preventDefault();
     }
     render() {
+        console.log(this.props.author, 'COMMENT COMPONENT');
         return (
             <div>
-                <CommentList parentId={this.props.parentId} />
+                <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
                 <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
                     <input type='text' onChange={this.onDescriptionChange}/>
                     <button onClick={this.onClick}>Comment!</button>

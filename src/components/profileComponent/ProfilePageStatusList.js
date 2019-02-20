@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
 import Comment from '../commentComponent/Comment';
 import LikeStatus from '../likeComponent/LikeStatus';
 import { startDeleteImage, startDeleteStatus } from '../../actions/postStatus';
@@ -28,6 +29,10 @@ class ProfilePageStatusList extends React.Component {
             };
         };
     };
+    componentDidUpdate() {
+        const id = window.location.href.split('/')[4];
+        this.props.startSetUser(id, this.props.user);
+    }
     removeComment(statusId) {
         this.props.commentItem.forEach(comment => {
             if (comment.parentId === statusId) {
@@ -41,7 +46,7 @@ class ProfilePageStatusList extends React.Component {
 
         if (this.props.user) {
             return (
-                <div>
+                <div key={location.href}>
                     {this.props.statusItem.map(status => {
                         if(status.createdBy === this.props.user.id) {
                             if(status.type === 'post') {
