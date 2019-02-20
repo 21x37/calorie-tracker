@@ -50,3 +50,7 @@ export const startRemoveComment = (comment) => {
         })
     };
 };
+
+export const startRemoveAllComments = () => ({
+    type: 'REMOVE_ALL_COMMENTS'
+})

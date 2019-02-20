@@ -8,6 +8,8 @@ const statusFeaturesReducer = (state=statusFeaturesReducerDefaultState, action) 
             return state.filter((hashtag) => hashtag.id !== action.id);
         case 'SET_HASHTAG':
             return action.trendingList;
+        case 'REMOVE_ALL_HASHTAGS':
+            return statusFeaturesReducerDefaultState;
         default:
             return state;
     }

@@ -12,7 +12,7 @@ class CalorieItemList extends React.Component {
         return (
             <div>
             {/* CHECKING IF THERE ARE CALORIES IF THERE IS CALORIES SHOW REMOVE BUTTON */}
-            {this.props.calorieItem && <button onClick={() => {
+            {this.props.calorieItem[0] && <button onClick={() => {
                 this.props.startRemoveAllCalories(this.props.currentUser.id)
             }}>Remove All Calories</button> } 
             {/* RENDERING ALL CALORIES IN REDUX STATE */}

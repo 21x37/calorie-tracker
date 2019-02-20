@@ -34,7 +34,7 @@ class LikeStatus extends React.Component {
                 likedBy: this.props.currentUser.id,
                 parentId: this.props.parentId,
                 likesAmount: this.props.likesAmount
-            }).then((test) => {
+            }, this.props.dbLocation).then((test) => {
                 console.log('TEST', test);
                 this.setState((state) => {
                     return {
@@ -56,7 +56,7 @@ class LikeStatus extends React.Component {
                             disabled: true
                         };
                     });
-                    this.props.startRemoveLike(this.props.currentUser.id, this.state.userLikesInfo[i].id, this.state.likes, this.props.parentId).then(() => {
+                    this.props.startRemoveLike(this.props.currentUser.id, this.state.userLikesInfo[i].id, this.state.likes, this.props.parentId, this.props.dbLocation).then(() => {
                         this.setState((state) => {
                             return {
                                 likes: state.likes - 1,
@@ -74,92 +74,15 @@ class LikeStatus extends React.Component {
         if (this.state.userLikes.indexOf(this.props.currentUser.id) === -1) {
             
 
-        } //else if (this.state.likedBy.indexOf(this.props.currentUser.id) > 0) {
-        //     this.props.startRemoveLike(this.props.currentUser.id, )
-        // }
+        } 
         console.log(this.likedBy);
-
-
-
-
-
-
-
-        // console.log(this.state.userLikes);
-        // console.log(!!this.state.userLikes);
-        // if (!!this.state.userLikes) {
-        //     console.log('test');
-        //     this.props.startAddLike({
-        //         likedBy: this.props.currentUser.id,
-        //         parentId: this.props.parentId
-        //     });
-        //     this.setState((state) => {
-        //         return {
-        //             likes: state.likes + 1,
-        //         }
-        //     });
-        // } else {
-        //     this.state.userLikes.forEach(like => {
-        //         console.log(like);
-        //     })
-        // }
-
-
-
-
-
-
-        // if (this.state.userLikes !== []) {
-        //     this.state.userLikes.forEach(like => {
-        //         console.log(like);
-        //     })
-        // } else {
-            // console.log('test');
-            // this.props.startAddLike({
-            //     likedBy: this.props.currentUser.id,
-            //     parentId: this.props.parentId
-            // });
-            // this.setState((state) => {
-            //     return {
-            //         likes: state.likes + 1,
-            //     }
-            // });
-        // }
-
-        // console.log(this.state.userLikes);
-        // this.state.userLikes.forEach(like => {
-        //     console.log(like);
-        // })
-
-        // for (let i = 0 ; i < this.state.userLikes.length ; i++ ) {
-        //     if(this.state.userLikes[i] === this.props.currentUser.id) {
-        //         console.log('goodbye');
-        //         this.setState((state) => {
-        //             return {
-        //                 likes: state.likes -1,
-        //                 userLikes: state.userLikes.filter(likes => likes.likedBy !== this.props.currentUser.id)
-        //             }
-        //         });
-        //     } else {
-        //         console.log('hello');
-                // this.props.startAddLike({
-                //     likedBy: this.props.currentUser.id,
-                //     parentId: this.props.parentId
-                // });
-                // this.setState((state) => {
-                //     return {
-                //         likes: state.likes + 1,
-                //     }
-                // })
-        //     }
-        // }
     };
 
     render() {
         console.log(this.state.likes);
         return (
             <div>
-                {this.state.likes}{this.state.likes > 1 ? " Likes" : " Like"}<button onClick={this.onClick} disabled={this.state.disabled}>Like</button>
+                {parseInt(this.props.likesAmount)}{this.state.likes > 1 ? " Likes" : " Like"}<button onClick={this.onClick} disabled={this.state.disabled}>Like</button>
             </div>
         );
     };
@@ -167,8 +90,8 @@ class LikeStatus extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     startSetLike: (location, parentId, likes) => dispatch(startSetLike(location, parentId, likes)),
-    startAddLike: like => dispatch(startAddLike(like)),
-    startRemoveLike: (currentUser, id, likeAmount, parentId) => dispatch(startRemoveLike(currentUser, id, likeAmount, parentId)),
+    startAddLike: (like, dbLocation) => dispatch(startAddLike(like, dbLocation)),
+    startRemoveLike: (currentUser, id, likeAmount, parentId, dbLocation) => dispatch(startRemoveLike(currentUser, id, likeAmount, parentId, dbLocation)),
     startAddTotalLike: (like) => dispatch(startAddTotalLike(like))
 });
 

@@ -50,3 +50,7 @@ export const startRemoveHashtag = ({ id }) => {
         });
     };
 };
+
+export const startRemoveAllHashtags = () => ({
+    type: 'REMOVE_ALL_HASHTAGS'
+})

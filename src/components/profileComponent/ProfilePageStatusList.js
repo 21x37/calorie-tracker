@@ -45,6 +45,7 @@ class ProfilePageStatusList extends React.Component {
                     {this.props.statusItem.map(status => {
                         if(status.createdBy === this.props.user.id) {
                             if(status.type === 'post') {
+                                console.log(status.likes);
                                 return (
                                     <div key={status.id}>
                                         <h2>{status.description}</h2>
@@ -53,7 +54,7 @@ class ProfilePageStatusList extends React.Component {
                                             this.removeHashtag(status.description)
                                             this.removeComment(status.id)
                                         }}>Remove</button> }
-                                        <LikeStatus dbLocation={'statusItem'} parentId={status.id} likes={status.likes} />
+                                        <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes} />
                                         <Comment parentId={status.id}/>
                                     </div>
                                 )
@@ -68,7 +69,7 @@ class ProfilePageStatusList extends React.Component {
                                         this.removeComment(status.id)
             
                                     }}>Remove</button>
-                                    <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likes={status.likes} />
+                                    <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
                                     <Comment parentId={status.id}/>
                                 </div>
                                 )

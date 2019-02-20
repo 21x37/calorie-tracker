@@ -1,9 +1,9 @@
 import database from '../firebase/firebase';
 import { startRenderGoal, startRemoveGoal } from './nutritionGoals';
 import { startSetCalorie, startRemoveCalorie } from './calorieItem';
-import { startSetHashtags } from './statusFeatures';
+import { startSetHashtags, startRemoveAllHashtags } from './statusFeatures';
 import { startSetStatus, startSetImages, startRemoveAllStatuses } from './postStatus';
-import { startSetComment } from './comment';
+import { startSetComment, startRemoveAllComments } from './comment';
 import { startSetLike, startRemoveAllLikes } from './like';
 import { startSetTotalLikes } from './totalLikes';
 // import configureStore from '../store/configureStore';
@@ -30,7 +30,6 @@ export const startSetCurrentUser = (email) => {
                     dispatch(startRenderGoal(childSnapshot.key));
                     dispatch(startSetCalorie(childSnapshot.key));
                     dispatch(startSetLike(childSnapshot.key));
-                    dispatch(startSetTotalLikes());
                     dispatch(startSetHashtags());
                     dispatch(startSetStatus());
                     dispatch(startSetComment());
@@ -53,11 +52,9 @@ export const startRemoveCurrentUser = () => {
         dispatch(startRemoveCalorie());
         dispatch(startRemoveAllLikes());
         dispatch(startRemoveAllStatuses());
-        // dispatch(startSetTotalLikes());
-        // dispatch(startSetHashtags());
-        // dispatch(startSetStatus());
-        // dispatch(startSetComment());
-        // dispatch(startSetImages());
+        dispatch(startRemoveAllHashtags());
+        dispatch(startRemoveAllComments());
+        dispatch(removeCurrentUser());
     }
 }
 

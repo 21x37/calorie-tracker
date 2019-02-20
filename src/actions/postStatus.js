@@ -121,11 +121,10 @@ export const startSetImages = () => {
     return (dispatch) => {
         return database.ref('uploadedImages').once('value').then((snapshot) => {
             const images = [];
-            snapshot.forEach(childSnpashot => {
+            snapshot.forEach((childSnapshot) => {
                 images.push({
-                    ...childSnpashot.val(),
-                    id: childSnpashot.key,
-                    likes: Object.values(childSnapshot.val().likes)
+                    ...childSnapshot.val(),
+                    id: childSnapshot.key,
                 })
             })
             dispatch(setImages(images));
@@ -157,4 +156,3 @@ export const startDeleteImage = (id, name) => {
 export const startRemoveAllStatuses = () => ({
     type: 'REMOVE_ALL_STATUSES'
 })
-

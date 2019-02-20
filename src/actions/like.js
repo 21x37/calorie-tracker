@@ -5,14 +5,14 @@ export const addLike = (like) => ({
     like
 });
 
-export const startAddLike = (like) => {
+export const startAddLike = (like, dbLocation) => {
     return (dispatch) => {
         return database.ref(`users/${like.likedBy}/likes`).push(like).then((ref) => {
             dispatch(addLike({
                 ...like,
                 id: ref.key
             }));
-            database.ref(`statusItem/${like.parentId}`).update({likes: parseInt(like.likesAmount) + 1});
+            database.ref(`${dbLocation}/${like.parentId}`).update({likes: parseInt(like.likesAmount) + 1});
         });
     };
 };
@@ -39,16 +39,17 @@ export const startSetLike = (currentUser) => {
     };
 };
 
-export const removeLike = (id) => ({
+export const removeLike = (id, parentId) => ({
     type: 'REMOVE_LIKE',
-    id
+    id,
+    parentId
 });
 
-export const startRemoveLike = (currentUser, id, likesAmount, parentId) => {
+export const startRemoveLike = (currentUser, id, likesAmount, parentId, dbLocation) => {
     return (dispatch) => {
         return database.ref(`users/${currentUser}/likes/${id}`).remove().then(() => {
-            dispatch(removeLike(id));
-            database.ref(`statusItem/${parentId}`).update({likes: likesAmount - 1});
+            dispatch(removeLike(id, parentId));
+            database.ref(`${dbLocation}/${parentId}`).update({likes: likesAmount - 1});
         })
     };
 };

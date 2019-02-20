@@ -12,6 +12,8 @@ const commentReducer = (state = defaultCommentState, action) => {
             return state.filter(commentItem => commentItem.id !== action.id); 
         case 'SET_COMMENT':
             return action.comment;
+        case 'REMOVE_ALL_COMMENTS':
+            return defaultCommentState;
         default:
             return state;
     }
