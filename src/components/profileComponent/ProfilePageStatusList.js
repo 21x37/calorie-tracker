@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import uuid from 'uuid';
 import Comment from '../commentComponent/Comment';
 import LikeStatus from '../likeComponent/LikeStatus';
@@ -53,6 +54,10 @@ class ProfilePageStatusList extends React.Component {
                                 console.log(status.likes);
                                 return (
                                     <div key={status.id}>
+                                        <Link to={`/profile/${status.createdBy}`}>
+                                            <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                            <h3>{status.author.name}</h3>
+                                        </Link>
                                         <h2>{status.description}</h2>
                                         {status.createdBy === this.props.currentUser.id && <button onClick={() => {
                                             this.props.startDeleteStatus(status)
@@ -66,6 +71,10 @@ class ProfilePageStatusList extends React.Component {
                             } else if (status.type === 'image') {
                                 return (
                                 <div key={status.id}>
+                                    <Link to={`/profile/${status.createdBy}`}>
+                                        <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                        <h3>{status.author.name}</h3>
+                                    </Link>
                                     <h1>{status.description}</h1>
                                     <img src={status.url} style={{width: '17%', height: '17%'}}></img>
                                     <button onClick={() => {
