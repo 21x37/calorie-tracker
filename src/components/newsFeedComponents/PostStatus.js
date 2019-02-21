@@ -19,7 +19,7 @@ class PostStatus extends React.Component {
         
         };
         this.error = '';
-        // CLASS DECLARED VARIABLE FOR USE IN handleFileUpload AND uploadImage
+        // THIS VARIABLE STORES THE UPLOADED IMAGE
         this.uploadedImage;
     };
     onDescriptionChange = (e) => {

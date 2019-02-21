@@ -14,7 +14,6 @@ class TrendingList extends React.Component {
             <div>
                 <h3>Trending Hashtags</h3>
                 {this.props.hashtagCount.map(hashtag => {
-                    console.log('HASHTAG ID', hashtag.id)
                     return (
                         <div key={uuid()}>
                             <Link to='/' ref='hashtagElement' id={hashtag.hashtag}>
@@ -34,23 +33,6 @@ class TrendingList extends React.Component {
         );
     };
 };
-
-// const TrendingList = (props) => {
-//     return (
-//         <div>
-//             <h3>Trending Hashtags</h3>
-//             {props.hashtagCount.map(hashtag => {
-//                 console.log('HASHTAG ID', hashtag.id)
-//                 return (
-//                     <div key={uuid()}>
-//                         <Link to='/'>{hashtag.hashtag}</Link>
-//                         <br/> {hashtag.count} {hashtag.count > 1? 'posts' : 'post'}
-//                     </div>
-//                 )
-//             })}
-//         </div>
-//     );
-// };
 
 const mapDispatchToProps = (dispatch) => ({
     queryHashtags: query => dispatch(queryHashtags(query)),

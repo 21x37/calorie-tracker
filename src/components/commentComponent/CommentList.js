@@ -13,7 +13,6 @@ class CommentList extends React.Component {
         };
     };
     render() {
-        console.log(this.props.authorRemoveComment)
         return (
             <div>
                 {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {

@@ -33,7 +33,6 @@ class Comment extends React.Component {
         e.preventDefault();
     }
     render() {
-        console.log(this.props.author, 'COMMENT COMPONENT');
         return (
             <div>
                 <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />

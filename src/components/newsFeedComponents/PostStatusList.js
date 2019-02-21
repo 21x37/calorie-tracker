@@ -40,7 +40,6 @@ class PostStatusList extends React.Component {
             <div>
                 {this.props.statusItem.map(status => {
                     if(status.type === 'post') {
-                        console.log(status.author, 'POST STATUS COMPONENT')
                         return (
                             <div key={status.id}>
                                 <Link to={`/profile/${status.createdBy}`}>

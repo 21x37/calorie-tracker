@@ -47,10 +47,7 @@ class LikeStatus extends React.Component {
             });
         } else {
             for (let i = 0; i < this.state.userLikesInfo.length; i++) {
-                console.log(this.state.userLikesInfo.length);
-                console.log(this.state.userLikesInfo[i].parentId, this.props.parentId)
                 if(this.state.userLikesInfo[i].parentId == this.props.parentId) {
-                    console.log(111111111)
                     this.setState(() => {
                         return {
                             disabled: true

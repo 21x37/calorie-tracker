@@ -9,7 +9,6 @@ import CalorieSummary from '../calorieComponents/CalorieSummary';
 const appId = process.env.NUTRITIONIX_APP_ID;
 const appKey = process.env.NUTRITIONIX_APP_KEY;
 
-console.log(appId, appKey);
 
 class CalorieLookUp extends React.Component {
     constructor(props) {
@@ -25,7 +24,6 @@ class CalorieLookUp extends React.Component {
     onChange = (e) => {
         const query = e.target.value;
         this.setState({query})
-        //console.log(this.state.query);
     };
     onSubmit = (e) => {
         e.preventDefault();
@@ -67,41 +65,9 @@ class CalorieLookUp extends React.Component {
         )
     }
 };
-// ReactDOM.render(<CalorieLookUp />, document.getElementById('app'));
 
 const mapDispatchToProps = (dispatch) => ({
     calorieLookUp: res => dispatch(calorieLookUp(res))
 });
 
 export default connect(undefined, mapDispatchToProps)(CalorieLookUp);
-
-// const required = {
-//     appId,
-//     appKey,
-//     fields: ["item_name","brand_name","nf_calories"],
-//     query: 'Ice Cream'
-// }
-
-// const jsonString = JSON.stringify(required);
-
-// const xhr = new XMLHttpRequest();
-
-
-// xhr.open('POST', "https://api.nutritionix.com/v1_1/search");
-// xhr.setRequestHeader("Content-Type", "application/json");
-// xhr.send(jsonString);
-// const url = xhr.responseURL;
-// console.log(url);
-
-// xhr.onreadystatechange = () => {
-//     if (xhr.readyState == 4) {
-//         if (xhr.status == 200) {
-//             const res = JSON.parse(xhr.responseText);
-//             console.log(res);
-//         }
-
-//         if (xhr.status == 404) {
-//             console.log('File or resource not found');
-//         }
-//     }
-// };

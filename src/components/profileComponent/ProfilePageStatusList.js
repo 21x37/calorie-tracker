@@ -51,7 +51,6 @@ class ProfilePageStatusList extends React.Component {
                     {this.props.statusItem.map(status => {
                         if(status.createdBy === this.props.user.id) {
                             if(status.type === 'post') {
-                                console.log(status.likes);
                                 return (
                                     <div key={status.id}>
                                         <Link to={`/profile/${status.createdBy}`}>
