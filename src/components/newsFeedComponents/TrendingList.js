@@ -12,7 +12,7 @@ class TrendingList extends React.Component {
     render() {
         return (
             <div>
-                <h3>Trending Hashtags</h3>
+                {this.props.hashtagCount[0] && <h3>Trending Hashtags</h3>}
                 {this.props.hashtagCount.map(hashtag => {
                     return (
                         <div key={uuid()}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
+import { clearCalorieLookUp } from '../actions/calorieLookUp';
 
  export const Header = (props) => (
     <header className='header'>
@@ -10,10 +11,10 @@ import { startLogout } from '../actions/auth';
                 <Link className='header__title' to="/">
                     <h1>TrainingPals</h1>
                 </Link>
-                <Link className='header__title' to='/'>Home</Link>
-                <Link className='header__title' to='/foodsearch'>Search Foods</Link>
-                <Link className='header__title' to='/calories'>Calorie Summary</Link>
-                <Link className='header__title' to={`/profile/${props.currentUser.id}`}>Profile</Link>
+                <Link className='header__title' to='/' onClick={props.clearCalorieLookUp}>Home</Link>
+                <Link className='header__title' to='/foodsearch' >Search Foods</Link>
+                <Link className='header__title' to='/calories' onClick={props.clearCalorieLookUp}>Calorie Summary</Link>
+                <Link className='header__title' to={`/profile/${props.currentUser.id}`} onClick={props.clearCalorieLookUp}>Profile</Link>
                 <button className='button--link button'onClick={props.startLogout}>Logout</button>
             </div>
         </div>
@@ -21,7 +22,8 @@ import { startLogout } from '../actions/auth';
 );
 
 const mapDispatchToProps = (dispatch) => ({
-    startLogout: () => dispatch(startLogout())
+    startLogout: () => dispatch(startLogout()),
+    clearCalorieLookUp: () => dispatch(clearCalorieLookUp())
 });
 
 const mapStateToProps = (state) => ({

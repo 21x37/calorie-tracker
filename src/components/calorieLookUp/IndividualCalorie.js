@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { history } from '../../routers/AppRouter';
 import { startAddCalorie } from '../../actions/calorieItem';
+import { clearCalorieLookUp } from '../../actions/calorieLookUp';
 
 class IndividualCalorie extends React.Component {
     constructor(props) {
@@ -67,6 +68,7 @@ class IndividualCalorie extends React.Component {
                         protein: this.state.protein
                     });
                     history.push('/calories');
+                    this.props.clearCalorieLookUp();
                 }} >Add Calorie!</button>
                 <button onClick={this.onIncrement}>+</button>
                 <button onClick={this.onDecrement}>-</button>
@@ -76,7 +78,8 @@ class IndividualCalorie extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddCalorie: (id, calorieObj) => dispatch(startAddCalorie(id, calorieObj))
+    startAddCalorie: (id, calorieObj) => dispatch(startAddCalorie(id, calorieObj)),
+    clearCalorieLookUp: () => dispatch(clearCalorieLookUp())
 })
 
 export default connect(undefined, mapDispatchToProps)(IndividualCalorie);
