@@ -12,6 +12,7 @@ import ProfilePage from '../components/profileComponent/ProfilePage';
 import CaloriePage from '../components/CaloriePage';
 import EditCalorie from '../components/calorieComponents/EditCalorie';
 import CalorieLookUp from '../components/calorieLookUp/CalorieLookUp';
+import SearchUsers from '../components/searchUsers/SearchUsers';
 
 export const history = createHistory();
 
@@ -25,6 +26,7 @@ const AppRouter = () => (
                 <Route path='/calories' component={CaloriePage} exact={true}/>
                 <Route path='/foodsearch' component={CalorieLookUp} />
                 <Route path='/calories/:id' component={EditCalorie} />
+                <Route path='/searchusers' component={SearchUsers} />
                 <Route component={NotFoundPage}/>
             </Switch>
         </div>

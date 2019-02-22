@@ -61,3 +61,15 @@
         padding-left: $s-size;
     }
 }
+
+.list-align {
+    text-align: center;
+    
+    justify-content: center;
+
+}
+
+.calories__flex {
+    display: flex;
+    width: 80rem;
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 import { clearCalorieLookUp } from '../actions/calorieLookUp';
+import SearchUsers from '../components/searchUsers/SearchUsers';
 
  export const Header = (props) => (
     <header className='header'>
@@ -11,7 +12,7 @@ import { clearCalorieLookUp } from '../actions/calorieLookUp';
                 <Link className='header__title' to="/">
                     <h1>TrainingPals</h1>
                 </Link>
-                <Link className='header__title' to='/' onClick={props.clearCalorieLookUp}>Home</Link>
+                <SearchUsers />
                 <Link className='header__title' to='/foodsearch' >Search Foods</Link>
                 <Link className='header__title' to='/calories' onClick={props.clearCalorieLookUp}>Calorie Summary</Link>
                 <Link className='header__title' to={`/profile/${props.currentUser.id}`} onClick={props.clearCalorieLookUp}>Profile</Link>
@@ -31,3 +32,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+// <Link className='header__title' to='/' onClick={props.clearCalorieLookUp}>Home</Link>
