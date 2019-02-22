@@ -31,3 +31,7 @@ export const startSetBio = (id, bio) => {
         });
     };
 };
+
+export const resetUser = () => ({
+    type: 'RESET_USER'
+})

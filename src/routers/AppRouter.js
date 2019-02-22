@@ -20,14 +20,13 @@ const AppRouter = () => (
     <Router history={history}>
         <div>
             <Switch>
-                <Route path="/" component={DashboardPage} exact={true}/>
-                <Route path='/login' component={LoginPage} />
-                <Route path='/profile/:id' render={() => (<ProfilePage key={uuid()}/>)}/>
-                <Route path='/calories' component={CaloriePage} exact={true}/>
-                <Route path='/foodsearch' component={CalorieLookUp} />
-                <Route path='/calories/:id' component={EditCalorie} />
-                <Route path='/searchusers' component={SearchUsers} />
-                <Route component={NotFoundPage}/>
+                <PrivateRoute path="/" component={DashboardPage} exact={true}/>
+                <PublicRoute path='/login' component={LoginPage} />
+                <PrivateRoute path='/profile/:id' component={ProfilePage} key={uuid()}/>
+                <PrivateRoute path='/calories' component={CaloriePage} exact={true}/>
+                <PrivateRoute path='/foodsearch' component={CalorieLookUp} />
+                <PrivateRoute path='/calories/:id' component={EditCalorie} />
+                <PublicRoute component={NotFoundPage}/>
             </Switch>
         </div>
     </Router>
@@ -35,6 +34,6 @@ const AppRouter = () => (
 //<Route path='/find-calorie' component={FindCalorie} />
 //<PublicRoute path="/" component={LoginPage} exact={true} />
 
-
+//                <PrivateRoute path='/profile/:id' render={() => (<ProfilePage key={uuid()}/>)}/>
 
 export default AppRouter;

@@ -62,7 +62,7 @@ class AddCalorieItem extends React.Component {
             form.reset();
             this.setState({error: ''});
         } else {
-            this.setState({error: 'Enter something to log!'});
+            this.setState({error: 'Enter Something to Log!'});
         }
     };
     render() {

@@ -13,7 +13,6 @@ import TrendingList from './newsFeedComponents/TrendingList';
 
 const DashboardPage = () => (
     <div>
-        <Header />
         <CalorieSummary />
         <TrendingList />
         <NewsFeed />

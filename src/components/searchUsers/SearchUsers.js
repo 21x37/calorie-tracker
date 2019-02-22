@@ -23,21 +23,26 @@ class SearchUsers extends React.Component {
     };
     render() {
         return (
-            <div>
-                <input type='text' onChange={this.onChange} placeholder='Search Users'/>
+            <div className='content-container'>
+                <input type='text' className='header__search search' onChange={this.onChange} placeholder='Search Users'/>
+                <div className='search-results-container'>
                 {this.props.searchUser.map(user => {
                     return (
-                        
                         <div key={user.id}>
-                            <Link to={`/profile/${user.id}`} onClick={() => {
+                            <Link className='search__flex' to={`/profile/${user.id}`} onClick={() => {
                                 this.props.clearUser();
-                            }}>
-                                <img src={user.picture} style={{width: '35px', height: '35px'}}/>{user.name}
-                            </Link>   
+                            }} >
+                                <div className='search-results'>
+                                    <div className='search-container'>
+                                            <img className='search-results__icon' src={user.picture} style={{width: '35px', height: '35px'}}/>
+                                            <p className='search-results__name'>{user.name}</p>   
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
-                        
                     )
                 })}
+                </div>
             </div>
         );
     };

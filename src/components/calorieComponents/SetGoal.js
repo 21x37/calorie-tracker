@@ -44,7 +44,7 @@ class SetGoal extends React.Component {
             const form = document.getElementById('setGoalForm');
             form.reset();
         } else {
-            this.setState({error: 'Please fill out all of the goals!'})
+            this.setState({error: 'Please Fill Out All of The Goals!'})
         }
 
     };

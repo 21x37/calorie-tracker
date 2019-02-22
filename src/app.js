@@ -72,32 +72,43 @@ const renderApp = () => {
     }
 };
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
-// store.dispatch(startRenderGoal());
-// store.dispatch(startSetCalorie());
-// store.dispatch(startSetHashtags());
-// store.dispatch(startSetStatus());
-// store.dispatch(startSetComment());
-// store.dispatch(startSetImages());
-ReactDOM.render(jsx, document.getElementById('app'));
 
+// ReactDOM.render(jsx, document.getElementById('app'));
+
+
+// firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//         store.dispatch(startSetCurrentUser(user.email));
+//         store.dispatch(login(user.uid));
+
+//         renderApp();
+
+//         console.log('log in');
+
+//         if (history.location.pathname === '/login') {
+//             history.push('/');
+//         }
+//     } else {
+//         console.log('log out');
+//         store.dispatch(logout());
+//         renderApp();
+//         history.push('/login');
+        // store.dispatch(startRemoveCurrentUser())
+//     }
+// });
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        store.dispatch(startSetCurrentUser(user.email));
-        store.dispatch(login(user.uid));
-
-        renderApp();
-
-        console.log('log in');
-
-        if (history.location.pathname === '/login') {
-            history.push('/');
-        }
-    } else {
-        console.log('log out');
+      store.dispatch(startSetCurrentUser(user.email));
+      store.dispatch(login(user.uid));
+      renderApp();
+      if (history.location.pathname === '/login') {
+        history.push('/');
+      }
+    }else {
+        store.dispatch(startRemoveCurrentUser())
         store.dispatch(logout());
         renderApp();
         history.push('/login');
-        store.dispatch(startRemoveCurrentUser())
     }
-});
+  });

@@ -9,6 +9,8 @@ const userReducer = (state = usersReducerDefaultState, action) => {
                 ...state,
                 bio: action.bio
             }
+        case 'RESET_USER':
+            return usersReducerDefaultState;
         default:
             return state
     };

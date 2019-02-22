@@ -1,6 +1,7 @@
 .button {
-    background: $blue;
+    background: #596174;
     border: none;
+    border-radius: 5px;
     color: white;
     display: inline-block;
     font-size: $font-size-large;
@@ -12,6 +13,7 @@
 
 .button--link {
     background: none;
+    border: none;
 }
 
 .button--secondary {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startSetUser, startSetBio } from '../../actions/user';
+import { startSetUser, startSetBio, resetUser } from '../../actions/user';
 import PostStatus from '../newsFeedComponents/PostStatus';
 
 
@@ -8,7 +8,7 @@ class UserProfileInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bio: '',
+            bio: this.props.currentUser.bio || '',
             editBioVisibility: true
         }
     };
@@ -32,19 +32,27 @@ class UserProfileInfo extends React.Component {
         if (this.props.user) {
             return (
                 <div>
-                    <img src={this.props.user.picture} style={{width: '20%', height: '20%', marginTop: '15px'}}/>
-                    <h2>{this.props.user.given_name} {this.props.user.family_name}</h2>
-                    <h3>{this.props.user.bio}</h3>
-                    {this.props.currentUser.id === id && 
-                    <form hidden={this.state.editBioVisibility} onSubmit={this.onSubmit}>
-                        <input type='text' onChange={this.onChange} defaultValue={this.props.user.bio}></input>
-                        <button>Save Bio</button>
-                    </form>
-                    }
-                    {this.props.currentUser.id === id &&
-                        <button onClick={this.onClick} hidden={!this.state.editBioVisibility}>Edit Bio</button>
-                    }
-                    {this.props.currentUser.id === id && <PostStatus />}
+                    <img className='profile-cover-photo' src={this.props.user.coverPhoto} />
+                    <div className='content-container'>
+                        <div className='profile-info-wrapper'>
+                        <div className='profile-info-container'>
+                                <img className='profile-info-picture' src={this.props.user.picture}/>
+                                <h2 className='profile-info-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
+                                <h3 className='profile-info-analytics'> 4 Followers | 3 Posts</h3>
+                                <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
+                                {this.props.currentUser.id === id && 
+                                <form hidden={this.state.editBioVisibility}  className='profile-info-bio' onSubmit={this.onSubmit}>
+                                    <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
+                                    <button>Save Bio</button>
+                                </form>
+                                }
+                                {this.props.currentUser.id === id &&
+                                    <button onClick={this.onClick} className='profile-info-bio' hidden={!this.state.editBioVisibility}>Edit Bio</button>
+                                }
+                                {this.props.currentUser.id === id && <PostStatus />}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             );
         } else {
@@ -60,7 +68,8 @@ class UserProfileInfo extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         startSetUser: (id, user) => dispatch(startSetUser(id, user)),
-        startSetBio: (id, bio) => dispatch(startSetBio(id, bio))
+        startSetBio: (id, bio) => dispatch(startSetBio(id, bio)),
+        resetUser: () => dispatch(resetUser())
     }
 
 };

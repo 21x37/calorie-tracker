@@ -53,7 +53,7 @@ class PostStatus extends React.Component {
                 form.reset();
                 this.setState({error: ''})
             } else {
-                this.setState({error: 'You need to provide a status or photo to post!'})
+                this.setState({error: 'You Need to Provide a Status or Photo to Post!'})
             }
 
         } else if (this.uploadedImage) {

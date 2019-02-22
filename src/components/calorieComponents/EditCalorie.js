@@ -86,7 +86,6 @@ class EditCalorie extends React.Component {
 
         return (
             <div>
-                <Header />
                 <form id='calorieItemForm'onSubmit={this.onSubmit}>
                     <input value={this.state.description} onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
                     <input value={this.state.calories} onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>

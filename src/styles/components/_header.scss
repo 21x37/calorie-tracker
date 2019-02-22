@@ -1,11 +1,11 @@
 .header {
-    background: linear-gradient(#ff416c, #ff4b2b);
+    background: #303A52;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header__content {
     align-items: center;
     display: flex;
-    justify-content: space-between;
     padding: $s-size 0;
 }
 
@@ -14,6 +14,42 @@
     text-decoration: none;
     h1 {
         margin: 0;
+        margin-left: 50px;
     }
+}
+
+#header__icon {
+    position: relative;
+    top: 2.6px;
+    right: 18px;
+    font-size: 21.5px;
+}
+
+.nav {
+    position: relative;
+    margin-left: 50px;
+    top: 2px;
+
+}
+
+.nav__text {
+    right: 10px;
+}
+
+.nav__profile {
+    position: relative;
+    top: 2.6px;
+}
+
+.header__search {
+    position: relative;
+    right: 1px;
+    top: 1.5px;
+
+}
+
+.search {
+    width: 350px;
+    border-radius: 10px;
 }
 

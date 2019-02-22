@@ -12,11 +12,11 @@ import SearchUsers from '../components/searchUsers/SearchUsers';
                 <Link className='header__title' to="/">
                     <h1>TrainingPals</h1>
                 </Link>
-                <SearchUsers />
-                <Link className='header__title' to='/foodsearch' >Search Foods</Link>
-                <Link className='header__title' to='/calories' onClick={props.clearCalorieLookUp}>Calorie Summary</Link>
-                <Link className='header__title' to={`/profile/${props.currentUser.id}`} onClick={props.clearCalorieLookUp}>Profile</Link>
-                <button className='button--link button'onClick={props.startLogout}>Logout</button>
+                <SearchUsers className='header__search'/>
+                <Link className='header__title nav nav__text' to='/foodsearch' >Search Foods</Link>
+                <Link className='header__title nav nav__text' to='/calories' onClick={props.clearCalorieLookUp}>Calorie Summary</Link>
+                <Link className='header__title nav nav__text nav__profile' to={`/profile/${props.currentUser.id}`} onClick={props.clearCalorieLookUp}>Profile</Link>
+                <button className='header__title button--link nav'onClick={props.startLogout}><ion-icon name="log-out" id='header__icon'></ion-icon></button>
             </div>
         </div>
     </header>

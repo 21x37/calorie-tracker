@@ -17,7 +17,8 @@ class CalorieLookUp extends React.Component {
             appId,
             appKey,
             fields: ["item_name", "nf_calories", "nf_protein", "nf_total_carbohydrate", "nf_total_fat", "nf_serving_size_qty", "nf_serving_size_unit"],
-            lookup: ''
+            lookup: '',
+            error: ''
         }
         this.results = [];
     };
@@ -26,35 +27,41 @@ class CalorieLookUp extends React.Component {
         this.setState({query})
     };
     onSubmit = (e) => {
-        e.preventDefault();
-        const jsonString = JSON.stringify(this.state);
-
-        const xhr = new XMLHttpRequest();
-
-        xhr.open('POST', "https://api.nutritionix.com/v1_1/search");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(jsonString);
-
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4) {
-                if(xhr.status == 200) {
-                    const res = JSON.parse(xhr.responseText);
-                    console.log(res.hits);
-                    this.props.calorieLookUp(res.hits);
-                    this.setState({lookup: this.state.query})
-                    const form = document.getElementById('calorieSearchForm');
-                    form.reset();
+        if (this.state.query) {
+            e.preventDefault();
+            const jsonString = JSON.stringify(this.state);
+            this.setState({ error: '' })
+            const xhr = new XMLHttpRequest();
+    
+            xhr.open('POST', "https://api.nutritionix.com/v1_1/search");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(jsonString);
+    
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    if(xhr.status == 200) {
+                        const res = JSON.parse(xhr.responseText);
+                        console.log(res.hits);
+                        this.props.calorieLookUp(res.hits);
+                        this.setState({lookup: this.state.query})
+                        const form = document.getElementById('calorieSearchForm');
+                        form.reset();
+                    };
                 };
             };
-        };
+        } else {
+            e.preventDefault();
+            this.setState({ error: 'Enter a Food to Find!'})
+        }
+
 
     };
     render() {
         return (
             <div>
-                <Header />
                 <CalorieSummary query={this.query}/>
                 <h1>Search For a Food!</h1>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit} id='calorieSearchForm'>
                     <input type='text' onChange={this.onChange}/>
                     <button>Search</button>
