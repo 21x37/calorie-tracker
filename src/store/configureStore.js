@@ -13,6 +13,8 @@ import currentUserReducer from '../reducers/currentUserReducer';
 import currentUserLikesReducer from '../reducers/currentUserLikesReducer';
 import totalLikesReducer from '../reducers/totalLikesReducer';
 import searchUser from '../reducers/searchUser';
+import followersReducer from '../reducers/followersReducer';
+import followingReducer from '../reducers/followingReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -31,6 +33,8 @@ export default () => {
             userLikes: currentUserLikesReducer,
             totalLikes: totalLikesReducer,
             searchUser: searchUser,
+            followers: followersReducer,
+            following: followingReducer,
             auth: authReducer
         }),
         composeEnhancers(applyMiddleware(thunk))

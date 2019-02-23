@@ -41,15 +41,27 @@
     top: 2.6px;
 }
 
+.nav__icon {
+    margin: 0;
+    padding: 0;
+    padding: 5px;
+    padding-right: 0;
+}
+
 .header__search {
     position: relative;
-    right: 1px;
+    right: 5px;
     top: 1.5px;
 
 }
 
 .search {
+    height: 35px;
     width: 350px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
+.header__logout {
+    position: relative;
+    top: 2.3px;
+}

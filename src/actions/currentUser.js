@@ -21,11 +21,21 @@ export const startSetCurrentUser = (email) => {
             snapshot.forEach((childSnapshot) => {
                 if (email === childSnapshot.val().email) {
                     const likesArr = [];
+                    let following;
+                    if (childSnapshot.val().following) {
+                        following = Object.keys(childSnapshot.val().following).map((key) => {
+                            return {id: key, userId: childSnapshot.val().following[key]}
+                        })
+                    } else {
+                        following = [];
+                    }
+
                     dispatch(setCurrentUser({
                         ...childSnapshot.val(),
                         id: childSnapshot.key,
                         googleId: childSnapshot.val().id,
-                        likes: [] || Object.values(childSnapshot.val().likes)
+                        likes: [] || Object.values(childSnapshot.val().likes),
+                        following
                     }));
                     dispatch(startRenderGoal(childSnapshot.key));
                     dispatch(startSetCalorie(childSnapshot.key));

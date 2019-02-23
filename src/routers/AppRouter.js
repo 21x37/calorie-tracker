@@ -13,6 +13,8 @@ import CaloriePage from '../components/CaloriePage';
 import EditCalorie from '../components/calorieComponents/EditCalorie';
 import CalorieLookUp from '../components/calorieLookUp/CalorieLookUp';
 import SearchUsers from '../components/searchUsers/SearchUsers';
+import Followers from '../components/followComponents/Followers';
+import Following from '../components/followComponents/Following';
 
 export const history = createHistory();
 
@@ -22,7 +24,9 @@ const AppRouter = () => (
             <Switch>
                 <PrivateRoute path="/" component={DashboardPage} exact={true}/>
                 <PublicRoute path='/login' component={LoginPage} />
-                <PrivateRoute path='/profile/:id' component={ProfilePage} key={uuid()}/>
+                <PrivateRoute path='/profile/:id' component={ProfilePage} exact={true} key={uuid()}/>
+                <PrivateRoute path='/profile/:id/followers' component={Followers} key={uuid()}/>
+                <PrivateRoute path='/profile/:id/following' component={Following} key={uuid()}/>
                 <PrivateRoute path='/calories' component={CaloriePage} exact={true}/>
                 <PrivateRoute path='/foodsearch' component={CalorieLookUp} />
                 <PrivateRoute path='/calories/:id' component={EditCalorie} />

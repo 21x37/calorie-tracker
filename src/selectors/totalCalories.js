@@ -13,10 +13,11 @@ export const  selectProteinTotal = (caloriesItem, macro) => {
 
 export const selectCaloriePercentage = (calories, calorieGoal) => {
     const totalCalories = selectCaloriesTotal(calories);
-    console.log('calories', calories);
-    console.log('goal', calorieGoal);
-    const percentage = Math.floor((totalCalories / calorieGoal.calorieGoal) *100);
-    console.log(totalCalories);
-    console.log(percentage);
-    return percentage;
+    if (calorieGoal.calorieGoal > 0) {
+        const percentage = Math.floor((totalCalories / calorieGoal.calorieGoal) * 100);
+        return percentage;
+    } else {
+        return 0
+    }
+
 };

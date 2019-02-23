@@ -1,13 +1,12 @@
 .search-container {
-    position: relative;
     background: rgb(255, 255, 255);
-    border-bottom: 1px solid #596174;
+    border-bottom: 1px solid #5961747c;
     border-radius: 2px;
     bottom: 1.2px;
     display: flex;
     height: 45px;
     width: 340px;
-    left: 2.8%;
+    right: 50%;
 }
 
 .search-container:hover {

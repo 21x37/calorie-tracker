@@ -9,9 +9,18 @@ export const startSetUser = (id, user) => {
     return (dispatch) => {
         if (user === undefined || user.id !== id) {
             return database.ref(`users/${id}`).once('value').then((snapshot) => {
+                let followers;
+                if (snapshot.val().followers) {
+                    followers = Object.keys(snapshot.val().followers).map((key) => {
+                        return {id: key, userId: snapshot.val().followers[key]}
+                    })
+                } else {
+                    followers = [];
+                }
                 const user = {
                     ...snapshot.val(),
-                    id: snapshot.key
+                    id: snapshot.key,
+                    followers
                 };
                 dispatch(setUser(user));
             });  

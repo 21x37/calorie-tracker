@@ -10,6 +10,21 @@
 
 // }
 
+.profile-cover-photo-button {
+    position: absolute;
+    left: 60%;
+    top: 225px;
+}
+
+.profile-cover-photo__container:hover {
+    background-color: rgb(255, 255, 255);
+    opacity: 0.5;
+};
+
+#cover-photo-button {
+    cursor: default;
+}
+
 .profile-info-wrapper {
     text-align: center;
 };

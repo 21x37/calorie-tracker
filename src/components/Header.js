@@ -16,7 +16,7 @@ import SearchUsers from '../components/searchUsers/SearchUsers';
                 <Link className='header__title nav nav__text' to='/foodsearch' >Search Foods</Link>
                 <Link className='header__title nav nav__text' to='/calories' onClick={props.clearCalorieLookUp}>Calorie Summary</Link>
                 <Link className='header__title nav nav__text nav__profile' to={`/profile/${props.currentUser.id}`} onClick={props.clearCalorieLookUp}>Profile</Link>
-                <button className='header__title button--link nav'onClick={props.startLogout}><ion-icon name="log-out" id='header__icon'></ion-icon></button>
+                <button className='header__title nav__text header__logout button button--link nav'onClick={props.startLogout}>Logout</button>
             </div>
         </div>
     </header>

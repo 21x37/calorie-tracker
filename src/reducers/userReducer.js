@@ -11,6 +11,11 @@ const userReducer = (state = usersReducerDefaultState, action) => {
             }
         case 'RESET_USER':
             return usersReducerDefaultState;
+        case 'SET_COVER_PHOTO':
+            return {
+                ...state,
+                coverPhoto: action.url
+            }
         default:
             return state
     };
