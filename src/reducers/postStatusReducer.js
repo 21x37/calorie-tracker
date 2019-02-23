@@ -43,6 +43,15 @@ const postStatusReducer = (state = postStatusReducerDefaultState, action) => {
             // ]
         case 'REMOVE_ALL_STATUSES':
             return postStatusReducerDefaultState;
+        case 'SET_PROFILE_PICTURE':
+            return [
+                ...state.map(statusItem => {
+                    if (statusItem.createdBy === action.id) {
+                        statusItem = {...statusItem, author: {...statusItem.author, picture: action.url}}
+                    }
+                    return statusItem;
+                })
+            ]
         default:
             return state;
     };

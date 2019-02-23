@@ -27,16 +27,17 @@ export const startFollow = (id, userId) => {
     };
 };
 
-export const unfollow = (id) => ({
+export const unfollow = (id, userId) => ({
     type: 'REMOVE_FOLLOWING',
-    id
+    id,
+    userId
 });
 
 export const startUnfollow = (id, followingId, followerId, userId) => {
     return (dispatch) => {
         return database.ref(`users/${id}/following/${followingId}`).remove().then(() => {
             database.ref(`users/${userId}/followers/${followerId}`).remove().then(() => {
-                dispatch(unfollow(userId));
+                dispatch(unfollow(id, userId));
             });
         });
     };

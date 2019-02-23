@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startSetUser, startSetBio, resetUser } from '../../actions/user';
 import PostStatus from '../newsFeedComponents/PostStatus';
-import { startSetCoverPhoto } from '../../actions/coverPhoto';
+import { startSetCoverPhoto, startUploadProfilePicture } from '../../actions/coverPhoto';
 import { startFollow, startUnfollow } from '../../actions/follow';
 import alreadyFollowing from '../../selectors/alreadyFollowing';
 
@@ -13,7 +13,8 @@ class UserProfileInfo extends React.Component {
         super(props);
         this.state = {
             bio: this.props.currentUser.bio || '',
-            uploadedImage: null,
+            uploadedCoverPhoto: null,
+            uploadedProfilePicture: null,
             editBioVisibility: true,
             isMouseInside: true,
             alreadyFollowing: alreadyFollowing(this.props.currentUser.following, this.props.user.id),
@@ -40,12 +41,12 @@ class UserProfileInfo extends React.Component {
         this.setState({ editBioVisibility: true }) 
     };
     onFileUpload = (e) => {
-        this.setState({ uploadedImage: e.target.files[0] })
+        this.setState({ uploadedCoverPhoto: e.target.files[0] })
     };
     onSubmitCoverPhoto = (e) => {
         e.preventDefault();
-        if (this.state.uploadedImage) {
-            this.props.startSetCoverPhoto(this.state.uploadedImage, this.props.currentUser.id).then(() => {
+        if (this.state.uploadedCoverPhoto) {
+            this.props.startSetCoverPhoto(this.state.uploadedCoverPhoto, this.props.currentUser.id).then(() => {
                 const form = document.getElementById('coverPhotoForm');
                 form.reset();
             });
@@ -87,6 +88,22 @@ class UserProfileInfo extends React.Component {
             });
         };
     };
+    onUploadProfilePicture = (e) => {
+        this.setState({ uploadedProfilePicture: e.target.files[0] }, () => {
+            this.props.startUploadProfilePicture(this.state.uploadedProfilePicture, this.props.currentUser.id).then(() => {
+                const form = document.getElementById('profilePictureForm');
+                form.reset();
+            });
+        }) 
+    };
+    onSubmitProfilePicture = (e) => {
+        // e.preventDefault();
+        // if (this.state.uploadedProfilePicture) {
+        //     this.props.startUploadProfilePicture(this.state.uploadedProfilePicture, this.props.currentUser.id).then(() => {
+
+        //     });
+        // };
+    }
     render() {
         const id = window.location.href.split('/')[4];
         this.props.startSetUser(id, this.props.user);
@@ -104,16 +121,16 @@ class UserProfileInfo extends React.Component {
             return (
                 <div>
 
-
+                        {/* COVER PHOTO */}
                     <div className={`${this.props.currentUser.id === id ? 'profile-cover-photo__container': '' }`} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto}>
                         <img className='profile-cover-photo' src={this.props.user.coverPhoto || 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fcoverphotodefault.jpg?alt=media&token=de484d31-95f8-4c81-8946-e959ff58ad6d'} />
                     </div>
-
+                        
                     <div className='profile-cover-photo-button'>
                         <p hidden={this.state.isMouseInside}>Upload a Cover Photo!</p>
                         <form onSubmit={this.onSubmitCoverPhoto} id='coverPhotoForm' hidden={this.state.isMouseInside}>
                             <input id='cover-photo-button' type='file' accept='image/*' onChange={this.onFileUpload}/>
-                            <button id='cover-photo-button' hidden={!this.state.uploadedImage}>Upload Cover Photo</button>
+                            <button id='cover-photo-button' hidden={!this.state.uploadedCoverPhoto}>Upload Cover Photo</button>
                         </form>
                     </div>
 
@@ -122,10 +139,19 @@ class UserProfileInfo extends React.Component {
                     <div className='content-container'>
                         <div className='profile-info-wrapper'>
                         <div className='profile-info-container'>
+                                    {/* PROFILE PICTURE */}
+                                <div className='profile-picture-wrapper'>
+                                    <img className='profile-info-picture' src={this.props.user.picture}/>
+                                    <form onSubmit={this.onSubmitProfilePicture} id='profilePictureForm'>
+                                        <input className='profile-picture-upload' type='file' accept='image/*' onChange={this.onUploadProfilePicture}/>
+                                    </form>
+                                </div>
 
-                                <img className='profile-info-picture' src={this.props.user.picture}/>
+                                {/* PROFILE NAME */}
                                 <h2 className='profile-info-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
 
+
+                                {/* PROFILE FOLLOWERS */}
                                 <Link to={`${id}/followers`}><h3 className='profile-info-analytics' >{this.followers.length} Followers</h3></Link>
                                 <Link to={`${id}/following`}><h3 className='profile-info-analytics'>{this.following.length} Following</h3></Link>
 
@@ -134,9 +160,9 @@ class UserProfileInfo extends React.Component {
                                 <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
                                 {this.props.currentUser.id !== id && 
-                                    <button onClick={this.onFollow} disabled={this.state.disabled}>Follow!</button>
+                                    <button onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
                                 }
-
+                                {/* PROFILE BIO */}
                                 {this.props.currentUser.id === id && 
                                 <form hidden={this.state.editBioVisibility}  className='profile-info-bio' onSubmit={this.onSubmitBio}>
                                     <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
@@ -144,12 +170,12 @@ class UserProfileInfo extends React.Component {
                                 </form>
                                 }
 
-
+                                
                                 {this.props.currentUser.id === id &&
                                     <button onClick={this.onClick} className='profile-info-bio' hidden={!this.state.editBioVisibility}>Edit Bio</button>
                                 }
 
-
+                                {/* POST STATUS */}
                                 {this.props.currentUser.id === id && <PostStatus />}
                             </div>
                         </div>
@@ -173,7 +199,8 @@ const mapDispatchToProps = (dispatch) => {
         resetUser: () => dispatch(resetUser()),
         startSetCoverPhoto: (photo, id) => dispatch(startSetCoverPhoto(photo, id)),
         startFollow: (currentUsedId, userId) => dispatch(startFollow(currentUsedId, userId)),
-        startUnfollow: (id, followingId, followerId, userId) => dispatch(startUnfollow(id, followingId, followerId, userId))
+        startUnfollow: (id, followingId, followerId, userId) => dispatch(startUnfollow(id, followingId, followerId, userId)),
+        startUploadProfilePicture: (photo, id) => dispatch(startUploadProfilePicture(photo, id))
     }
 
 };

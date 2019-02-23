@@ -19,8 +19,11 @@ class Following extends React.Component {
                 const following = [];
                 follows.forEach(follow => {
                     database.ref(`users/${follow.userId}`).once('value').then((profileSnapshot) => {
-                        following.push(profileSnapshot.val());
-                        this.setState({ following });
+                        console.log(profileSnapshot.key);
+                        following.push({...profileSnapshot.val(), ref: profileSnapshot.key});
+                        this.setState({ 
+                            following 
+                        });
                         console.log(this.state.following);
                     })
                 })
@@ -36,7 +39,7 @@ class Following extends React.Component {
             {this.state.following.map((follow) => {
                 return (
                     <div key={follow.id}>
-                        <Link to={`/profile/${follow.id}`}>
+                        <Link to={`/profile/${follow.ref}`}>
                             <h2>{follow.name}</h2>
                             <img src={follow.picture} style={{width: '60px', height: '60px'}}/>
                         </Link>
@@ -50,8 +53,7 @@ class Following extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    user: state.user,
-    following: followers(state.user.id)
+    user: state.user
 });
 
 export default connect(mapStateToProps)(Following);

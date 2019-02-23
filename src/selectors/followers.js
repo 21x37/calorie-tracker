@@ -6,7 +6,7 @@ const followers = (userId) => {
     if (userId) {
         database.ref(`users/${userId}/followers`).once('value').then((snapshot) => {
 
-            const follower = Object.values(snapshot.val())
+            const follower = [] || Object.values(snapshot.val())
             follower.forEach((follow) => {
                 database.ref(`users/${follow.userId}`).once('value').then((profileSnapshot) => {
                     followering.push(profileSnapshot.val());
@@ -14,7 +14,7 @@ const followers = (userId) => {
             });
         });
         return followering;
-    }
+    };
 
 
 

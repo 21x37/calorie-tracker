@@ -16,7 +16,7 @@ const currentUserReducer = (state={}, action) => {
         console.log('ACTION ID ACTION ID', action.id);
             return {
                 ...state,
-                following: state.following.filter(follow => follow.userId.userId !== action.id)
+                following: state.following.filter(follow => follow.userId.userId !== action.userId)
             }
         default:
             return state;
