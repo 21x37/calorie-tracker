@@ -16,6 +16,18 @@ const userReducer = (state = usersReducerDefaultState, action) => {
                 ...state,
                 coverPhoto: action.url
             }
+        case 'ADD_FOLLOWING':
+            return {
+                ...state,
+                followers: [...state.followers, action.follow]
+            }
+        case 'REMOVE_FOLLOWING':
+        console.log('REDUCER STATE', state.followers);
+        console.log('REDUCER ACTION', action.id);
+            return {
+                ...state,
+                followers: state.followers.filter(follow => follow.userId.userId !== action.id)
+            }
         default:
             return state
     };

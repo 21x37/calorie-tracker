@@ -6,22 +6,18 @@ const currentUserReducer = (state={}, action) => {
             return action.user
         case 'REMOVE_CURRENT_USER':
             return {}
-        // case 'ADD_LIKE':
-        //     return {
-        //         ...state,
-        //         likes: [...state.likes, action.like]
-
-        //     }
-        // case 'SET_LIKE':
-        //     return {
-        //         ...state,
-        //         likes: action.likes
-        //     }
-        // case 'REMOVE_LIKE':
-        //     return {
-        //         ...state,
-        //         likes: state.likes.filter(like => like.id !== action.id)
-        //     }
+        case 'ADD_FOLLOWING':
+            return {
+                ...state,
+                following: [...state.following, action.follow]
+            }
+        case 'REMOVE_FOLLOWING':
+        console.log('FOLLOWING FOLLOWING', state.following);
+        console.log('ACTION ID ACTION ID', action.id);
+            return {
+                ...state,
+                following: state.following.filter(follow => follow.userId.userId !== action.id)
+            }
         default:
             return state;
     };

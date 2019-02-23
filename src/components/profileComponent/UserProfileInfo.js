@@ -15,7 +15,9 @@ class UserProfileInfo extends React.Component {
             bio: this.props.currentUser.bio || '',
             uploadedImage: null,
             editBioVisibility: true,
-            isMouseInside: true
+            isMouseInside: true,
+            alreadyFollowing: alreadyFollowing(this.props.currentUser.following, this.props.user.id),
+            disabled: false
         }
         this.followers = [];
         this.following = [];
@@ -65,13 +67,22 @@ class UserProfileInfo extends React.Component {
                 followId = follow.id;
             }
         })
-
         if (this.props.alreadyFollowing) {
-            this.props.startFollow(this.props.currentUser.id, this.props.user.id);
+            this.setState({ disabled: true });
+            this.props.startFollow(this.props.currentUser.id, this.props.user.id).then(() => {
+                this.setState({ alreadyFollowing: alreadyFollowing(this.props.currentUser.following, this.props.user.id)}, this.setState({ disabled: false }));
+                
+            });
+            
         } else {
+            this.setState({ disabled: true })
             this.props.currentUser.following.forEach((follow) => {
                 if (follow.userId.userId === this.props.user.id) {
-                    this.props.startUnfollow(this.props.currentUser.id, follow.id, followId, this.props.user.id);
+                    this.props.startUnfollow(this.props.currentUser.id, follow.followingId, followId, this.props.user.id).then(() => {
+                        this.setState({ alreadyFollowing: alreadyFollowing(this.props.currentUser.following, this.props.user.id)}, this.setState({ disabled: false }));
+                        
+                    });
+                    
                 };
             });
         };
@@ -123,7 +134,7 @@ class UserProfileInfo extends React.Component {
                                 <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
                                 {this.props.currentUser.id !== id && 
-                                    <button onClick={this.onFollow}>Follow!</button>
+                                    <button onClick={this.onFollow} disabled={this.state.disabled}>Follow!</button>
                                 }
 
                                 {this.props.currentUser.id === id && 

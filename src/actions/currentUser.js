@@ -24,7 +24,7 @@ export const startSetCurrentUser = (email) => {
                     let following;
                     if (childSnapshot.val().following) {
                         following = Object.keys(childSnapshot.val().following).map((key) => {
-                            return {id: key, userId: childSnapshot.val().following[key]}
+                            return {id: key, followingId: key, userId: childSnapshot.val().following[key]}
                         })
                     } else {
                         following = [];

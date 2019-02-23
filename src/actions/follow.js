@@ -10,10 +10,17 @@ export const startFollow = (id, userId) => {
         return database.ref(`users/${id}/following`).push({ id, userId }).then((currentUserSnapshot) => {
             database.ref(`users/${userId}/followers`).push({ id, userId }).then((userSnapshot) => {
                 dispatch(follow({
-                    id,
+                    id: userSnapshot.key,
                     followingId: currentUserSnapshot.key,
-                    followerId: userSnapshot.key,
-                    following: userId
+                    userId: {
+                        id: id,
+                        userId: userId
+                    }
+
+                    // id,
+                    // followingId: currentUserSnapshot.key,
+                    // followerId: userSnapshot.key,
+                    // following: userId
                 }));
             });
         });
@@ -29,19 +36,7 @@ export const startUnfollow = (id, followingId, followerId, userId) => {
     return (dispatch) => {
         return database.ref(`users/${id}/following/${followingId}`).remove().then(() => {
             database.ref(`users/${userId}/followers/${followerId}`).remove().then(() => {
-                dispatch(unfollow(id));
-            });
-        })
-
-
-        console.log(1);
-        console.log(`users/${id}/following/${followingId}`)
-        database.ref(`users/${id}/${followingId}`).remove().then(() => {
-            console.log(2);
-            console.log(`users/${userId}/followers/${followerId}`)
-            database.ref(`users/${userId}/${followerId}`).remove().then(() => {
-                console.log(3);
-                dispatch(unfollow(id));
+                dispatch(unfollow(userId));
             });
         });
     };
