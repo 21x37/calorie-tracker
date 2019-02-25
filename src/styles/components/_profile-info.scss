@@ -2,6 +2,7 @@
     width: 100%;
     height: 250px;
     background-color: rgb(240, 240, 240);
+    z-index: -1;
 }
 
 .under-cover-photo-bar {
@@ -13,7 +14,8 @@
 }
 
 .profile-picture {
-    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     border: 10px solid rgb(242, 242, 242);
     border-left: 10px solid rgb(242, 242, 242);
     border-right: 10px solid rgb(242, 242, 242);
@@ -21,7 +23,8 @@
     width: 250px;
     height: 250px;
     position: relative;
-    left: 150px;
+    left: 150.5px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
 }
 
 .profile-dashboard {
@@ -48,10 +51,11 @@
     background: #232b3d;
 }
 
-.profile-picture:hover {
+.profile-picture-opacity:hover {
     filter: brightness(60%);
-    margin-bottom: 0;
 }
+
+
 
 .profile-picture__flex {
     display: flex;
@@ -73,6 +77,12 @@
 }
 
 .profile-info-container {
+    position: relative;
+    min-height: 100%;
+}
+
+.profile-info-wrapper {
+    min-height: 100%;
     position: relative;
 }
 
@@ -102,19 +112,31 @@
 .left-panel-profile {
     width: 250px;
     background-color: rgb(242, 242, 242);
-    height: 100vh;
+    min-height: 100%;
     bottom: 200px;
     left: 151px;
-    overflow: overlay;
     position: relative;
     word-break: break-all;
     word-wrap: break-word;
+    
+}
+
+.under-profile-photo {
+    position: absolute;
+    left: 149.5px;
+    top: 250.5px;
+    min-height: 100%;
+    width: 252.5px;
+    background-color: rgb(242, 242, 242);
+    z-index: -1;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
 }
 
 .left-panel-padding {
     text-align: center;
     padding: 20px 0;
     padding: 0 0 20px 0;
+    min-height: 100%;
 }
 
 .profile-follow {
@@ -126,11 +148,28 @@
 .right-profile-panel {
     position: absolute;
     right: .1px;
-    top: 347px;
-    height: 100vh;
-    width: 200px;
+    top: 271.5px;
+    min-height: 100%;
+    width: 135px;
     background-color: rgb(242, 242, 242);
+    overflow: hidden;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
 }
+
+// RIGHT BORDER PANEL COLOR
+
+// .right-profile-panel__color {
+//     position: absolute;
+//     right: .1px;
+//     top: 271px;
+//     min-height: 100%;
+//     width: 25px;
+//     background-color:  #303A52;
+//     overflow: hidden;
+//     z-index: 2;
+// }
+
+// RIGHT BORDER PANEL COLOR
 
 // // .profile-cover-photo {
 // //     display: inline-block;

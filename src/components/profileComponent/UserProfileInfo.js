@@ -6,6 +6,8 @@ import PostStatus from '../newsFeedComponents/PostStatus';
 import { startSetCoverPhoto, startUploadProfilePicture } from '../../actions/coverPhoto';
 import { startFollow, startUnfollow } from '../../actions/follow';
 import alreadyFollowing from '../../selectors/alreadyFollowing';
+import UserPhotoList from './UserPhotoList';
+import PostStatusList from './ProfilePageStatusList';
 
 
 class UserProfileInfo extends React.Component {
@@ -48,10 +50,10 @@ class UserProfileInfo extends React.Component {
             this.props.startSetCoverPhoto(this.state.uploadedCoverPhoto, this.props.currentUser.id).then(() => {
                 const form = document.getElementById('coverPhotoForm');
                 form.reset();
-                this.setState({uploadedCoverPhoto: null})
+                this.setState({ uploadedCoverPhoto: null })
             });
         })
-        
+
     };
     onMouseEnterCoverPhoto = () => {
         if (this.props.currentUser.id === this.props.user.id) {
@@ -128,15 +130,15 @@ class UserProfileInfo extends React.Component {
             }
 
             return (
-                <div>
-                
+                <div style={{postion: 'relative'}} className='profile-info-wrapper'>
+
                     {/* COVER PHOTO */}
                     <div className={`${this.props.currentUser.id === id ? 'profile-cover-photo__container' : ''}`} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto}>
                         <div className='black-background-cover-photo'>
                             <img className='cover-photo' src={this.props.user.coverPhoto || 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fcoverphotodefault.jpg?alt=media&token=de484d31-95f8-4c81-8946-e959ff58ad6d'} />
                         </div>
                     </div>
-                    
+
                     <div className='profile-cover-photo-button'>
                         <p id='cover-photo-button' hidden={this.state.isMouseInside}>Upload a Cover Photo!</p>
                         <form id='coverPhotoForm' hidden={this.state.isMouseInside}>
@@ -147,8 +149,10 @@ class UserProfileInfo extends React.Component {
                     <div className='under-cover-photo-bar'>
                     </div>
 
+
+
                     <div className='profile-info-container'>
-                    <div className='profile-dashboard'>
+                        <div className='profile-dashboard'>
                             <h4 onClick={() => {
                                 this.setState(() => {
                                     return {
@@ -165,63 +169,71 @@ class UserProfileInfo extends React.Component {
                                     }
                                 })
                             }} className={`profile-dashboard__item ${this.state.onPhotos ? 'profile-dashboard__item-active' : ''}`}>Photos</h4>
-                    </div>
+                        </div>
 
-                    {/* PROFILE PICTURE */}
-                    <div className='profile-picture__flex'>
-                        <img className={`profile-picture ' ${!this.state.isMouseInsideProfilePicture ? 'profile-picture-opacity' : ''}`} onMouseEnter={this.onMouseEnterProfilePicture} onMouseLeave={this.onMouseLeaveProfilePicture} src={this.props.user.picture} />
-                        <form onSubmit={this.onSubmitProfilePicture} id='profilePictureForm'>
-                            <input id='profile-picture-input' type='file' accept='image/*' style={{ display: 'none' }} onChange={this.onUploadProfilePicture} />
-                            <label className='profile-picture-upload' htmlFor='profile-picture-input' hidden={this.state.isMouseInsideProfilePicture}><ion-icon name="images"></ion-icon></label>
-                        </form>
-                    </div>
+                        {/* PROFILE PICTURE */}
+                        <div className='profile-picture__flex'>
+                            <img className={`profile-picture ' ${!this.state.isMouseInsideProfilePicture ? 'profile-picture-opacity' : ''}`} onMouseEnter={this.onMouseEnterProfilePicture} onMouseLeave={this.onMouseLeaveProfilePicture} src={this.props.user.picture} />
+                            <form onSubmit={this.onSubmitProfilePicture} id='profilePictureForm'>
+                                <input id='profile-picture-input' type='file' accept='image/*' style={{ display: 'none' }} onChange={this.onUploadProfilePicture} />
+                                <label className='profile-picture-upload' htmlFor='profile-picture-input' hidden={this.state.isMouseInsideProfilePicture}><ion-icon name="images"></ion-icon></label>
+                            </form>
+                        </div>
 
-                    {/* PROFILE NAME */}
+                        {/* PROFILE NAME */}
 
-                    <div className='left-panel-profile'>
+                        <div className='left-panel-profile'>
 
-                        <div className='left-panel-padding'>
+                            <div className='left-panel-padding'>
 
-                            <h2 className='user-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
+                                <h2 className='user-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
 
 
-                            {/* PROFILE FOLLOWERS */}
+                                {/* PROFILE FOLLOWERS */}
 
                                 <Link to={`${id}/followers`} className='profile-follow'><h3 className='profile-follow' >{this.followers.length} Followers</h3></Link>
                                 <Link to={`${id}/following`} className='profile-follow'><h3 className='profile-follow'>{this.following.length} Following</h3></Link>
 
 
 
-                            
-
-                            {this.props.currentUser.id !== id &&
-                                <button className='button' onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
-                            }
-                            {/* PROFILE BIO */}
-
-                            <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
 
-                            {this.props.currentUser.id === id &&
-                                <form hidden={this.state.editBioVisibility} className='profile-info-bio' onSubmit={this.onSubmitBio}>
-                                    <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
-                                    <button className='button'>Save Bio</button>
-                                </form>
-                            }
+                                {this.props.currentUser.id !== id &&
+                                    <button className='button' onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
+                                }
+                                {/* PROFILE BIO */}
+
+                                <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
 
-                            {this.props.currentUser.id === id &&
-                                <button onClick={this.onClick} className='profile-info-bio button' style={{display: this.state.editBioVisibility ? 'inline-block' : 'none'}}>Edit Bio</button>
-                            }
+                                {this.props.currentUser.id === id &&
+                                    <form hidden={this.state.editBioVisibility} className='profile-info-bio' onSubmit={this.onSubmitBio}>
+                                        <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
+                                        <button className='button'>Save Bio</button>
+                                    </form>
+                                }
+
+
+                                {this.props.currentUser.id === id &&
+                                    <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
+                                }
+                            </div>
                         </div>
-                    </div>
 
-                    {/* POST STATUS */}
+                        {/* POST STATUS */}
 
-                    {this.state.onWall && this.props.currentUser.id === id && <PostStatus />}
+                        {this.state.onWall && this.props.currentUser.id === id &&
+                            <div>
+                                <PostStatus />
+                                <PostStatusList />
+                            </div>
+                        }
+                        {this.state.onPhotos && <UserPhotoList />}
 
                     </div>
                     <div className='right-profile-panel'></div>
+                    <div className='right-profile-panel__color'></div>
+                    <div className='under-profile-photo'></div>
                 </div>
             );
         } else {
