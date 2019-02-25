@@ -15,6 +15,7 @@ class PostStatus extends React.Component {
             likes: 0,
             createdAt: moment(),
 
+            uploadedImageName: '',
             error: ''
         
         };
@@ -51,7 +52,8 @@ class PostStatus extends React.Component {
                 }
                 const form = document.getElementById('postStatusForm');
                 form.reset();
-                this.setState({error: ''})
+                this.setState({error: '', description: ''})
+                
             } else {
                 this.setState({error: 'You Need to Provide a Status or Photo to Post!'})
             }
@@ -82,23 +84,39 @@ class PostStatus extends React.Component {
             const statusForm = document.getElementById('postStatusForm');
             statusForm.reset();
             this.setState({error: ''})
+            this.setState({uploadedImageName: ''})
             this.uploadedImage = null;
         }
     };
     handleFileUploadChange = (e) => {
         this.uploadedImage = e.target.files[0];
+        this.setState({ uploadedImageName: e.target.files[0].name})
         // CHANGE FILEUPLOADED STATE TO TRUE FOR UPLOAD BUTTON
     };
     render() {
         return (
             <div>
-                <h2>Post a Status!</h2>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form id='postStatusForm' onSubmit={this.onSubmit}>
-                    <input type='text' onChange={this.onDescriptionChange}/>
-                    <button>Post!</button>
-                    <input type="file" accept="image/*" onChange={this.handleFileUploadChange}/>
-                </form>
+                <div className='status-container'>
+                    <div className='status-title-wrapper'>
+                        <h2 className='post-status-title'>Post a Status!</h2>
+                     </div>
+                    <div className='status-position'>
+                        {this.state.error && <p>{this.state.error}</p>}
+                        <p className='profile-upload-image-name'>{this.state.uploadedImageName}</p>
+                        <form id='postStatusForm' onSubmit={this.onSubmit}>
+                            <div className='profile-form-wrapper'>
+                                <input className='status-text-input-profile' type='text' onChange={this.onDescriptionChange}/>
+                                <button className='button post-button'>Post!</button>
+                                <input id='status-upload-image' type="file" accept="image/*" style={{display: 'none'}} onChange={this.handleFileUploadChange}/>
+                                <label className='profile-upload-photo-icon' htmlFor='status-upload-image'><ion-icon name="image"></ion-icon></label>
+                            </div>
+                        </form>
+                    </div>
+                    <div className='under-status-bar-wrapper'>
+                        <div className='under-status-post-bar'>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     };
