@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import ModalImage from 'react-modal-image';
 import { startDeleteStatus, startDeleteImage } from '../../actions/postStatus';
 import { startRemoveHashtag } from '../../actions/statusFeatures';
 import Comment from '../commentComponent/Comment';
@@ -65,7 +66,7 @@ class PostStatusList extends React.Component {
                                     <h3>{status.author.name}</h3>
                                 </Link>
                                 <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
-                                <img src={status.url} style={{width: '17%', height: '17%'}}></img>
+                                <ModalImage className='profile-modal-photo' small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
                                 {status.createdBy === this.props.currentUser.id && <button onClick={() => {
                                     this.props.startDeleteImage(status.id, status.name)
                                     this.removeHashtag(status.description)
