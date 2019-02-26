@@ -5,7 +5,7 @@ import UserProfileInfo from './UserProfileInfo';
 
 const ProfilePage = () => {
     return (
-        <div>
+        <div id='profile-page-div'>
             <UserProfileInfo />
         </div>
     )

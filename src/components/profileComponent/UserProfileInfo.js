@@ -231,9 +231,9 @@ class UserProfileInfo extends React.Component {
                         {this.state.onPhotos && <UserPhotoList />}
 
                     </div>
-                    <div className='right-profile-panel'></div>
-                    <div className='right-profile-panel__color'></div>
-                    <div className='under-profile-photo'></div>
+                    <div className='right-profile-panel'><p></p></div>
+                    <div className='right-profile-panel__color'><p></p></div>
+                    <div className='under-profile-photo'><p></p></div>
                 </div>
             );
         } else {

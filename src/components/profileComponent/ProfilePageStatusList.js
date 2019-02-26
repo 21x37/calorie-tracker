@@ -60,7 +60,7 @@ class PostStatusList extends React.Component {
                         )
                     } else if (status.type === 'image') {
                         return (
-                            <div key={status.id}>
+                            <div key={status.id} className='status-container__flex'>
                                 <Link to={`/profile/${status.createdBy}`}>
                                     <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
                                     <h3>{status.author.name}</h3>

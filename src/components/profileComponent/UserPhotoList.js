@@ -4,7 +4,7 @@ import ModalImage from 'react-modal-image';
 
 const UserPhotoList = (props) => {
     return (
-        <div className='photo-list-wrapper'>
+        <div style={{position: 'relative'}} className='photo-list-wrapper'>
             <div className='photo-list-container'>
                 {props.statusItem.map((status) => {
                     if (status.createdBy === props.user.id && status.type === 'image') {

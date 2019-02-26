@@ -1,3 +1,7 @@
+#profile-page-div {
+    height: 100%;
+}
+
 .cover-photo {
     width: 100%;
     height: 250px;
@@ -112,24 +116,24 @@
 .left-panel-profile {
     width: 250px;
     background-color: rgb(242, 242, 242);
-    min-height: 100%;
+    height: 100vh;
+    min-height: 100vh;
     bottom: 200px;
     left: 151px;
     position: relative;
     word-break: break-all;
     word-wrap: break-word;
-    
 }
 
 .under-profile-photo {
     position: absolute;
-    left: 149.5px;
-    top: 250.5px;
     min-height: 100%;
-    width: 252.5px;
-    background-color: rgb(242, 242, 242);
+    top: 250px;
+    width: 403.5px;
+    background-color: rgb(242, 242, 242);;
     z-index: -1;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
+    overflow: hidden;
 }
 
 .left-panel-padding {
@@ -150,7 +154,7 @@
     right: .1px;
     top: 271.5px;
     min-height: 100%;
-    width: 135px;
+    width: 185px;
     background-color: rgb(242, 242, 242);
     overflow: hidden;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
