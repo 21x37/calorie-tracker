@@ -5,17 +5,21 @@ export const setCoverPhoto = (url) => ({
     url
 })
 
-export const startSetCoverPhoto = (photo, id) => {
+export const startSetCoverPhoto = (photo, id, prevName) => {
     return (dispatch) => {
         console.log('0')
         return storageRef.child(`images/${photo.name}`).put(photo).then(() => {
             console.log('1')
+            storageRef.child(`images/${prevName}`).delete();
             storageRef.child(`images/${photo.name}`).getDownloadURL().then((url) => {
                 console.log('URL', url);
                 database.ref(`users/${id}`).update({
-                    coverPhoto: url
+                    coverPhoto: {
+                        picture: url,
+                        name: photo.name
+                    }
                 });
-                dispatch(setCoverPhoto(url))
+                dispatch(setCoverPhoto({ picture: url, name: photo.name}))
             });
         });
     };

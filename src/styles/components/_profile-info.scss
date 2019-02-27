@@ -116,8 +116,8 @@
 .left-panel-profile {
     width: 250px;
     background-color: rgb(242, 242, 242);
-    height: 100vh;
-    min-height: 100vh;
+    height: 110vh;
+    min-height: 110vh;
     bottom: 200px;
     left: 151px;
     position: relative;
@@ -127,7 +127,7 @@
 
 .under-profile-photo {
     position: absolute;
-    min-height: 100%;
+    min-height: 120%;
     top: 250px;
     width: 403.5px;
     background-color: rgb(242, 242, 242);
@@ -153,7 +153,7 @@
     position: absolute;
     right: .1px;
     top: 271.5px;
-    min-height: 100%;
+    min-height: 118%;
     width: 15%;
     background-color: rgb(242, 242, 242);
     overflow: hidden;

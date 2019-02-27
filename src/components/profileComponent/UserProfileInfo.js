@@ -48,7 +48,7 @@ class UserProfileInfo extends React.Component {
     };
     onFileUpload = (e) => {
         this.setState({ uploadedCoverPhoto: e.target.files[0] }, () => {
-            this.props.startSetCoverPhoto(this.state.uploadedCoverPhoto, this.props.currentUser.id).then(() => {
+            this.props.startSetCoverPhoto(this.state.uploadedCoverPhoto, this.props.currentUser.id, this.props.user.coverPhoto.name).then(() => {
                 const form = document.getElementById('coverPhotoForm');
                 form.reset();
                 this.setState({ uploadedCoverPhoto: null })
@@ -136,7 +136,7 @@ class UserProfileInfo extends React.Component {
                     {/* COVER PHOTO */}
                     <div className={`${this.props.currentUser.id === id ? 'profile-cover-photo__container' : ''}`} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto}>
                         <div className='black-background-cover-photo'>
-                            <img className='cover-photo' src={this.props.user.coverPhoto || 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fcoverphotodefault.jpg?alt=media&token=de484d31-95f8-4c81-8946-e959ff58ad6d'} />
+                            <img className='cover-photo' src={this.props.user.coverPhoto ? this.props.user.coverPhoto.picture : 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fcoverphotodefault.jpg?alt=media&token=de484d31-95f8-4c81-8946-e959ff58ad6d'} />
                         </div>
                     </div>
 
@@ -150,6 +150,7 @@ class UserProfileInfo extends React.Component {
                     <div className='under-cover-photo-bar'>
                     </div>
 
+                    
 
 
                     <div className='profile-info-container'>
@@ -223,7 +224,7 @@ class UserProfileInfo extends React.Component {
                             </div>
                         </div>
 
-                        
+                        <div className='fishing-for-divs'></div>
                         {/* PHOTO LIST */}
 
                         {this.state.onPhotos && <UserPhotoList />}
@@ -237,7 +238,6 @@ class UserProfileInfo extends React.Component {
                             </div>
                         }
                         {this.state.onWall && <ProfilePageStatusList />}
-
 
                     </div>
                     <div className='right-profile-panel'><p></p></div>
@@ -260,7 +260,7 @@ const mapDispatchToProps = (dispatch) => {
         startSetUser: (id, user) => dispatch(startSetUser(id, user)),
         startSetBio: (id, bio) => dispatch(startSetBio(id, bio)),
         resetUser: () => dispatch(resetUser()),
-        startSetCoverPhoto: (photo, id) => dispatch(startSetCoverPhoto(photo, id)),
+        startSetCoverPhoto: (photo, id, prevName) => dispatch(startSetCoverPhoto(photo, id, prevName)),
         startFollow: (currentUsedId, userId) => dispatch(startFollow(currentUsedId, userId)),
         startUnfollow: (id, followingId, followerId, userId) => dispatch(startUnfollow(id, followingId, followerId, userId)),
         startUploadProfilePicture: (photo, id) => dispatch(startUploadProfilePicture(photo, id))
@@ -277,5 +277,8 @@ const mapStateToProps = (state) => {
         alreadyFollowing: alreadyFollowing(state.currentUser.following, state.user.id)
     }
 }
+
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfileInfo);
