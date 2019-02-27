@@ -10,6 +10,7 @@ import LikeStatus from '../likeComponent/LikeStatus';
 import { startRemoveComment } from '../../actions/comment';
 import showHashtags from '../../selectors/showHashtags';
 import sortByNewest from '../../selectors/sortByNewest';
+import { userInfo } from 'os';
 
 class PostStatusList extends React.Component {
     constructor(props) {
@@ -40,43 +41,61 @@ class PostStatusList extends React.Component {
         return (
             <div className='status-list-container'> 
                 {this.props.statusItem.map(status => {
-                    if(status.type === 'post') {
-                        return (
-                            <div key={status.id}>
-                                <Link to={`/profile/${status.createdBy}`}>
-                                    <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                                    <h3>{status.author.name}</h3>
-                                </Link>
-                                <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
-                                {status.createdBy === this.props.currentUser.id && <button onClick={() => {
-                                    //console.log(status)
-                                    this.props.startDeleteStatus({id: status.id})
-                                    this.removeHashtag(status.description)
-                                    this.removeComment(status.id)
-                                }}>Delete</button> }
-                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
-                                <Comment parentId={status.id} author={status.author.id} />
-                            </div>
-                        )
-                    } else if (status.type === 'image') {
-                        return (
-                            <div key={status.id} className='status-container__flex'>
-                                <Link to={`/profile/${status.createdBy}`}>
-                                    <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                                    <h3>{status.author.name}</h3>
-                                </Link>
-                                <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
-                                <ModalImage className='profile-modal-photo' small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
-                                {status.createdBy === this.props.currentUser.id && <button onClick={() => {
-                                    this.props.startDeleteImage(status.id, status.name)
-                                    this.removeHashtag(status.description)
-                                    this.removeComment(status.id)
-                                }}>Remove</button> }
-                                <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
-                                <Comment parentId={status.id}  author={status.author.id}/>
-                            </div>
-                        )
+                    if (status.createdBy === this.props.user.id) {
+                        if(status.type === 'post') {
+                            return (
+                                <div className='profile-page-status-list-container'>
+                                    <div key={status.id}>
+                                        <div className='text-status-container'>
+                                            <div className='text-status-author__flex'>
+                                                <Link to={`/profile/${status.createdBy}`}>
+                                                    <img className='text-status-author-image' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                                    <h3 className='text-status-author-name'>{status.author.name}</h3>
+                                                </Link>
+                                            </div>
+                                            <div className='text-status-remove__wrapper'>
+                                                {status.createdBy === this.props.currentUser.id && <div className='text-status-remove'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
+                                                    //console.log(status)
+                                                    this.props.startDeleteStatus({id: status.id})
+                                                    this.removeHashtag(status.description)
+                                                    this.removeComment(status.id)
+                                                }}>Delete</ion-icon></div>  }
+                                            </div>
+                                            <p className='status-text-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                            <h1 className='status-text-description'>{status.description}</h1>
+  
+                                        </div>
+                                        <div className='status-text-like-comment'>
+                                            <div className='status-like-container'>
+                                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
+                                            </div>
+                                            <Comment parentId={status.id} author={status.author.id} />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            )
+                        } else if (status.type === 'image') {
+                            return (
+                                <div key={status.id}>
+                                    <Link to={`/profile/${status.createdBy}`}>
+                                        <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                        <h3>{status.author.name}</h3>
+                                    </Link>
+                                    <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
+                                    <ModalImage className='profile-modal-photo' small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
+                                    {status.createdBy === this.props.currentUser.id && <button onClick={() => {
+                                        this.props.startDeleteImage(status.id, status.name)
+                                        this.removeHashtag(status.description)
+                                        this.removeComment(status.id)
+                                    }}>Remove</button> }
+                                    <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
+                                    <Comment parentId={status.id}  author={status.author.id}/>
+                                </div>
+                            )
+                        }
                     }
+
                 })}
             </div>
         );
@@ -95,6 +114,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
+        user: state.user,
         statusItem: sortByNewest(showHashtags(state.statusItem, state.hashtagFilter)),
         commentItem: state.commentItem,
         hashtags: state.hashtags,

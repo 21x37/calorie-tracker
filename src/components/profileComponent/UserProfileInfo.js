@@ -8,6 +8,7 @@ import { startFollow, startUnfollow } from '../../actions/follow';
 import alreadyFollowing from '../../selectors/alreadyFollowing';
 import UserPhotoList from './UserPhotoList';
 import PostStatusList from './ProfilePageStatusList';
+import ProfilePageStatusList from './ProfilePageStatusList';
 
 
 class UserProfileInfo extends React.Component {
@@ -225,9 +226,9 @@ class UserProfileInfo extends React.Component {
                         {this.state.onWall && this.props.currentUser.id === id &&
                             <div>
                                 <PostStatus />
-                                <PostStatusList />
                             </div>
                         }
+                        {this.state.onWall && <ProfilePageStatusList />}
                         {this.state.onPhotos && <UserPhotoList />}
 
                     </div>
