@@ -181,6 +181,8 @@ class UserProfileInfo extends React.Component {
                             </form>
                         </div>
 
+
+
                         {/* PROFILE NAME */}
 
                         <div className='left-panel-profile'>
@@ -221,6 +223,12 @@ class UserProfileInfo extends React.Component {
                             </div>
                         </div>
 
+                        
+                        {/* PHOTO LIST */}
+
+                        {this.state.onPhotos && <UserPhotoList />}
+
+
                         {/* POST STATUS */}
 
                         {this.state.onWall && this.props.currentUser.id === id &&
@@ -229,7 +237,7 @@ class UserProfileInfo extends React.Component {
                             </div>
                         }
                         {this.state.onWall && <ProfilePageStatusList />}
-                        {this.state.onPhotos && <UserPhotoList />}
+
 
                     </div>
                     <div className='right-profile-panel'><p></p></div>

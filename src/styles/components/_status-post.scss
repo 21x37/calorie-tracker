@@ -1,0 +1,162 @@
+.status-container__flex {
+    display: flex;
+    width: 400px;
+    position: relative;
+}
+
+.text-status-container {
+    width: 680px;
+    background: rgb(242, 242, 242);
+    border-radius: 7px;
+    border-bottom: 1px solid rgb(222, 222, 222);
+    height: 180px;
+    left: 2px;
+    margin-bottom: 75px;
+    position: relative;
+
+}
+
+.profile-page-status-list-container {
+    margin-bottom: -50px;
+}
+
+.text-status-author-image {
+    border-radius: 4px;
+    margin-left: 15px;
+    margin-top: 16px;
+}
+
+.text-status-author-name {
+    bottom: 80px;
+    left: 88px;
+    position: relative;
+
+}
+
+.text-status-author__flex {
+    display: flex;
+}
+
+.text-status-remove {
+    bottom: 99px;
+    color: #3d4967;;
+    font-size: 130%;
+    left: 630px;
+    position: absolute;
+}
+
+.text-status-remove__wrapper {
+    position: relative;
+}
+
+
+.status-text-date {
+    bottom: 118px;
+    left: 86px;
+    position: relative;
+}
+
+.status-text-description {
+    bottom: 114px;
+    position: relative;
+    left: 16px;
+    font-weight: 300;
+    font-size: 150%;
+}
+
+
+
+
+.status-text-like-comment {
+    position: relative;
+    bottom: 115px;
+    left: 15px;
+    display: inline;
+    justify-content: stretch;
+    position: relative;
+}
+
+.status-like-container {
+    position: relative;
+    top: 8px;
+}
+
+
+// ------ PHOTO STATUS --------- //
+
+
+.status-image-date {
+    bottom: 70px;
+    left: 86px;
+    position: relative;
+}
+
+.status-image-description {
+    bottom: 80px;
+    font-weight: 300;
+    font-size: 150%;
+    left: 16px;
+    position: relative;
+}
+
+.status-image {
+    background: rgb(242, 242, 242);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 8px;
+    width: 670px;
+}
+
+.status-image-container {
+    margin-bottom: 49px;
+}
+
+.status-image-photo-wrapper {
+    position: relative;
+    height: 80%;
+}
+
+.status-image-photo {
+    border-radius: 3px;
+    margin-bottom: -35px;
+    bottom: 80px;
+    height: 50%;
+    width: 50%;
+    position: relative;
+    left: 16px;
+}
+
+.status-image-wrapper {
+    height: 580;
+}
+
+.status-image-comment-like-container {
+    bottom: 42px;
+    left: 13px;
+    position: relative;
+
+}
+
+.status-image-like-container {
+    left: 2px;
+    position: relative;
+    top: 8px;
+}
+
+.text-image-remove__wrapper {
+    position: relative;
+}
+
+.text-image-remove {
+    color: #3d4967;
+    font-size: 130%;
+    left: 630px;
+    position: absolute;
+    top: 22px;
+}
+
+.status-image-name {
+    display: inline-block;
+    bottom: 33px;
+    left: 10px;
+    position: relative;
+}

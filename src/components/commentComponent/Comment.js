@@ -9,7 +9,8 @@ class Comment extends React.Component {
         super(props);
         this.state = {
             description: '',
-            likes: 0
+            likes: 0,
+            error: ''
         }
         this.form;
         this.onDescriptionChange =  this.onDescriptionChange.bind(this);
@@ -20,14 +21,21 @@ class Comment extends React.Component {
         this.setState({ description })
     }
     onClick() {
-        this.props.startAddComment({
-            parentId: this.props.parentId,
-            createdBy: this.props.currentUser.id,
-            author: this.props.currentUser,
-            ...this.state
-        });
-        const form = document.getElementById(`comment-form-${this.props.parentId}`);
-        form.reset();
+        if (this.state.description) {
+            this.props.startAddComment({
+                parentId: this.props.parentId,
+                createdBy: this.props.currentUser.id,
+                author: this.props.currentUser,
+                description: this.state.description,
+                likes: this.state.likes
+            });
+            this.setState({error: ''})
+            const form = document.getElementById(`comment-form-${this.props.parentId}`);
+            form.reset();
+        } else {
+            this.setState({ error: 'Please Provide a Comment to Post!'})
+        }
+
     }
     onSubmit(e) {
         e.preventDefault();
@@ -36,10 +44,15 @@ class Comment extends React.Component {
         return (
             <div>
                 <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
-                <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
-                    <input type='text' onChange={this.onDescriptionChange}/>
-                    <button onClick={this.onClick}>Comment!</button>
-                </form>
+                <p>{this.state.error}</p>
+                <div className='comment-form-container'>
+                    <div className='comment-form__flex'>
+                        <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
+                            <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
+                            <button className='comment-button' onClick={this.onClick}>Comment!</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         );
     };

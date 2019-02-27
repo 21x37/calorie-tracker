@@ -1,0 +1,80 @@
+.status-comment-container {
+    background: rgb(237, 237, 237);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 4px;
+    height: 105px;
+    position: relative;
+    right: 13.5px;
+    top: 14px;
+    width: 678px;
+};
+
+.comment-list-container {
+    position: relative;
+}
+
+.comment-author-container {
+    margin-left: 15px;
+};
+
+.comment-author-picture {
+    margin-top: 8px;
+};
+
+.comment-author-name {
+    position: relative;
+    left: 37px;
+    bottom: 57px;
+}
+
+.comment-profile-description {
+    bottom: 67px;
+    left: 16px;
+    position: relative;
+    font-weight: 300;
+};
+
+.comment-profile-like {
+    bottom: 85px;
+    left: 16px;
+    position: relative;
+};
+
+.comment-profile-remove {
+    font-size: 110%;
+    bottom: 66px;
+    left: 615px;
+    position: absolute;
+    z-index: 5;     
+}
+
+.comment-profile-wrapper {
+    position: relative;
+}
+
+// ------ COMMENT COMPONENT ----- //
+
+.comment-form__flex {
+    position: absolute;
+}
+
+.comment-form-container {
+    position: relative;
+    bottom: 31px;
+    left: 140px;
+}
+
+.comment-input-text {
+    border-radius: 5px;
+    border: 1px solid rgb(222, 222, 222);
+    margin-right: 10px;
+    width: 400px;
+}
+
+.comment-button {
+    padding: 2px 10px;
+    background: #3d4967;
+    border-radius: 3px;
+    border: none;
+    color: white;
+}

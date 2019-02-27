@@ -14,24 +14,37 @@ class CommentList extends React.Component {
     };
     render() {
         return (
-            <div>
+            <div className='comment-list-container'>
                 {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {
                     return (
-                        <div key={comment.id}>
+                        <div className='status-comment-container' key={comment.id}>
                             <Link to={`/profile/${comment.createdBy}`}>
-                                <img src={comment.author.picture} style={{width: '30px', height: '30px'}} />
-                                <h5>{comment.author.name}</h5>
+                                <div className='comment-author-container'>
+                                    <img className='comment-author-picture' src={comment.author.picture} style={{width: '30px', height: '30px'}} />
+                                    <h5 className='comment-author-name'>{comment.author.name}</h5>
+                                </div>
                             </Link>
-                            <h3>{comment.description}</h3>
-                            <LikeStatus  dbLocation={'comments'} parentId={comment.id} likesAmount={comment.likes} type={'comment'}/>
-                            {comment.createdBy === this.props.currentUser.id && <button onClick={() => {
-                                this.props.startRemoveComment(comment)
-                            }}>Remove Comment</button> }
-                            {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <button onClick={() => {
-                                this.props.startRemoveComment(comment)
-                            }}>Remove Comment</button> }
+                            <h3 className='comment-profile-description'>{comment.description}</h3>
+                            <div className='comment-profile-like'>
+                                <LikeStatus  dbLocation={'comments'} parentId={comment.id} likesAmount={comment.likes} type={'comment'}/>
+                                <div className='comment-profile-remove__wrapper'>
+                                    <div className='comment-profile-remove'>
+                                        {comment.createdBy === this.props.currentUser.id &&<ion-icon style={{cursor: 'pointer'}}  name='trash' onClick={() => {
+                                            this.props.startRemoveComment(comment)
+                                        }}></ion-icon> }
+                                    </div>
+                                </div>
+                                <div className='comment-profile-remove__wrapper'>
+                                    <div className='comment-profile-remove'>
+                                        {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <ion-icon name='trash' style={{cursor: 'pointer'}} onClick={() => {
+                                            console.log
+                                            this.props.startRemoveComment(comment)
+                                        }}></ion-icon> }
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                       
                     );
                 })}
             </div>
@@ -50,3 +63,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
+
+// <div className='comment-profile-remove__wrapper'>
+// <div className='comment-profile-remove'>
+// {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <ion-icon name='trash' onClick={() => {
+//     this.props.startRemoveComment(comment)
+// }}></ion-icon> }
+// </div>
+// </div>
