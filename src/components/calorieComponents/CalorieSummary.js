@@ -5,12 +5,24 @@ import { selectCaloriesTotal, selectProteinTotal, selectCaloriePercentage } from
 export const CalorieSummary = (props) => {
 
     return (
-        <div>
-            <h1>Calorie Goal: {props.caloriesTotal} / {props.nutritionGoals.calorieGoal}</h1>
-            <p>Percentage: {props.caloriesPercentage}%</p>
-            <p>Protein: {props.proteinTotal} / {props.nutritionGoals.proteinGoal}</p>
-            <p>Carbs: {props.carbsTotal} / {props.nutritionGoals.carbsGoal}</p>
-            <p>Fats: {props.fatsTotal} / {props.nutritionGoals.fatsGoal}</p>
+        <div className='calorie-summary-container'>
+            <h1 className='calorie-summary-title'>Calorie Goal: {props.caloriesTotal} / {props.nutritionGoals.calorieGoal}</h1>
+            {console.log(window.location.href.split('/')[3])}
+            {window.location.href.split('/')[3] === 'calories' && 
+            <div className='calorie-progress-bar'>
+                <div className='calorie-progress' style={{width: `${props.caloriesPercentage}%`}}><p style={{marginLeft: '10px'}}>{props.caloriesPercentage}%</p></div>
+            </div> 
+        }
+            <div className='calorie-macros-names-container'>
+                <p className='calorie-macro-protein'>Protein</p>
+                <p className='calorie-macro-carbs'>Carbs</p>
+                <p className='calorie-macro-fats'>Fats</p>
+            </div>
+            <div className='calorie-macros-container'>
+                <p>{props.proteinTotal} / {props.nutritionGoals.proteinGoal}</p>
+                <p>{props.carbsTotal} / {props.nutritionGoals.carbsGoal}</p>
+                <p>{props.fatsTotal} / {props.nutritionGoals.fatsGoal}</p>
+            </div>
         </div>
     )
 }

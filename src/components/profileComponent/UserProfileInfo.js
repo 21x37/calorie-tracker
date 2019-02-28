@@ -185,60 +185,66 @@ class UserProfileInfo extends React.Component {
 
 
                         {/* PROFILE NAME */}
-
+                        
                         <div className='left-panel-profile'>
 
                             <div className='left-panel-padding'>
-
-                                <h2 className='user-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
-
-
-                                {/* PROFILE FOLLOWERS */}
-
-                                <Link to={`${id}/followers`} className='profile-follow'><h3 className='profile-follow' >{this.followers.length} Followers</h3></Link>
-                                <Link to={`${id}/following`} className='profile-follow'><h3 className='profile-follow'>{this.following.length} Following</h3></Link>
+                                <div className='left-panel-wrapper'>
+                                    <h2 className='user-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
 
 
+                                    {/* PROFILE FOLLOWERS */}
+
+                                    <Link to={`${id}/followers`} className='profile-follow'><h3 className='profile-follow' >{this.followers.length} Followers</h3></Link>
+                                    <Link to={`${id}/following`} className='profile-follow'><h3 className='profile-follow'>{this.following.length} Following</h3></Link>
 
 
 
-                                {this.props.currentUser.id !== id &&
-                                    <button className='button' onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
-                                }
-                                {/* PROFILE BIO */}
-
-                                <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
 
-                                {this.props.currentUser.id === id &&
-                                    <form hidden={this.state.editBioVisibility} className='profile-info-bio' onSubmit={this.onSubmitBio}>
-                                        <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
-                                        <button className='button'>Save Bio</button>
-                                    </form>
-                                }
+                                    {this.props.currentUser.id !== id &&
+                                        <button className='button' onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
+                                    }
+                                    {/* PROFILE BIO */}
+
+                                    <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
 
-                                {this.props.currentUser.id === id &&
-                                    <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
-                                }
+                                    {this.props.currentUser.id === id &&
+                                        <form hidden={this.state.editBioVisibility} className='profile-info-bio' onSubmit={this.onSubmitBio}>
+                                            <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
+                                            <button className='button'>Save Bio</button>
+                                        </form>
+                                    }
+
+
+                                    {this.props.currentUser.id === id &&
+                                        <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
+                                    }
+                                </div>
                             </div>
                         </div>
 
-                        <div className='fishing-for-divs'></div>
+
+
+                                <div className='fishing-for-divs'></div>
+
                         {/* PHOTO LIST */}
 
                         {this.state.onPhotos && <UserPhotoList />}
 
 
                         {/* POST STATUS */}
-
-                        {this.state.onWall && this.props.currentUser.id === id &&
-                            <div>
-                                <PostStatus />
+                        <div className='status-list-wrapper'>   
+                            <div className='status-list-container'>
+                                {this.state.onWall && this.props.currentUser.id === id &&
+                                    <div>
+                                        <PostStatus />
+                                    </div>
+                                }
+                                {this.state.onWall && <ProfilePageStatusList />}
                             </div>
-                        }
-                        {this.state.onWall && <ProfilePageStatusList />}
-
+                        </div>  
                     </div>
                     <div className='right-profile-panel'><p></p></div>
                     <div className='right-profile-panel__color'><p></p></div>

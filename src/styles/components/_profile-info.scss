@@ -82,11 +82,9 @@
 
 .profile-info-container {
     position: relative;
-    min-height: 100%;
 }
 
 .profile-info-wrapper {
-    min-height: 100%;
     position: relative;
 }
 
@@ -113,21 +111,38 @@
      margin: auto 12px;
  }
 
-.left-panel-profile {
-    width: 250px;
-    background-color: rgb(242, 242, 242);
-    height: 110vh;
-    min-height: 110vh;
-    bottom: 200px;
-    left: 151px;
-    position: relative;
-    word-break: break-all;
-    word-wrap: break-word;
+
+ //-----------------------------------
+
+.left-panel-wrapper {
+    position: absolute;
 }
+
+
+.left-panel-profile {
+    bottom: 170px;
+    left: 218px;
+    position: relative;
+
+}
+
+.status-list-container {
+    position: relative;
+}
+
+.status-list-wrapper {
+    position: absolute;
+    right: 10vw;
+}
+
+// //-------------------------------------
+
+//-------------------------------
 
 .under-profile-photo {
     position: absolute;
-    min-height: 120%;
+    height: 72vh;
+    min-height: 87%;
     top: 250px;
     width: 403.5px;
     background-color: rgb(242, 242, 242);
@@ -135,6 +150,8 @@
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
     overflow: hidden;
 }
+
+//-----------------------------
 
 .left-panel-padding {
     text-align: center;
@@ -149,16 +166,22 @@
 }
 
 
+// HEIGHT
+
 .right-profile-panel {
     position: absolute;
     right: .1px;
     top: 271.5px;
-    min-height: 118%;
-    width: 15%;
+    height: 71vh;
+    min-height: 86%;
+    width: 14vw;
     background-color: rgb(242, 242, 242);
     overflow: hidden;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.034);
 }
+
+
+//-------------------------------
 
 // RIGHT BORDER PANEL COLOR
 

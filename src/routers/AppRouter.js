@@ -20,18 +20,20 @@ export const history = createHistory();
 
 const AppRouter = () => (
     <Router history={history}>
-        <div id='app-router-div'>
-            <Switch>
-                <PrivateRoute path="/" component={DashboardPage} exact={true}/>
-                <PublicRoute path='/login' component={LoginPage} />
-                <PrivateRoute path='/profile/:id' component={ProfilePage} exact={true} key={uuid()}/>
-                <PrivateRoute path='/profile/:id/followers' component={Followers} key={uuid()}/>
-                <PrivateRoute path='/profile/:id/following' component={Following} key={uuid()}/>
-                <PrivateRoute path='/calories' component={CaloriePage} exact={true}/>
-                <PrivateRoute path='/foodsearch' component={CalorieLookUp} />
-                <PrivateRoute path='/calories/:id' component={EditCalorie} />
-                <PublicRoute component={NotFoundPage}/>
-            </Switch>
+    <div id='wrapper'>
+            <div id='app-router-div'>
+                <Switch>
+                    <PrivateRoute path="/" component={DashboardPage} exact={true}/>
+                    <PublicRoute path='/login' component={LoginPage} />
+                    <PrivateRoute path='/profile/:id' component={ProfilePage} exact={true} key={uuid()}/>
+                    <PrivateRoute path='/profile/:id/followers' component={Followers} key={uuid()}/>
+                    <PrivateRoute path='/profile/:id/following' component={Following} key={uuid()}/>
+                    <PrivateRoute path='/calories' component={CaloriePage} exact={true}/>
+                    <PrivateRoute path='/foodsearch' component={CalorieLookUp} />
+                    <PrivateRoute path='/calories/:id' component={EditCalorie} />
+                    <PublicRoute component={NotFoundPage}/>
+                </Switch>
+            </div>
         </div>
     </Router>
 )

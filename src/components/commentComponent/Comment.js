@@ -49,7 +49,7 @@ class Comment extends React.Component {
                     <div className='comment-form__flex'>
                         <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
                             <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
-                            <button className='comment-button' onClick={this.onClick}>Comment!</button>
+                            <button className='comment-button' onClick={this.onClick}>Comment</button>
                         </form>
                     </div>
                 </div>

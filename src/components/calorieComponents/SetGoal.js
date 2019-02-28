@@ -58,8 +58,9 @@ class SetGoal extends React.Component {
                     <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
                     <input type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
                     <input type='text-input' onChange={this.onFatsChange} type='text' placeholder='Fats'/>
-                    <button>Set Goal!</button>
+                    <button className='button'>Set Goal!</button>
                 </form>
+                <div className='under-calorie-goal-bar'></div>
             </div>
         )
     };

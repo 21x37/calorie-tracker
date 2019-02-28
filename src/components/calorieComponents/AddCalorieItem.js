@@ -76,7 +76,7 @@ class AddCalorieItem extends React.Component {
                     <input onChange={this.onProteinChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Protein'/>
                     <input onChange={this.onCarbsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Carbs'/>
                     <input onChange={this.onFatsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Fats'/>
-                    <button>Submit</button>
+                    <button className='button'>Submit</button>
                 </form>
             </div>
         );

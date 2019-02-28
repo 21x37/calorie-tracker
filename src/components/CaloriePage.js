@@ -6,11 +6,13 @@ import SetGoal from './calorieComponents/SetGoal';
 
 const CaloriePage = () => {
     return (
-        <div>
-            <CalorieSummary />
-            <AddCalorieItem />
-            <SetGoal />
-            <CalorieItemList />
+        <div className='calorie-page-wrapper'>
+            <div className='calorie-page-container'>
+                <CalorieSummary />
+                <AddCalorieItem />
+                <SetGoal />
+                <CalorieItemList />
+            </div>
         </div>
     );
 };
