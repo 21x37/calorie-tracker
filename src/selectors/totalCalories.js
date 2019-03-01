@@ -15,7 +15,7 @@ export const selectCaloriePercentage = (calories, calorieGoal) => {
     const totalCalories = selectCaloriesTotal(calories);
     if (calorieGoal.calorieGoal > 0) {
         const percentage = Math.floor((totalCalories / calorieGoal.calorieGoal) * 100);
-        return percentage;
+        return percentage < 100 ? percentage : 100;
     } else {
         return 0
     }

@@ -57,6 +57,18 @@ class AddCalorieItem extends React.Component {
                 description: this.state.description,
                 fats: this.state.fats ? this.state.fats : 0,
                 protein: this.state.protein ? this.state.protein : 0,
+            }).then(() => {
+                this.setState(() => {
+                    return {
+                        id: '',
+                        calories: 0,
+                        carbs: 0,
+                        description: '',
+                        fats: 0,
+                        protein: 0,
+                        error: ''
+                    }
+                })
             });
             const form = document.getElementById('calorieItemForm');
             form.reset();

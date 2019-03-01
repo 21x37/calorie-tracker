@@ -3,6 +3,15 @@
     text-align: center;
 }
 
+.calorie-container {
+    border-bottom: 4px solid rgb(235, 235, 235);
+    margin: 0 auto;
+    margin-bottom: -5px;
+    width: 43%;
+}
+
+
+
 .calorie-page-container {
     display: inline-block;
 }
@@ -17,6 +26,7 @@
     border-radius: 12px;
     width: 600px;
     margin: 0 auto;
+    margin-bottom: 25px;
     background: rgb(235, 235, 235);
     height: 23px;
 }
@@ -29,30 +39,112 @@
     border: none;
 }
 
-.calorie-macros-names-container {
-    display: flex;
-    justify-content: space-between;
-    font-size: 105%;
-    margin: 0 auto;
-    margin-bottom: -30px;
-    margin-top: 30px;
-    width: 80%;
-}
+// .calorie-macros-names-container {
+//     display: flex;
+//     justify-content: space-between;
+//     font-size: 105%;
+//     margin: 0 auto;
+//     margin-bottom: -150px;
+//     width: 40%;
+//     height: 150px;
+// }
 
 .calorie-macros-container {
-    width: 80%;
+    width: 40.5%;
+    height: 100%;
     margin: 0 auto;
+    margin-bottom: -2px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    font-weight: 300;
+}
+
+.calorie-names-container {
+    display: flex;
+    justify-content: space-evenly;
+    left: 10px;
+    margin: 0 auto;
+    margin-bottom: -30px;
+    width: 20.5%;
+    position: relative;
+}
+
+.calorie-name-goals {
+    display: flex;
+    justify-content: space-evenly;
+    left: 15px;
+    margin: 0 auto;
+    width: 20.5%;
+    position: relative;
+}
+
+
+.calorie-macro-protein {
 }
 
 
 .calorie-macro-carbs {
-    margin-right: 4px;
 }
 
 .calorie-macro-fats {
-    margin-right: 7px;
+}
+
+.protein-progress-bar {
+    position: relative;
+    height: 130px;
+}
+
+.carbs-progress-bar {
+    position: relative;
+    height: 130px;
+}
+
+.fats-progress-bar {
+    position: relative;
+    height: 130px;
+}
+
+.calorie-protein-total {
+    background: #2ecc71;
+    bottom: 0;
+    height: 100%;
+    width: 30px;
+    position: absolute;
+    margin: 0;
+}
+
+.calorie-carbs-total {
+    background: #2ecc71;
+    bottom: 0;
+    height: 100%;
+    width: 30px;
+    position: absolute;
+    margin: 0;
+    margin-left: 200px;
+}
+
+.calorie-fats-total {
+    background: #2ecc71;
+    bottom: 0;
+    height: 80%;
+    width: 30px;
+    position: absolute;
+    margin: 0;
+}
+
+.calorie-protein-text {
+    bottom: 40px;
+    position: relative;
+}
+
+.calorie-carbs-text {
+    bottom: 40px;
+    position: relative;
+}
+
+.calorie-fats-text {
+    bottom: 40px;
+    position: relative;
 }
 
 .under-calorie-goal-bar {
@@ -60,4 +152,27 @@
     width: 100vw;
     height: 6px;
     margin: 19px;
+}
+
+
+.calorie-carbs-total {
+    margin-left: 3px;
+}
+
+.calorie-fats-total {
+    margin-right: 2px;
+}
+
+.calorie-goal-total-protein {
+    position: relative;
+    right: 3px;
+}
+
+.calorie-goal-total-carbs {
+    position: relative;
+    left: 1px
+}
+
+.calorie-goal-total-fats {
+    position: relative;
 }
