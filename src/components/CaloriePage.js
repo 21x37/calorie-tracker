@@ -9,8 +9,12 @@ const CaloriePage = () => {
         <div className='calorie-page-wrapper'>
             <div className='calorie-page-container'>
                 <CalorieSummary />
-                <AddCalorieItem />
-                <SetGoal />
+                <div className='calorie-add-wrapper'>
+                    <div className='calorie-add-container'>
+                        <AddCalorieItem />
+                        <SetGoal />
+                    </div>
+                </div>
                 <CalorieItemList />
             </div>
         </div>

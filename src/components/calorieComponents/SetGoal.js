@@ -12,7 +12,8 @@ class SetGoal extends React.Component {
             protein: 0,
             carbs: 0,
             fats: 0,
-            error: ''
+            error: '',
+            visible: true
         }
     };
     onCaloriesChange = (e) => {
@@ -48,18 +49,27 @@ class SetGoal extends React.Component {
         }
 
     };
+    onClick = () => {
+        if (this.state.visible) {
+            this.setState({ visible: false });
+        } else {
+            this.setState({ visible: true })
+        }
+    }
     render() {
         return (
-            <div>
-                <h2>Set Calorie Goal</h2>
+            <div className='calorie-wrapper'>
+                <button className='set-calorie-button' onClick={this.onClick}>Set Calorie Goal</button>
                 {this.state.error && <p>{this.state.error}</p>}
-                <form id='setGoalForm' onSubmit={this.onSubmit}>
-                    <input type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
-                    <input type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
-                    <input type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
-                    <input type='text-input' onChange={this.onFatsChange} type='text' placeholder='Fats'/>
-                    <button className='button'>Set Goal!</button>
-                </form>
+                <div hidden={this.state.visible} className='add-calorie-form-wrapper calorie-forms calorie-forms__goal add-calorie-form-wrapper__goal'>
+                    <form id='setGoalForm' onSubmit={this.onSubmit}>
+                        <input className='add-calorie-input' type='text-input' onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
+                        <input className='add-calorie-input' type='text-input' onChange={this.onProteinChange} type='text' placeholder='Protein'/>
+                        <input className='add-calorie-input' type='text-input' onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
+                        <input className='add-calorie-input' type='text-input' onChange={this.onFatsChange} type='text' placeholder='Fats'/>
+                        <button className='submit-calorie-button'>Set Goal</button>
+                    </form>
+                </div>
                 <div className='under-calorie-goal-bar'></div>
             </div>
         )

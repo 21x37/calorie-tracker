@@ -1,0 +1,66 @@
+.set-calorie-button {
+    background: rgb(242, 242, 242);
+    border: 1px solid rgb(230, 230, 230);
+    border-bottom: none;
+    border-radius: 10px;
+    left: 165px;
+    width: 190px;
+    height: 60px;
+    margin-bottom: -6px;
+    margin-right: 300px;
+    margin-top: 16px;
+    padding: 15px 35px;
+    position: relative;
+}
+
+
+.add-calorie-form-wrapper {
+    background: rgb(242, 242, 242);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 270px;
+    padding: 10px 0;
+}
+
+
+.add-calorie-input {
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    margin-bottom: 4px;
+}
+
+.calorie-forms {
+    position: absolute;
+    left: 200px;
+}
+
+.calorie-forms__add {
+    right: 600px;
+    position: absolute;
+}
+
+.calorie-forms__goal {
+    left: 830px;
+    position: absolute;
+}
+
+.calorie-wrapper {
+    display: inline;
+}
+
+.submit-calorie-button {
+    background: #303A52;
+    border: none;
+    border-radius: 5px;
+    color: $white-shade;
+    width: 250px;
+    height: 30px;
+}
+
+.add-calorie-form-wrapper__goal {
+    margin-bottom: 10px;
+}
+
+//#303A52;
