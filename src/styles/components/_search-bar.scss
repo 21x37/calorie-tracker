@@ -2,11 +2,12 @@
     background: rgb(255, 255, 255);
     border-bottom: 1px solid #5961747c;
     border-radius: 2px;
-    bottom: 1.2px;
+    bottom: 2px;
     display: flex;
     height: 45px;
-    width: 340px;
-    right: 50%;
+    width: 350px;
+    position: relative;
+    right: 5px;
 }
 
 .search-container:hover {
@@ -41,6 +42,5 @@
 .search-results-container {
     position: absolute;
     height: 225px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    width: 380px;
 }

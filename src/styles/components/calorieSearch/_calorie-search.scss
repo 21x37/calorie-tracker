@@ -1,0 +1,62 @@
+.calorie-lookup-container {
+    width: 100%;
+    text-align: center;
+}
+
+.calorie-lookup-title {
+    color: $blue;
+    font-weight: 400;
+}
+
+.calorie-lookup-text-input {
+    border: none;
+    border-left: 2px solid rgb(235, 235, 235);
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-top: 2px solid rgb(235, 235, 235);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 300px;
+    height: 30px;
+}
+
+.calorie-lookup-button {
+    background: $blue;
+    border: none;
+    border-right: 2px solid rgb(235, 235, 235);
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-top: 2px solid rgb(235, 235, 235);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: rgb(235, 235, 235);
+    padding: 4px 10px;
+}
+
+.calorie-lookup-search {
+    font-weight: 400;
+    font-size: 170%;
+}
+
+.calorie-increment-decrement-wrapper {
+    position: relative;
+}
+
+.calorie-increment-serving {
+    color: $blue;
+    position: absolute;
+    font-size: 110%;
+    left: 310px;
+}
+
+.calorie-decrement-serving {
+    color: $blue;
+    position: absolute;
+    left: 330px;
+    font-size: 110%;
+}
+
+.add-searched-calorie {
+    color: $blue;
+    position: relative;
+    font-size: 110%;
+    left: 320px;
+}

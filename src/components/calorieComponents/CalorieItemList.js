@@ -9,8 +9,16 @@ class CalorieItemList extends React.Component {
     constructor(props){
         super(props);
     };
+    textAbstract = (text) => {
+        if (text) {
+            if (text.length > 20) {
+                return text.substring(0,20)+'...';
+                } else {
+                return text;
+                }
+        }
+    }
     render() {
-        const id = uuid();
         return (
             <div>
             {/* CHECKING IF THERE ARE CALORIES IF THERE IS CALORIES SHOW REMOVE BUTTON */}
@@ -19,6 +27,10 @@ class CalorieItemList extends React.Component {
             }}>Remove All Calories</button> } 
             {/* RENDERING ALL CALORIES IN REDUX STATE */}
             {this.props.calorieItem.map(calorie => {
+                const id = uuid();
+                const proteinPercentage = ((calorie.protein * 4) / calorie.calories) * 100 < 100 ? ((calorie.protein * 4) / calorie.calories) * 100 : 100;
+                const carbsPercentage = ((calorie.carbs * 4) / calorie.calories) * 100 < 100 ? ((calorie.carbs * 4) / calorie.calories) * 100 : 100;
+                const fatsPercentage = ((calorie.fats * 9) / calorie.calories) * 100 < 100 ? ((calorie.fats * 9) / calorie.calories) * 100 : 100;
                 return (
                     <div className='calorie-item-container' key={calorie.id}>
                         <div className='calorie-item-wrapper'>
@@ -29,23 +41,23 @@ class CalorieItemList extends React.Component {
                                 <label className='remove-calorie-item' style={{cursor: 'pointer'}} htmlFor={id}><ion-icon name="trash"></ion-icon></label>
                             </div>
                             <Link style={{ textDecoration: 'none', color: '#333' }} to={`/calories/${calorie.id}`} >
-                                <p className='calorie-item-description'>{calorie.description}</p>
+                                <p className='calorie-item-description'>{this.textAbstract(calorie.description)}</p>
                                 <p className='calorie-item-calories'>{calorie.calories} {calorie.calories > 1 ? 'calories' : 'calorie'}</p>
                                 <div className='calorie-item-macros__flex'>
-                                    <p>Protein {calorie.protein}</p>
-                                    <p>Carbs {calorie.carbs}</p>
-                                    <p>Fats {calorie.fats}</p>
+                                    <p>Protein: {calorie.protein}g</p>
+                                    <p>Carbs: {calorie.carbs}g</p>
+                                    <p>Fats: {calorie.fats}g</p>
                                 </div>
                                 <div className='calorie-item-bar-container'>
                                     <div className='calorie-item-progress-wrapper'>
                                         <div className='calories-from-protein-bar'>
-                                            <div style={{height: `${((calorie.protein * 4) / calorie.calories) * 100}%`, background: '#e74c3c'}} className='calories-progress'></div>
+                                            <div style={{height: `${proteinPercentage}%`, background: '#e74c3c'}} className='calories-progress'></div>
                                         </div>
                                         <div className='calories-from-carbs-bar'>
-                                            <div style={{height: `${((calorie.carbs * 4) / calorie.calories) * 100}%`, background: '#3498db'}} className='calories-progress'></div>
+                                            <div style={{height: `${carbsPercentage}%`, background: '#3498db'}} className='calories-progress'></div>
                                         </div>
                                         <div className='calories-from-fats-bar'>
-                                            <div style={{height: `${((calorie.fats * 9) / calorie.calories) * 100}%`, background: '#f1c40f'}} className='calories-progress'></div>
+                                            <div style={{height: `${fatsPercentage}%`, background: '#f1c40f'}} className='calories-progress'></div>
                                         </div>
                                     </div>
                                 </div>

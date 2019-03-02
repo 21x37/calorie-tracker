@@ -27,6 +27,7 @@ class CalorieSummary extends React.Component {
                     <div className='calorie-progress' style={{width: `${this.props.caloriesPercentage}%`}}><p style={{marginLeft: '10px'}}>{this.props.caloriesPercentage}%</p></div>
                 </div> 
             }
+            {window.location.href.split('/')[3] === 'calories' && 
             <div className='calorie-total-wrapper'>
                 <div className='calorie-container'>
                     <div className='calorie-macros-container'>
@@ -59,6 +60,7 @@ class CalorieSummary extends React.Component {
                         <p className='calorie-goal-total-fats'>{this.props.nutritionGoals.fatsGoal}g</p>
                     </div>
                 </div>
+            }
             </div>
         )
     }
