@@ -104,8 +104,13 @@
     height: 130px;
 }
 
+
+.calorie-total-wrapper {
+    position: relative;
+}
+
 .calorie-protein-total {
-    background: #2ecc71;
+    background: #e74c3c;
     bottom: 0;
     height: 100%;
     width: 30px;
@@ -114,7 +119,7 @@
 }
 
 .calorie-carbs-total {
-    background: #2ecc71;
+    background: #3498db;
     bottom: 0;
     height: 100%;
     width: 30px;
@@ -124,7 +129,7 @@
 }
 
 .calorie-fats-total {
-    background: #2ecc71;
+    background: #f1c40f;
     bottom: 0;
     height: 80%;
     width: 30px;

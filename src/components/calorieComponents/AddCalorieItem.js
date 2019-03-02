@@ -81,8 +81,10 @@ class AddCalorieItem extends React.Component {
     onClick = () => {
         if (this.state.visible) {
             this.setState({ visible: false })
+            this.props.sendBoolean(false, 'addCalorieNotVisible');
         }else {
             this.setState({ visible: true})
+            this.props.sendBoolean(true, 'addCalorieNotVisible');
         }
 
     }

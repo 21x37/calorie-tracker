@@ -52,8 +52,10 @@ class SetGoal extends React.Component {
     onClick = () => {
         if (this.state.visible) {
             this.setState({ visible: false });
+            this.props.sendBoolean(false, 'setGoalNotVisible');
         } else {
-            this.setState({ visible: true })
+            this.setState({ visible: true });
+            this.props.sendBoolean(true, 'setGoalNotVisible');
         }
     }
     render() {
@@ -70,7 +72,6 @@ class SetGoal extends React.Component {
                         <button className='submit-calorie-button'>Set Goal</button>
                     </form>
                 </div>
-                <div className='under-calorie-goal-bar'></div>
             </div>
         )
     };

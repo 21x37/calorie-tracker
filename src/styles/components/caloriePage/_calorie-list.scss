@@ -1,0 +1,100 @@
+.remove-all-calories-button {
+    background: #303A52;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    color: rgb(230, 230, 230);
+    margin-bottom: 20px;
+    padding: 5px 30px;
+};
+
+.calorie-item-container {
+    background: rgb(242, 242, 242);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    height: 100%;
+    margin: 0 auto;
+    margin-bottom: 35px;
+    margin-top: 15px;
+    width: 400px;
+    line-height: 1;
+    padding: 1px 0 10px 0;
+    text-align: left;
+    color: $dark-grey;
+};
+
+.calorie-item-container:hover {
+    background: rgb(230, 230, 230);
+    border: 1px solid rgb(242, 242, 242);
+}
+
+.calorie-item-wrapper {
+    margin-left: 30px;
+}
+
+.calorie-item-description {
+    font-size: 150%;
+    text-decoration: none;
+    font-weight: 300;
+    margin-bottom: -8px;
+};
+
+
+.calorie-item-calories {
+    margin-bottom: -4px;
+}
+
+.calorie-item-bar-container {
+    border-bottom: 2px solid rgb(230, 230, 230);
+    bottom: 18px;
+    width: 69px;
+    position: relative;
+    left: 180px;
+}
+
+.calorie-item-progress-wrapper {
+    position: relative;
+    left: 8px;
+}
+
+.calories-from-protein-bar {
+    bottom: 0;
+    height: 80px;
+    width: 11.5px;
+    position: absolute;
+}
+
+.calories-from-carbs-bar {
+    bottom: 0;
+    height: 80px;
+    left: 20px;
+    width: 11.5px;
+    position: absolute;
+}
+
+.calories-from-fats-bar {
+    bottom: 0;
+    height: 80px;
+    left: 40px;
+    width: 11.5px;
+    position: absolute;
+}
+
+.calories-progress {
+    background: purple;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.remove-calorie-item-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.remove-calorie-item {
+    color: #303A52;
+    position: absolute;
+    font-size: 120%;
+    left: 330px;
+    top: 22px;
+}
