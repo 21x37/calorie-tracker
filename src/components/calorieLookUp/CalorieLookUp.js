@@ -59,14 +59,16 @@ class CalorieLookUp extends React.Component {
     render() {
         return (
             <div className='calorie-lookup-container'>
-                <h1 className='calorie-lookup-title'>Search For a Food!</h1>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit} id='calorieSearchForm'>
-                    <input className='calorie-lookup-text-input' type='text' onChange={this.onChange}/>
-                    <button className='calorie-lookup-button'>Search</button>
-                </form>
-                {this.state.lookup && <h1 className='calorie-lookup-search'>Searching for {this.state.lookup}</h1>}
-                <CalorieLookUpList />
+                <div className='calorie-lookup-wrapper'>
+                    <h1 className='calorie-lookup-title'>Search For a Food!</h1>
+                    {this.state.error && <p>{this.state.error}</p>}
+                    <form onSubmit={this.onSubmit} id='calorieSearchForm'>
+                        <input className='calorie-lookup-text-input' type='text' onChange={this.onChange}/>
+                        <button className='calorie-lookup-button'>Search</button>
+                    </form>
+                    {this.state.lookup && <h1 className='calorie-lookup-search'>Searching for {this.state.lookup}</h1>}
+                    <CalorieLookUpList />
+                </div>
             </div>
         )
     }

@@ -12,10 +12,14 @@ import Header from './Header';
 import TrendingList from './newsFeedComponents/TrendingList';
 
 const DashboardPage = () => (
-    <div>
-        <CalorieSummary />
-        <TrendingList />
-        <NewsFeed />
+    <div className='dashboard-page-wrapper'>
+        
+        <div className='dashboard-page-container'>
+                <TrendingList />
+                <CalorieSummary />
+                <div className='above-status-bar'></div> 
+                <NewsFeed />
+        </div>
     </div>
 );
 

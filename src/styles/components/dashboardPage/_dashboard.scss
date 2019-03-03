@@ -1,0 +1,69 @@
+.dashboard-page-wrapper {
+    text-align: center;
+}
+
+
+.dashboard-status-continer {
+    
+}
+
+.dashboard-post-status-title {
+    font-weight: 400;
+    position: relative;
+    right: 30%;
+    margin-bottom: -15px;
+}
+
+.dashboard-status-input {
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-bottom: 3px solid yellow;
+    border-left: 3px solid yellow; //blue
+    border-radius: 5px;
+    border-top: 3px solid yellow;
+    margin-right: -5px;
+    margin-top: -20px;
+}
+
+.dashboard-upload-icon {
+    position: relative;
+    right: 110px;
+    top: 2.5px;
+}
+
+.dashboard-status-post-button {
+    padding: 8px 20px;
+    border: none;
+    border-bottom: 3px solid yellow;
+    border-radius: 5px;
+    border-right: 3px solid yellow;
+    border-top: 3px solid yellow;
+}
+
+.under-dashboard-status-bar {
+    background: red;
+    height: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.above-status-bar {
+    width: 100%;
+    height: 5px;
+    margin-top: 20px;
+    background: red;
+}
+
+.dashboard-page-container {
+    background: rgb(0, 140, 255);
+    width: 890px;
+    display: inline-block;
+    min-height: 100vh;
+    position: relative;
+    right: 70px;
+}
+
+.dashboard-page__flex {
+    display: flex;
+}

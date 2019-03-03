@@ -94,31 +94,55 @@ class PostStatus extends React.Component {
         // CHANGE FILEUPLOADED STATE TO TRUE FOR UPLOAD BUTTON
     };
     render() {
-        return (
-            <div>
-                <div className='status-container'>
-                    <div className='status-title-wrapper'>
-                        <h2 className='post-status-title'>Post a Status!</h2>
-                     </div>
-                    <div className='status-position'>
-                        {this.state.error && <p>{this.state.error}</p>}
-                        <p className='profile-upload-image-name'>{this.state.uploadedImageName}</p>
-                        <form id='postStatusForm' onSubmit={this.onSubmit}>
-                            <div className='profile-form-wrapper'>
-                                <input className='status-text-input-profile' type='text' onChange={this.onDescriptionChange}/>
-                                <button className='button post-button'>Post!</button>
-                                <input id='status-upload-image' type="file" accept="image/*" style={{display: 'none'}} onChange={this.handleFileUploadChange}/>
-                                <label className='profile-upload-photo-icon' htmlFor='status-upload-image'><ion-icon name="image"></ion-icon></label>
+
+        console.log(window.location.href.split('/')[3])
+        if (window.location.href.split('/')[3] === 'profile') {
+            const id = uuid();
+            return (
+                <div>
+                    <div className='status-container'>
+                        <div className='status-title-wrapper'>
+                            <h2 className='post-status-title'>Post a Status!</h2>
+                         </div>
+                        <div className='status-position'>
+                            {this.state.error && <p>{this.state.error}</p>}
+                            <p className='profile-upload-image-name'>{this.state.uploadedImageName}</p>
+                            <form id='postStatusForm' onSubmit={this.onSubmit}>
+                                <div className='profile-form-wrapper'>
+                                    <input className='status-text-input-profile' type='text' onChange={this.onDescriptionChange}/>
+                                    <button className='button post-button'>Post!</button>
+                                    <input id={id} type="file" accept="image/*" style={{display: 'none'}} onChange={this.handleFileUploadChange}/>
+                                    <label className='profile-upload-photo-icon' htmlFor={id}><ion-icon name="image"></ion-icon></label>
+                                </div>
+                            </form>
+                        </div>
+                        <div className='under-status-bar-wrapper'>
+                            <div className='under-status-post-bar'>
                             </div>
-                        </form>
-                    </div>
-                    <div className='under-status-bar-wrapper'>
-                        <div className='under-status-post-bar'>
                         </div>
                     </div>
                 </div>
+            )
+        } else if (window.location.href.split('/')[3] === '') {
+            const id = uuid();
+            return (
+                <div>
+                <div>
+                    <h2 className='dashboard-post-status-title'>Post a Status!</h2>
+                        {this.state.error && <p>{this.state.error}</p>}
+                        <p>{this.state.uploadedImageName}</p>
+                        <form id='postStatusForm' onSubmit={this.onSubmit}>
+                                <input className='dashboard-status-input' type='text' onChange={this.onDescriptionChange}/>
+                                <button className='dashboard-status-post-button'>Post!</button>
+                                <input id={id} type="file" accept="image/*" style={{display: 'none'}} onChange={this.handleFileUploadChange}/>
+                                <label className='dashboard-upload-icon' htmlFor={id}><ion-icon name="image"></ion-icon></label>
+                        </form>
+                </div>
+                <div className='under-dashboard-status-bar'></div>
             </div>
-        )
+            )
+
+        }
     };
 };
 

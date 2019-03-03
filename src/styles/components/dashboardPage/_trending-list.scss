@@ -1,0 +1,35 @@
+.trending-list-wrapper {
+    position: absolute;
+    left: 900px;
+    width: 200px;
+
+
+}
+
+.trending-list-container {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: rgb(0, 140, 255);    
+    padding-top: 10px;
+}
+
+.trending-hashtag-title {
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: -6px;
+}
+
+.trending-hashtag-count {
+    font-weight: 300;
+    margin-top: -5px;
+}
+
+.trending-hashtag {
+    margin-bottom: -35px;
+    display: inline-block;
+}
+
+.individual-hashtag-container {
+    margin-top: -25px;
+}

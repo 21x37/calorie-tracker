@@ -19,7 +19,8 @@ const count = (array_elements) => {
     if (cnt > 0) {
         hashtags.push({count: cnt, hashtag: current})
     }
-    return hashtags
+    const sortedHashtags = hashtags.sort((a, b) => b.count - a.count);
+    return sortedHashtags
 
 }
 // PARSING HASHTAG OBJECTS IN ARRAY TO BE PURE HASHTAG ARRAY 

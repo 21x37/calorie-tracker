@@ -9,26 +9,37 @@ class TrendingList extends React.Component {
     constructor(props) {
         super(props);
     };
+    maxHashtags = () => {
+        if ( this.props.hashtagCount.length > 10 ) {
+            return this.props.hashtagCount.slice(0, 10)
+        } else {
+            return this.props.hashtagCount
+        }
+    }
     render() {
+        console.log(this.maxHashtags());
+        const arr = this.maxHashtags();
         return (
-            <div>
-                {this.props.hashtagCount[0] && <h3>Trending Hashtags</h3>}
-                {this.props.hashtagCount.map(hashtag => {
-                    return (
-                        <div key={uuid()}>
-                            <Link to='/' ref='hashtagElement' id={hashtag.hashtag}>
-                                <button onClick={() => {
-                                    this.props.queryHashtags(hashtag.hashtag);
-                                }}>{hashtag.hashtag}</button>
-                            </Link>
-                            <br/> {hashtag.count} {hashtag.count > 1? 'posts' : 'post'}
-                        </div>
-                    )
-                })}
-                {this.props.hashtagFilter.sortBy !== 'newest' && 
-                <div>
-                    <button onClick={() => {this.props.resetQuery()}}>Reset Search</button>
-                </div>}
+            <div className='trending-list-wrapper'>
+                <div className='trending-list-container'>
+                    {this.props.hashtagCount[0] && <h3 className='trending-hashtag-title'>Trending Hashtags</h3>}
+                    {this.maxHashtags().map(hashtag => {
+                        return (
+                            <div className='individual-hashtag-container' key={uuid()}>
+                                <Link to='/' ref='hashtagElement' id={hashtag.hashtag}>
+                                    <p className='trending-hashtag' style={{cursor: 'pointer'}} onClick={() => {
+                                        this.props.queryHashtags(hashtag.hashtag);
+                                    }}>{hashtag.hashtag}</p>
+                                </Link>
+                                <br/><p className='trending-hashtag-count'>{hashtag.count} {hashtag.count > 1? 'posts' : 'post'}</p>
+                            </div>
+                        )
+                    })}
+                    {this.props.hashtagFilter.sortBy !== 'newest' && 
+                    <div>
+                        <button onClick={() => {this.props.resetQuery()}}>Reset Search</button>
+                    </div>}
+                </div>
             </div>
         );
     };
