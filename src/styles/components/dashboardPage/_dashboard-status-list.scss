@@ -1,0 +1,112 @@
+.dashboard-status-list-wrapper {
+    width: 80%;
+    margin: 0 auto;
+};
+
+.dashboard-status-list-container {
+    background: rgb(242, 242, 242);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 7px;
+    height: 180px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    width: 100%
+};
+
+.dashboard-status-list-author-name {
+    position: relative;
+    right: 37px;
+};
+
+.dashboard-status-list-author {
+    border-radius: 4px;
+    margin-top: 16px;
+    position: relative;
+};
+
+.dashboard-status-list-date {
+    position: relative;
+    left: 12px;
+    top: 27px;
+}
+
+.dashboard-status-list-link-wrapper {
+    position: relative;
+    display: flex;
+    left: 12px;
+};
+
+.dashboard-status-list-post-details-wrapper {
+    position: relative;
+    margin-top: -84px;
+}
+
+.dashboard-status-list-post-details-container {
+    position: absolute;
+    width: 300px;
+}
+
+.dashboard-status-list-description-wrapper {
+    position: relative;
+    text-align: left;
+}
+
+.dashboard-status-list-description {
+    font-weight: 300;
+    left: 16px;
+    position: absolute;
+    top: 5px;
+    text-align: initial;
+    width: 100%;
+}
+
+.dashboard-like-comment-wrapper {
+    position: relative;
+    top: 70px;
+}
+
+.dashboard-like-wrapper {
+    position: relative;
+}
+
+.dashboard-comment-wrapper {
+    position: relative;
+    left: 55px;
+}
+
+.dashboard-remove-status-wrapper {
+    position: relative;
+}
+
+.dashboard-remove-status {
+    bottom: 12px;
+    color: $blue;
+    font-size: 110%;
+    position: absolute;
+    left: 93.5%;
+}
+
+.dashboard-like-profile-container {
+    position: relative;
+    right: 60px;
+}
+
+.dashboard-like-amount {
+    position: relative;
+    right: 210px;
+}
+
+.dashboard-like-label-wrapper {
+    position: absolute;
+}
+
+.dashboard-like-label-wrapper {
+    position: relative;
+    margin-top: -51px;
+    right: 260px;
+    top: 10.5px;
+}
+
+.dashboard-like-label-icon {
+    color: $blue;
+}

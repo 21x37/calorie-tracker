@@ -20,7 +20,7 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     width: 300px;
-    height: 30px;
+    height: 45px;
 }
 
 .calorie-lookup-button {
@@ -32,12 +32,15 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: rgb(235, 235, 235);
-    padding: 4px 10px;
+    padding: 11px 10px;
 }
 
 .calorie-lookup-search {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 170%;
+    left: 2px;
+    margin-bottom: 55px;
+    position: relative;
 }
 
 .calorie-increment-decrement-wrapper {

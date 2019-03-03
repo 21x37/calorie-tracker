@@ -7,10 +7,12 @@
 }
 
 .trending-list-container {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background: rgb(0, 140, 255);    
+    border-radius: 10px;
+    border-bottom: 1px solid rgb(222, 222, 222);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.11);
+    background:rgb(248, 248, 248);
     padding-top: 10px;
+    margin-top: 50px;
 }
 
 .trending-hashtag-title {
@@ -28,6 +30,7 @@
 .trending-hashtag {
     margin-bottom: -35px;
     display: inline-block;
+    color: $blue;
 }
 
 .individual-hashtag-container {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import uuid from 'uuid';
 import { Link } from 'react-router-dom';
 import ModalImage from 'react-modal-image';
 import { startDeleteStatus, startDeleteImage } from '../../actions/postStatus';
@@ -41,24 +42,45 @@ class PostStatusList extends React.Component {
             <div>
                 <div class=''>
                     {this.props.statusItem.map(status => {
+                        const removeId = uuid();
                         if(status.type === 'post') {
                             return (
                             <div className='dashboard-status-list-wrapper'>
                                 <div className='dashboard-status-list-container'>
                                     <div key={status.id}>
-                                        <Link to={`/profile/${status.createdBy}`}>
-                                            <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                                            <h3>{status.author.name}</h3>
-                                        </Link>
-                                        <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
-                                        {status.createdBy === this.props.currentUser.id && <button onClick={() => {
+                                        <div className='dashboard-status-list-link-wrapper'>
+                                            <Link to={`/profile/${status.createdBy}`}>
+                                                <img className='dashboard-status-list-author' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                                <div className='dashboard-status-list-post-details-wrapper'>
+                                                    <div className='dashboard-status-list-post-details-container'>
+                                                        <h3 className='dashboard-status-list-author-name'>{status.author.name}</h3>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                            <p className='dashboard-status-list-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                        </div>
+                                        <div className='dashboard-status-list-description-wrapper'>
+                                            <h1 className='dashboard-status-list-description'>{status.description}</h1>
+                                        </div>
+                                        {status.createdBy === this.props.currentUser.id && 
+                                        <div className='dashboard-remove-status-wrapper'> 
+                                            <button id={removeId} hidden={true} onClick={() => {
                                             //console.log(status)
                                             this.props.startDeleteStatus({id: status.id})
                                             this.removeHashtag(status.description)
                                             this.removeComment(status.id)
-                                        }}>Delete</button> }
-                                        <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
-                                        <Comment parentId={status.id} author={status.author.id} />
+                                        }}>Delete</button> 
+                                            <label className='dashboard-remove-status' htmlFor={removeId} style={{cursor: 'pointer'}}><ion-icon name="trash"></ion-icon></label>
+                                        </div>
+                                        }
+                                        <div className='dashboard-like-comment-wrapper'>
+                                            <div className='dashboard-like-wrapper'>
+                                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
+                                            </div>
+                                            <div className='dashboard-comment-wrapper'>
+                                                <Comment parentId={status.id} author={status.author.id} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -79,12 +79,22 @@ class LikeStatus extends React.Component {
     render() {
         console.log(this.state.likes);
         const id = uuid();
-        return (
-            <div className='like-profile-container'>
-                {parseInt(this.props.likesAmount)}{this.state.likes > 1 ? " Likes" : " Like"}<button hidden={true} id={id} onClick={this.onClick} disabled={this.state.disabled}>Like</button>
-                <label htmlFor={id}><div className='like-label-wrapper'><div className='like-label-icon'><ion-icon className='like-label-icon' style={{cursor: 'pointer'}} name="thumbs-up"></ion-icon></div></div></label>
-            </div>
-        );
+        if (window.location.href.split('/')[3] === 'profile') {
+            return (
+                <div className='like-profile-container'>
+                    {parseInt(this.props.likesAmount)}{this.state.likes > 1 ? " Likes" : " Like"}<button hidden={true} id={id} onClick={this.onClick} disabled={this.state.disabled}>Like</button>
+                    <label htmlFor={id}><div className='like-label-wrapper'><div className='like-label-icon'><ion-icon className='like-label-icon' style={{cursor: 'pointer'}} name="thumbs-up"></ion-icon></div></div></label>
+                </div>
+            );
+        } else if (window.location.href.split('/')[3] === '') {
+            return (
+                <div className='dashboard-like-profile-container'>
+                    <p className='dashboard-like-amount'>{parseInt(this.props.likesAmount)}{this.state.likes > 1 ? " Likes" : " Like"}</p><button hidden={true} id={id} onClick={this.onClick} disabled={this.state.disabled}>Like</button>
+                    <label htmlFor={id}><div className='dashboard-like-label-wrapper'><div className='dashbboard-like-label-icon'><ion-icon className='like-label-icon' style={{cursor: 'pointer'}} name="thumbs-up"></ion-icon></div></div></label>
+                </div>
+            )
+        }
+
     };
 };
 
