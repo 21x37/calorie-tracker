@@ -16,8 +16,8 @@
 }
 
 .dashboard-comment-container {
-    background: red;
-    border-bottom: 1px solid blue;
+    background: rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(233, 233, 233);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     height: 102px;
@@ -60,6 +60,7 @@
     margin-top: -16px;
     position: relative;
     right: 1px;
+    color: $blue;
 }
 
 .dashboard-comment-remove-wrapper {
@@ -70,6 +71,7 @@
 .dashboard-comment-remove-container {
     left: 93.2%;
     position: absolute;
+    color: $blue;
 }
 
 .dashboard-comment-description-wrapper {
