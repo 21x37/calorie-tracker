@@ -54,7 +54,7 @@ class CommentList extends React.Component {
             return (
                 <div className='dashboard-comment-list-wrapper'>
                     <div className='dashboard-comment-list-container'>
-                    {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {
+                    {this.props.commentItem.filter(comment => comment.parentId === this.props.parentId).map(comment => {
                         return (
                             <div className='dashboard-comment-container' key={comment.id}>
                             <div className='dashboard-comment-remove-wrapper'>
