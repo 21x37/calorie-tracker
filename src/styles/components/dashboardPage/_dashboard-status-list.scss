@@ -1,15 +1,18 @@
+
+
 .dashboard-status-list-wrapper {
     width: 80%;
+    margin-bottom: 500px;
     margin: 0 auto;
+    position: relative;
 };
 
 .dashboard-status-list-container {
     background: rgb(242, 242, 242);
     border-bottom: 1px solid rgb(222, 222, 222);
     border-radius: 7px;
-    height: 180px;
-    margin-bottom: 50px;
-    margin-top: 20px;
+    height: 100%;
+    margin-top: 120px;
     width: 100%
 };
 
@@ -51,27 +54,41 @@
     text-align: left;
 }
 
-.dashboard-status-list-description {
+.dashboard-status-list-description { //
     font-weight: 300;
     left: 16px;
-    position: absolute;
+    position: relative;
     top: 5px;
     text-align: initial;
     width: 100%;
 }
 
+// .dashboard-like-comment-wrapper {
+//     position: relative;
+//     top: 70px;
+// }
+
 .dashboard-like-comment-wrapper {
     position: relative;
-    top: 70px;
+    margin-bottom: 20px;
+    bottom: 10px;
 }
+
+
 
 .dashboard-like-wrapper {
     position: relative;
+    top: 12.5px;
 }
 
 .dashboard-comment-wrapper {
     position: relative;
     left: 55px;
+    bottom: 55px;
+}
+
+.dashboard-status-wrapper {
+    position: relative;
 }
 
 .dashboard-remove-status-wrapper {
@@ -79,11 +96,11 @@
 }
 
 .dashboard-remove-status {
-    bottom: 12px;
     color: $blue;
     font-size: 110%;
     position: absolute;
     left: 93.5%;
+    top: 13px;
 }
 
 .dashboard-like-profile-container {

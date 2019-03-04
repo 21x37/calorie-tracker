@@ -39,8 +39,8 @@ class PostStatusList extends React.Component {
     };
     render() {
         return (
-            <div>
-                <div class=''>
+            <div className='dashboard-status'> 
+                <div className='dashboard-status-wrapper'>
                     {this.props.statusItem.map(status => {
                         const removeId = uuid();
                         if(status.type === 'post') {
@@ -48,6 +48,17 @@ class PostStatusList extends React.Component {
                             <div className='dashboard-status-list-wrapper'>
                                 <div className='dashboard-status-list-container'>
                                     <div key={status.id}>
+                                    {status.createdBy === this.props.currentUser.id && 
+                                        <div className='dashboard-remove-status-wrapper'> 
+                                            <button id={removeId} hidden={true} onClick={() => {
+                                            //console.log(status)
+                                            this.props.startDeleteStatus({id: status.id})
+                                            this.removeHashtag(status.description)
+                                            this.removeComment(status.id)
+                                        }}>Delete</button> 
+                                            <label className='dashboard-remove-status' htmlFor={removeId} style={{cursor: 'pointer'}}><ion-icon name="trash"></ion-icon></label>
+                                        </div>
+                                        }
                                         <div className='dashboard-status-list-link-wrapper'>
                                             <Link to={`/profile/${status.createdBy}`}>
                                                 <img className='dashboard-status-list-author' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
@@ -62,26 +73,20 @@ class PostStatusList extends React.Component {
                                         <div className='dashboard-status-list-description-wrapper'>
                                             <h1 className='dashboard-status-list-description'>{status.description}</h1>
                                         </div>
-                                        {status.createdBy === this.props.currentUser.id && 
-                                        <div className='dashboard-remove-status-wrapper'> 
-                                            <button id={removeId} hidden={true} onClick={() => {
-                                            //console.log(status)
-                                            this.props.startDeleteStatus({id: status.id})
-                                            this.removeHashtag(status.description)
-                                            this.removeComment(status.id)
-                                        }}>Delete</button> 
-                                            <label className='dashboard-remove-status' htmlFor={removeId} style={{cursor: 'pointer'}}><ion-icon name="trash"></ion-icon></label>
-                                        </div>
-                                        }
-                                        <div className='dashboard-like-comment-wrapper'>
-                                            <div className='dashboard-like-wrapper'>
-                                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
-                                            </div>
-                                            <div className='dashboard-comment-wrapper'>
-                                                <Comment parentId={status.id} author={status.author.id} />
-                                            </div>
-                                        </div>
                                     </div>
+                                    <div className='dashboard-like-comment-wrapper'>
+                                    <div className='dashboard-like-wrapper'>
+                                        <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
+                                    </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div className='dashboard-like-comment-wrapper'>
+
+                                <div className='dashboard-comment-wrapper'>
+                                    <Comment parentId={status.id} author={status.author.id} />
+                                </div>
                                 </div>
                             </div>
                             )

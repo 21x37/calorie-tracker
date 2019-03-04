@@ -32,7 +32,7 @@ class CalorieItemList extends React.Component {
                 const carbsPercentage = ((calorie.carbs * 4) / calorie.calories) * 100 < 100 ? ((calorie.carbs * 4) / calorie.calories) * 100 : 100;
                 const fatsPercentage = ((calorie.fats * 9) / calorie.calories) * 100 < 100 ? ((calorie.fats * 9) / calorie.calories) * 100 : 100;
                 return (
-                    <div className='calorie-item-container' key={calorie.id}>
+                    <div className='calorie-item-container calorie-item-container__hover' key={calorie.id}>
                         <div className='calorie-item-wrapper'>
                             <button hidden={true} id={id} onClick={() => {
                                 this.props.startRemoveCalorieItem(this.props.currentUser.id, {id: calorie.id})

@@ -6,6 +6,8 @@ import { history } from '../../routers/AppRouter';
 import IndividualCalorie from './IndividualCalorie';
 
 const CalorieLookUpList = (props) => {
+    console.log(props.calorieLookUp[0])
+    console.log(props.searched)
     return (
         <div>
             {props.calorieLookUp.map(calorieRes => {
@@ -20,6 +22,7 @@ const CalorieLookUpList = (props) => {
                     <IndividualCalorie calorieName={calorieName} servingSize={calorie.nf_serving_size_qty} servingSizeUnit={calorie.nf_serving_size_unit} serving={serving} calories={calories} protein={protein} carbs={carbs} fats={fats} currentUser={props.currentUser.id} key={uuid()}/>
                 )
             })}
+            {!props.calorieLookUp[0] && props.searched && <p className='calorie-lookup-no-results'>No Results</p>}
         </div>
     )
 };

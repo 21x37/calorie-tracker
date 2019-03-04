@@ -41,20 +41,37 @@ class Comment extends React.Component {
         e.preventDefault();
     }
     render() {
-        return (
-            <div>
-                <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
-                <p>{this.state.error}</p>
-                <div className='comment-form-container'>
-                    <div className='comment-form__flex'>
-                        <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
-                            <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
-                            <button className='comment-button' onClick={this.onClick}>Comment</button>
-                        </form>
+        if (window.location.href.split('/')[3] === 'profile') {
+            return (
+                <div>
+                    <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
+                    <p>{this.state.error}</p>
+                    <div className='comment-form-container'>
+                        <div className='comment-form__flex'>
+                            <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
+                                <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
+                                <button className='comment-button' onClick={this.onClick}>Comment</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        } else if (window.location.href.split('/')[3] === '') {
+            return (
+                <div className='comment-wrapper'>
+                    <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
+                    <p>{this.state.error}</p>
+                    <div className='dashboard-comment-form-container'>
+                        <div className='comment-form__flex'>
+                            <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
+                                <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
+                                <button className='comment-button' onClick={this.onClick}>Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
     };
 };
 

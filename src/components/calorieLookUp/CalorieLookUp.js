@@ -18,7 +18,8 @@ class CalorieLookUp extends React.Component {
             appKey,
             fields: ["item_name", "nf_calories", "nf_protein", "nf_total_carbohydrate", "nf_total_fat", "nf_serving_size_qty", "nf_serving_size_unit"],
             lookup: '',
-            error: ''
+            error: '',
+            searched: false
         }
         this.results = [];
     };
@@ -30,7 +31,7 @@ class CalorieLookUp extends React.Component {
         if (this.state.query) {
             e.preventDefault();
             const jsonString = JSON.stringify(this.state);
-            this.setState({ error: '' })
+            this.setState({ error: ''})
             const xhr = new XMLHttpRequest();
     
             xhr.open('POST', "https://api.nutritionix.com/v1_1/search");
@@ -43,7 +44,8 @@ class CalorieLookUp extends React.Component {
                         const res = JSON.parse(xhr.responseText);
                         console.log(res.hits);
                         this.props.calorieLookUp(res.hits);
-                        this.setState({lookup: this.state.query})
+                        this.setState({lookup: this.state.query});
+                        this.setState({searched: true})
                         const form = document.getElementById('calorieSearchForm');
                         form.reset();
                     };
@@ -67,7 +69,7 @@ class CalorieLookUp extends React.Component {
                         <button className='calorie-lookup-button'>Search</button>
                     </form>
                     {this.state.lookup && <h1 className='calorie-lookup-search'>Searching for {this.state.lookup}</h1>}
-                    <CalorieLookUpList />
+                    <CalorieLookUpList searched={this.state.searched} />
                 </div>
             </div>
         )
