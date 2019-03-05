@@ -10,6 +10,14 @@
     right: 5px;
 }
 
+#search-users::placeholder {
+    text-align: center;
+}
+
+.search-container::placeholder {
+    margin-left: 50px;
+}
+
 .search-container:hover {
     background: rgb(241, 241, 241);
     cursor: pointer;

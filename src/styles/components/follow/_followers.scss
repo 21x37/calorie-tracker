@@ -1,0 +1,88 @@
+.followers-wrapper {
+    text-align: center;
+    background:rgb(246, 246, 246);
+    height: 100vh;
+    margin: 0 auto;
+    min-height: 100%;
+    width: 860px;
+}
+
+.followers-title {
+    font-weight: 300;
+    margin-bottom: -20px;
+    position: relative;
+    right: 100px;
+}
+
+.followers-back-button-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.followers-back-button {
+    border-bottom: 1px solid #303A52;
+    display: inline-block;
+    left: 140px;
+    padding-bottom: 2px;
+    width: 85px;
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
+}
+
+ 
+.followers-container {
+    display: inline-block;
+}
+
+.individual-follow-container {
+    background: rgb(239, 239, 239);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 5px;
+    width: 400px;
+    margin-top: 25px;
+    height: 150px;
+}
+
+.individual-follow-container:hover {
+    background: rgb(235, 235, 235);    
+}
+
+.individual-follow-name {
+    position: absolute;
+    left: 170px;
+}
+
+.individual-follow-picture {
+    margin-bottom: -13px;
+}
+
+.individual-follower-info {
+    position: relative;
+    right: 150px;
+    top: 20px;
+}
+
+.individual-follow-bio-wrapper {
+    left: 270px;
+    margin-top: -33px;
+    position: relative;
+}
+
+.individual-follow-bio {
+    position: absolute;
+    width: 100px;
+    max-height: 80px;
+
+}
+
+.individual-follow-followers {
+    position: relative;
+    margin-bottom: -15px;
+}
+
+.individual-follow-follow-container {
+    margin-top: -47.5px;
+    position: relative;
+    right: 60px;
+}

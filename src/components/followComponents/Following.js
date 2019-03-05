@@ -9,7 +9,9 @@ class Following extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            following: []
+            following: [],
+            currentId: window.location.href.split('/')[4]
+
         }
     }
     componentDidMount() {
@@ -34,18 +36,44 @@ class Following extends React.Component {
     render() {
         return (
             <div>
-            Following Page 
-            <Link to={`/profile/${this.props.user.id}`}>Go back</Link>
-            {this.state.following.map((follow) => {
-                return (
-                    <div key={follow.id}>
-                        <Link to={`/profile/${follow.ref}`}>
-                            <h2>{follow.name}</h2>
-                            <img src={follow.picture} style={{width: '60px', height: '60px'}}/>
-                        </Link>
+                <div className='followers-back-button-wrapper'>
+                    <div className='followers-back-button'>
+                        <Link style={{textDecoration: 'none', color: '#303A52'}} to={`/profile/${this.state.currentId}`}>Go Back</Link>
                     </div>
-                )
-            })}
+                </div>
+                <div className='followers-wrapper'>
+                    <div className='followers-container'>
+                    <div className='followers-back-button-wrapper'>
+
+                    </div>
+                    <h1 className='followers-title'>Following</h1>
+                    { this.state.following[0] && this.state.following.map((follow) => {
+                        return (
+                            <Link style={{textDecoration: 'none', color: '#303A52'}} to={`/profile/${follow.ref}`}>
+                                <div className='individual-follow-wrapper'>
+                                    <div className='individual-follow-container' key={follow.id}>
+                                        <div className='individual-follower-info'>
+                                                <img className='individual-follow-picture' src={follow.picture} style={{width: '60px', height: '60px'}}/>
+                                                <h2 className='individual-follow-name'>{follow.name}</h2>  
+                                        </div>
+                                        <div className='individual-follow-bio-wrapper'>
+                                            <div className='individual-follow-bio'>
+                                                <p>{follow.bio}</p>
+                                            </div>
+                                        </div>
+                                        <div className='individual-follow-follow-container'>
+                                            <p className='individual-follow-followers'>Followers: {follow.followers ? Object.keys(follow.followers).length : 0}</p>
+                                            <p className='individual-follow-following'>Following: {follow.following ? Object.keys(follow.following).length : 0}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                            
+                        )
+                    })}
+                    { !this.state.following[0] && <h3>No Following</h3>}
+                    </div>
+                </div>
             </div>
         );
     }

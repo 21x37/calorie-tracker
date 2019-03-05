@@ -4,12 +4,19 @@
 }
 
 .calorie-lookup-wrapper {
+    background:rgb(246, 246, 246);
+    width: 860px;
+    text-align: center;
+    min-height: 100vh;
 }
 
 
 .calorie-lookup-title {
-    color: $blue;
+    color: $dark-grey;
+    left: 0px;
     font-weight: 400;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .calorie-lookup-text-input {
@@ -19,8 +26,12 @@
     border-top: 2px solid rgb(235, 235, 235);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    width: 300px;
+    width: 500px;
     height: 45px;
+}
+
+.calorie-lookup-text-input::placeholder {
+    margin-left: 10px;
 }
 
 .calorie-lookup-button {

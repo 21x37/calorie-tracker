@@ -24,7 +24,7 @@ class SearchUsers extends React.Component {
     render() {
         return (
             <div className='content-container'>
-                <input type='text' className='header__search search' onChange={this.onChange} placeholder='Search Users'/>
+                <input id='search-users' type='text' className='header__search search' onChange={this.onChange} placeholder='Search Users'/>
                 <div className='search-results-container'>
                 {this.props.searchUser.map(user => {
                     return (

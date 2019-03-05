@@ -9,6 +9,13 @@
     z-index: -1;
 }
 
+.upload-cover-photo-icon {
+    right: 20px;
+    margin-top: -38px;
+    position: relative;
+    color: #FFF;
+}
+
 .under-cover-photo-bar {
     position: relative;
     background-color: #303A52;
@@ -94,8 +101,9 @@
 
 .profile-cover-photo-button {
     position: relative;
+    right: 30px;
     float: right;
-    bottom: 100px;
+    bottom: 60px;
 }
 
 #cover-photo-button {

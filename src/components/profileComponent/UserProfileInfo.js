@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid';
 import { startSetUser, startSetBio, resetUser } from '../../actions/user';
 import PostStatus from '../newsFeedComponents/PostStatus';
 import { startSetCoverPhoto, startUploadProfilePicture } from '../../actions/coverPhoto';
@@ -117,6 +118,7 @@ class UserProfileInfo extends React.Component {
         // };
     }
     render() {
+        const coverPhotoId = uuid();
         const id = window.location.href.split('/')[4];
         this.props.startSetUser(id, this.props.user);
         if (this.props.user) {
@@ -143,7 +145,10 @@ class UserProfileInfo extends React.Component {
                     <div className='profile-cover-photo-button'>
                         <p id='cover-photo-button' hidden={this.state.isMouseInside}>Upload a Cover Photo!</p>
                         <form id='coverPhotoForm' hidden={this.state.isMouseInside}>
-                            <input id='cover-photo-button' type='file' accept='image/*' onChange={this.onFileUpload} />
+                            <input hidden={true} id={coverPhotoId} type='file' accept='image/*' onChange={this.onFileUpload} />
+                            <div className='upload-cover-photo-icon'>
+                                <label htmlFor={coverPhotoId}><ion-icon style={{cursor: 'pointer'}} name="arrow-up"></ion-icon></label>
+                            </div>
                         </form>
                     </div>
 
