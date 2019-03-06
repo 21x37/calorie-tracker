@@ -91,21 +91,34 @@ class PostStatusList extends React.Component {
                             </div>
                             )
                         } else if (status.type === 'image') {
+                            const removeId = uuid();
                             return (
-                                <div key={status.id}>
-                                    <Link to={`/profile/${status.createdBy}`}>
-                                        <img src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                                        <h3>{status.author.name}</h3>
-                                    </Link>
-                                    <h1>{status.description} : {moment(status.createdAt).format('MMMM, Do YYYY')}</h1>
-                                    <ModalImage small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
-                                    {status.createdBy === this.props.currentUser.id && <button onClick={() => {
-                                        this.props.startDeleteImage(status.id, status.name)
-                                        this.removeHashtag(status.description)
-                                        this.removeComment(status.id)
-                                    }}>Remove</button> }
-                                    <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
-                                    <Comment parentId={status.id}  author={status.author.id}/>
+                                <div className='dashboard-image-list-wrapper'>
+                                    <div className='dashboard-status-image-container'>
+                                        <div key={status.id}>
+                                            <div className='dashboard-image-remove-wrapper'>
+                                                <div className='dashboard=image-remove-container'>
+                                                    {status.createdBy === this.props.currentUser.id && <button hidden={true} id={removeId} onClick={() => {
+                                                        this.props.startDeleteImage(status.id, status.name)
+                                                        this.removeHashtag(status.description)
+                                                        this.removeComment(status.id)
+                                                    }}>Remove</button> }
+                                                    <label className='dashboard-image-remove' htmlFor={removeId}><ion-icon name="trash"></ion-icon></label>
+                                                </div>
+                                            </div>
+                                            <div className='dashboard-image-author-wrapper'>
+                                                <Link to={`/profile/${status.createdBy}`}>
+                                                    <img className='dashboard-image-author-picture' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                                    <h3 className='dashboard-image-author-name'>{status.author.name}</h3>
+                                                </Link>
+                                                <p className='dashboard-image-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                            </div>
+                                            <h1>{status.description}</h1>
+                                            <ModalImage small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
+                                            <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
+                                            <Comment parentId={status.id}  author={status.author.id}/>
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         }
