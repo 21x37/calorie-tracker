@@ -19,7 +19,7 @@ class CommentList extends React.Component {
                     {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {
                         return (
                             <div className='status-comment-container' key={comment.id}>
-                                <Link to={`/profile/${comment.createdBy}`}>
+                                <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${comment.createdBy}`}>
                                     <div className='comment-author-container'>
                                         <img className='comment-author-picture' src={comment.author.picture} style={{width: '30px', height: '30px'}} />
                                         <h5 className='comment-author-name'>{comment.author.name}</h5>
@@ -72,7 +72,7 @@ class CommentList extends React.Component {
                                 }}></ion-icon> }
                             </div>
                         </div>
-                                <Link to={`/profile/${comment.createdBy}`}>
+                                <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${comment.createdBy}`}>
                                     <div className='dashboard-comment-author-container'>
                                         <img className='dashboard-comment-author-picture' src={comment.author.picture} style={{width: '34px', height: '34px'}} />
                                         <h5 className='dashboard-comment-author-name'>{comment.author.name}</h5>

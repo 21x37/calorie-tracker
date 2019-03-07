@@ -33,7 +33,7 @@ class Comment extends React.Component {
             const form = document.getElementById(`comment-form-${this.props.parentId}`);
             form.reset();
         } else {
-            this.setState({ error: 'Please Provide a Comment to Post!'})
+            this.setState({ error: 'Please provide a comment to post!'})
         }
 
     }
@@ -60,11 +60,11 @@ class Comment extends React.Component {
             return (
                 <div className='comment-wrapper'>
                     <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
-                    <p>{this.state.error}</p>
+                    <p></p>
                     <div className='dashboard-comment-form-container'>
                         <div className='comment-form__flex'>
                             <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
-                                <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
+                                <input className='comment-input-text' type='text' placeholder={this.state.error} onChange={this.onDescriptionChange}/>
                                 <button className='comment-button' onClick={this.onClick}>Comment</button>
                             </form>
                         </div>

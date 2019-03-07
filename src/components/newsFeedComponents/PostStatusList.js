@@ -60,7 +60,7 @@ class PostStatusList extends React.Component {
                                         </div>
                                         }
                                         <div className='dashboard-status-list-link-wrapper'>
-                                            <Link to={`/profile/${status.createdBy}`}>
+                                            <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${status.createdBy}`}>
                                                 <img className='dashboard-status-list-author' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
                                                 <div className='dashboard-status-list-post-details-wrapper'>
                                                     <div className='dashboard-status-list-post-details-container'>
@@ -108,7 +108,7 @@ class PostStatusList extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className='dashboard-image-author-wrapper'>
-                                                    <Link to={`/profile/${status.createdBy}`}>
+                                                    <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${status.createdBy}`}>
                                                         <img className='dashboard-image-author-picture' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
                                                         <h3 className='dashboard-image-author-name'>{status.author.name}</h3>
                                                     </Link>

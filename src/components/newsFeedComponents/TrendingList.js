@@ -37,7 +37,7 @@ class TrendingList extends React.Component {
                     })}
                     {this.props.hashtagFilter.sortBy !== 'newest' && 
                     <div>
-                        <button onClick={() => {this.props.resetQuery()}}>Reset Search</button>
+                        <button className='trending-list-reset-button' onClick={() => {this.props.resetQuery()}}>Reset Search</button>
                     </div>}
                 </div>
             </div>

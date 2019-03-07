@@ -36,3 +36,16 @@
 .individual-hashtag-container {
     margin-top: -25px;
 }
+
+.trending-list-reset-button {
+    background: $blue;
+    border: none;
+    border-radius: 3px;
+    color: $white-shade;
+    margin: 10px 0;
+    padding: 5px 20px;
+}
+
+.trending-list-reset-button:hover {
+    background: #2a3247;
+}

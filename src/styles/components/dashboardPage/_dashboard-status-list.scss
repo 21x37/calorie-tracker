@@ -61,7 +61,7 @@
     position: relative;
     top: 5px;
     text-align: initial;
-    width: 100%;
+    width: 90%;
 }
 
 // .dashboard-like-comment-wrapper {
@@ -104,7 +104,12 @@
     top: 13px;
 }
 
+.dashboard-remove-status:hover {
+    color: #2a3247;
+}
+
 .dashboard-like-profile-container {
+    display: inline-block;
     position: relative;
     right: 60px;
     z-index: 12;
@@ -128,4 +133,8 @@
 
 .dashboard-like-label-icon {
     color: $blue;
+}
+
+.dashboard-like-label-icon:hover {
+    color: #2a3247;
 }

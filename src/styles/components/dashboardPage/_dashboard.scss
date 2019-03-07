@@ -31,6 +31,7 @@
     position: relative;
     right: 110px;
     top: 2.5px;
+    cursor: pointer;
 }
 
 .dashboard-status-post-button {
@@ -45,6 +46,10 @@
     border-top: .2px solid $blue;
     position: relative;
     top: 0.1px;
+}
+
+.dashboard-status-post-button:hover {
+    background: #2a3247;
 }
 
 .under-dashboard-status-bar {

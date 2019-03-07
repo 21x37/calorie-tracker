@@ -85,15 +85,20 @@ class EditCalorie extends React.Component {
     render() {
 
         return (
-            <div>
-                <form id='calorieItemForm'onSubmit={this.onSubmit}>
-                    <input value={this.state.description} onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
-                    <input value={this.state.calories} onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
-                    <input value={this.state.protein} onChange={this.onProteinChange} type='text' placeholder='Protein'/>
-                    <input value={this.state.carbs} onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
-                    <input value={this.state.fats} onChange={this.onFatsChange} type='text' placeholder='Fats'/>
-                    <button>Submit</button>
-                </form>
+            <div className='edit-calorie-wrapper'>
+                <div className='edit-calorie-container'>
+                    <h1 className='edit-calorie-description'>Editing {this.state.description?  `${this.state.description}!` : 'a calorie log!' }</h1>
+                    <div className='edit-calorie-input-container'>
+                        <form id='calorieItemForm'onSubmit={this.onSubmit}>
+                            <input className='edit-calorie-input-field' value={this.state.description} onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
+                            <input className='edit-calorie-input-field' value={this.state.calories} onChange={this.onCaloriesChange} type='text' placeholder='Calories'/>
+                            <input className='edit-calorie-input-field' value={this.state.protein} onChange={this.onProteinChange} type='text' placeholder='Protein'/>
+                            <input className='edit-calorie-input-field' value={this.state.carbs} onChange={this.onCarbsChange} type='text' placeholder='Carbs'/>
+                            <input className='edit-calorie-input-field' value={this.state.fats} onChange={this.onFatsChange} type='text' placeholder='Fats'/>
+                            <button className='edit-calorie-button'>Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         );
     };

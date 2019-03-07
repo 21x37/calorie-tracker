@@ -20,7 +20,7 @@
     border-bottom: 1px solid rgb(233, 233, 233);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    height: 102px;
+    height: 100%;
 }
 
 .dashboard-comment-author-container {
@@ -45,18 +45,20 @@
     right: 0px;
     margin-bottom: 2px;
     margin-top: -12px;
+    padding-bottom: 14px;
     position: relative;
-    width: 100%;
+    width: 90%;
 }
 
 .dashboard-comment-form-container {
     left: 130px;
     margin-top: -0px;
     position: relative;
-    top: 32px;
+    top: 33px;
 }
 
 .dashboard-comment-likes-container {
+    bottom: 13px;
     margin-top: -16px;
     position: relative;
     right: 1px;
