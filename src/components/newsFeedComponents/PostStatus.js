@@ -83,7 +83,7 @@ class PostStatus extends React.Component {
             };
             const statusForm = document.getElementById('postStatusForm');
             statusForm.reset();
-            this.setState({error: ''})
+            this.setState({error: '', description: ''})
             this.setState({uploadedImageName: ''})
             this.uploadedImage = null;
         }

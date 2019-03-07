@@ -1,0 +1,106 @@
+.dashboard-image-wrapper {
+    bottom: 50px;
+    margin-bottom: 140px;
+    position: relative;
+    top: 50px;
+}
+
+.dashboard-image-list-wrapper {
+    width: 80%;
+    margin-top: 50px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.dashboard-status-image-container {
+    background: rgb(242, 242, 242);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 7px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 0 0 20px 0;
+}
+
+.dashboard-image-author-wrapper {
+    position: relative;
+    right: 324px;
+}
+
+.dashboard-image-author-picture {
+    border-radius: 6px;
+    margin-bottom: -10px;
+    position: relative;
+    top: 16px;
+}
+
+.dashboard-image-author-name {
+    position: relative;
+    left: 80px;
+    margin-top: -48px;
+}
+
+.dashboard-image-date {
+    position: relative;
+    left: 97px;
+    margin-top: -20px;
+}
+
+.dashboard-image-remove-wrapper {
+    position: absolute;
+    left: 686.5px;
+    top: 20px;
+}
+
+.dashboard-image-remove-container {
+    color: $blue;
+    position: relative;
+    font-size: 10%;
+}
+
+.dashboard-image-remove {
+    font-size: 110%;
+}
+
+.dashboard-status-list-image {
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: -10px;
+    width: 70%;
+}
+
+.dashboard-status-description {
+    font-weight: 300;
+    margin-top: -0px;
+    width: 100%;
+}
+
+.dashboard-image-description-wrapper {
+    left: 16px;
+    position: relative;
+    right: 0px;
+}
+
+.dashboard-image-description-container {
+    position: absolute;
+
+}
+
+.dashboard-image-description-spacer {
+    margin-bottom: 100px;
+}
+
+.dashboard-image-comment-wrapper {
+    left: 55px;
+    position: relative;
+    margin-top: 0px;
+    top: -70px;
+}
+
+.dashboard-image-container {
+    margin-bottom: 50px;
+}
+
+.dashboard-image-like-wrapper {
+    z-index: 10;
+}
