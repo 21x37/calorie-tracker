@@ -13,6 +13,8 @@
     border-bottom: 1px solid rgb(222, 222, 222);
     border-radius: 7px;
     margin-top: 80px;
+    padding-top: 3px;
+    padding-bottom: 4px;
 }
 
 .profile-status-container {
@@ -55,6 +57,7 @@
     color: $dark-grey;
     left: 16px;
     font-weight: 300;
+    margin-bottom: 0;
     position: relative;
     text-align: left;
     width: 90%;
@@ -67,6 +70,7 @@
 .profile-status-like {
     position: relative;
     right: 288px;
+    top: 0px;
 }
 
 .profile-status-like-icon {
@@ -78,7 +82,7 @@
 
 .profile-comment-wrapper {
     left: 70px;
-    margin-top: -45px;
+    margin-top: -51px;
     position: relative;
 }
 
@@ -90,7 +94,7 @@
 
 
 .profile-status-image-container {
-    background: rgb(160, 160, 160);
+    background: rgb(239, 239, 239);
     border-bottom: 1px solid rgb(222, 222, 222);
     border-radius: 7px;
     padding-bottom: 10px;

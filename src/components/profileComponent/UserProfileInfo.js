@@ -223,8 +223,8 @@ class UserProfileInfo extends React.Component {
                                     }
 
 
-                                    {this.props.currentUser.id === id &&
-                                        <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
+                                    {//this.props.currentUser.id === id &&
+                                       // <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
                                     }
                                 </div>
                             </div>
