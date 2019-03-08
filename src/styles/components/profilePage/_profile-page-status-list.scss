@@ -1,0 +1,143 @@
+.status-list-container {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.profile-status-wrapper {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.profile-status {
+    background: rgb(239, 239, 239);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 7px;
+    margin-top: 80px;
+}
+
+.profile-status-container {
+    left: 100px;
+    height: 100%;
+    margin: 0 auto;
+    width: 660px;
+    position: relative;
+}
+
+.profile-status-author-details {
+    text-align: left;
+    margin: 16px 0 0 16px;
+}
+
+.profile-status-author-name {
+    position: relative;
+    left: 70px;
+    margin-top: -65px;
+}
+
+.profile-status-date {
+    margin-top: -25px;
+    position: relative;
+    right: 184px;
+}
+
+.profile-status-remove-button-wrapper {
+    position: absolute;
+}
+
+.profile-status-remove-button-container {
+    margin-top: -50px;
+    position: relative;
+    left: 600px;
+    color: $blue;
+}
+
+.profile-status-description {
+    color: $dark-grey;
+    left: 16px;
+    font-weight: 300;
+    position: relative;
+    text-align: left;
+    width: 90%;
+}
+
+.profile-status-description-wrapper {
+    position: relative;
+}
+
+.profile-status-like {
+    position: relative;
+    right: 288px;
+}
+
+.profile-status-like-icon {
+    margin-top: -23px;
+    position: relative;
+    left: 40px;
+    color: $blue;
+}
+
+.profile-comment-wrapper {
+    left: 70px;
+    margin-top: -45px;
+    position: relative;
+}
+
+.profile-status-author-picture {
+    border-radius: 3px;
+}
+
+// ----------- IMAGE
+
+
+.profile-status-image-container {
+    background: rgb(160, 160, 160);
+    border-bottom: 1px solid rgb(222, 222, 222);
+    border-radius: 7px;
+    padding-bottom: 10px;
+    margin-top: 80px;
+}
+
+.profile-status-image-wrapper {
+    left: 100px;
+    height: 100%;
+    margin: 0 auto;
+    width: 660px;
+    position: relative;
+}
+
+.profile-image-author-details {
+    text-align: left;
+    margin: 16px 0 0 16px;
+}
+
+.profile-status-image-picture {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.profile-image-remove-wrapper {
+    position: relative;
+}
+
+.profile-image-remove-button {
+    color: $blue;
+    left: 600px;
+    position: absolute;
+    top: 16px;
+}
+
+.profile-image-author-picture {
+    margin-top: 16px;
+    border-radius: 3px;
+}
+
+.profile-image-comment-wrapper {
+    left: 70px;
+    margin-top: -53px;
+    position: relative;
+}
+
+.profile-status-modal-image {
+    border-radius: 5px;
+}

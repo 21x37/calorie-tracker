@@ -46,9 +46,9 @@ class Comment extends React.Component {
                 <div>
                     <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
                     <p>{this.state.error}</p>
-                    <div className='comment-form-container'>
-                        <div className='comment-form__flex'>
-                            <form onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
+                    <div>
+                        <div className='profile-comment-form'>
+                            <form className='aa' onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
                                 <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
                                 <button className='comment-button' onClick={this.onClick}>Comment</button>
                             </form>

@@ -121,8 +121,8 @@ class PostStatusList extends React.Component {
                                                 </div>
                                                 <div className='dashboard-image-description-spacer'></div>
                                                 <div className='dashboard-status-list-image'>
-                                                    <ModalImage small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
-                                                </div>
+                                                    <ModalImage className='profile-status-modal-image' small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
+                                                </div> 
 
                                                 <div className='dashboard-image-like-wrapper'>
                                                     <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />

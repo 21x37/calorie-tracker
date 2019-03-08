@@ -1,0 +1,58 @@
+.profile-comment-form {
+    position: relative;
+    z-index: 10;
+}
+
+.profile-status-comment-wrapper {
+    right: 69px;
+    position: relative;
+    top: 49px;
+}
+
+.profile-status-comment-container {
+    background: red;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    width: 660px;
+}
+
+.profile-status-comment-container {
+}
+
+.status-profile-comment {
+    text-align: left;
+    margin: 0 0 0 12px;
+}
+
+.status-profile-comment-name {
+    position: relative;
+    left: 45px;
+    margin-top: -40px;
+}
+
+.profile-comment-remove-wrapper {
+    position: relative;
+}
+
+.profile-comment-remove-button {
+    position: absolute;
+    left: 600px;
+    top: 12px;
+}
+
+.status-comment-author-picture {
+    margin-top: 12px;
+}
+
+.profile-status-comment-description {
+    text-align: left;
+    margin-left: 12px;
+    margin-bottom: -1px;
+}
+
+.profile-comment-like-wrapper {
+    position: relative;
+    right: 292px;
+    margin-top: 2px;
+    margin-bottom: 25px;
+}

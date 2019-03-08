@@ -240,8 +240,8 @@ class UserProfileInfo extends React.Component {
 
 
                         {/* POST STATUS */}
-                        <div className='status-list-wrapper'>   
-                            <div className='status-list-container'>
+                        <div className='profile-status-list-wrapper'>    {/* status-list-wrapper */}
+                            <div className='profile-status-list-container'> {/* status-list-container */}
                                 {this.state.onWall && this.props.currentUser.id === id &&
                                     <div>
                                         <PostStatus />

@@ -15,41 +15,48 @@ class CommentList extends React.Component {
     render() {
         if (window.location.href.split('/')[3] === 'profile') {
             return (
-                <div className='comment-list-container'>
-                    {this.props.commentItem.filter(comment => comment.parentId === this.state.parentNodeId).map(comment => {
+                <div className='profile-status-comment-wrapper'>
+                    <div>
+                    {this.props.commentItem.filter(comment => comment.parentId === this.props.parentId).map(comment => {
                         return (
-                            <div className='status-comment-container' key={comment.id}>
+                            <div className='profile-status-comment-container' key={comment.id}>
+                            <div className='profile-comment-remove-wrapper'>
+                                <div className='profile-comment-remove-button'>
+                                    {comment.createdBy === this.props.currentUser.id &&<ion-icon style={{cursor: 'pointer'}}  name='trash' onClick={() => {
+                                        this.props.startRemoveComment(comment)
+                                    }}></ion-icon> }
+                            </div>
+                        </div>
+                        <div className='profile-comment-remove-wrapper'>
+                            <div className='profile-comment-remove-button'>
+                                {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <ion-icon name='trash' style={{cursor: 'pointer'}} onClick={() => {
+                                    console.log
+                                    this.props.startRemoveComment(comment)
+                                }}></ion-icon> }
+                            </div>
+                        </div>
                                 <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${comment.createdBy}`}>
-                                    <div className='comment-author-container'>
-                                        <img className='comment-author-picture' src={comment.author.picture} style={{width: '30px', height: '30px'}} />
-                                        <h5 className='comment-author-name'>{comment.author.name}</h5>
+                                    <div className='status-profile-comment'>
+                                        <img className='status-comment-author-picture' src={comment.author.picture} style={{width: '34px', height: '34px'}} />
+                                        <h5 className='status-profile-comment-name'>{comment.author.name}</h5>
                                     </div>
                                 </Link>
-                                <h3 className='comment-profile-description'>{comment.description}</h3>
-                                <div className='comment-profile-like'>
-                                    <LikeStatus  dbLocation={'comments'} parentId={comment.id} likesAmount={comment.likes} type={'comment'}/>
-                                    <div className='comment-profile-remove__wrapper'>
-                                        <div className='comment-profile-remove'>
-                                            {comment.createdBy === this.props.currentUser.id &&<ion-icon style={{cursor: 'pointer'}}  name='trash' onClick={() => {
-                                                this.props.startRemoveComment(comment)
-                                            }}></ion-icon> }
-                                        </div>
+                                <div>
+                                    <h3 className='profile-status-comment-description'>{comment.description}</h3>
+                                </div>
+                                <div>
+                                    <div className='profile-comment-like-wrapper'>
+                                        <LikeStatus  dbLocation={'comments'} parentId={comment.id} likesAmount={comment.likes} type={'comment'}/>
                                     </div>
-                                    <div className='comment-profile-remove__wrapper'>
-                                        <div className='comment-profile-remove'>
-                                            {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <ion-icon name='trash' style={{cursor: 'pointer'}} onClick={() => {
-                                                console.log
-                                                this.props.startRemoveComment(comment)
-                                            }}></ion-icon> }
-                                        </div>
-                                    </div>
+
                                 </div>
     
                             </div>
                         );
                     })}
+                    </div>
                 </div>
-            ); 
+            );
         } else if (window.location.href.split('/')[3] === '') {
             return (
                 <div className='dashboard-comment-list-wrapper'>

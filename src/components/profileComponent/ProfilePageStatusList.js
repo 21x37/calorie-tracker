@@ -44,66 +44,109 @@ class PostStatusList extends React.Component {
                     if (status.createdBy === this.props.user.id) {
                         if(status.type === 'post') {
                             return (
-                                <div className='profile-page-status-list-container'>
-                                    <div key={status.id}>
-                                        <div className='text-status-container'>
-                                            <div className='text-status-author__flex'>
-                                                <Link to={`/profile/${status.createdBy}`}>
-                                                    <img className='text-status-author-image' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                                                    <h3 className='text-status-author-name'>{status.author.name}</h3>
-                                                </Link>
+                                <div className='profile-status-wrapper'>
+                                    <div className='profile-status-container'>
+                                        <div className='profile-status'>
+                                            <div>
+                                                <div className='profile-status-author-details'>
+                                                    <Link style={{textDecoration: 'none', color: '#303A52'}} to={`/profile/${status.createdBy}`}>
+                                                        <img className='profile-status-author-picture' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                                        <h3 className='profile-status-author-name'>{status.author.name}</h3>
+                                                    </Link>
+                                                </div>
+                                                <div className='profile-status-remove-button-wrapper'>
+                                                    {status.createdBy === this.props.currentUser.id && <div className='profile-status-remove-button-container'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
+                                                        //console.log(status)
+                                                        this.props.startDeleteStatus({id: status.id})
+                                                        this.removeHashtag(status.description)
+                                                        this.removeComment(status.id)
+                                                    }}>Delete</ion-icon></div>  }
+                                                </div>
+                                                <p className='profile-status-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                                <div className='profile-status-description-wrapper'>
+                                                    <h1 className='profile-status-description'>{status.description}</h1>
+                                                </div>
                                             </div>
-                                            <div className='text-status-remove__wrapper'>
-                                                {status.createdBy === this.props.currentUser.id && <div className='text-status-remove'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
-                                                    //console.log(status)
-                                                    this.props.startDeleteStatus({id: status.id})
-                                                    this.removeHashtag(status.description)
-                                                    this.removeComment(status.id)
-                                                }}>Delete</ion-icon></div>  }
+                                            <div>
+                                                <div className='profile-status-like'>
+                                                    <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
+                                                </div>
                                             </div>
-                                            <p className='status-text-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
-                                            <h1 className='status-text-description'>{status.description}</h1>
-  
                                         </div>
-                                        <div className='status-text-like-comment'>
-                                            <div className='status-like-container'>
-                                                <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
-                                            </div>
+                                        <div className='profile-comment-wrapper'>
                                             <Comment parentId={status.id} author={status.author.id} />
                                         </div>
                                     </div>
-
-                                </div>
+                                 </div>
                             )
+
+
+                            // return (
+                            //     <div className='profile-page-status-list-container'>
+                            //         <div key={status.id}>
+                            //             <div className='text-status-container'>
+                            //                 <div className='text-status-author__flex'>
+                            //                     <Link to={`/profile/${status.createdBy}`}>
+                            //                         <img className='text-status-author-image' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                            //                         <h3 className='text-status-author-name'>{status.author.name}</h3>
+                            //                     </Link>
+                            //                 </div>
+                            //                 <div className='text-status-remove__wrapper'>
+                            //                     {status.createdBy === this.props.currentUser.id && <div className='text-status-remove'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
+                            //                         //console.log(status)
+                            //                         this.props.startDeleteStatus({id: status.id})
+                            //                         this.removeHashtag(status.description)
+                            //                         this.removeComment(status.id)
+                            //                     }}>Delete</ion-icon></div>  }
+                            //                 </div>
+                            //                 <p className='status-text-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                            //                 <h1 className='status-text-description'>{status.description}</h1>
+  
+                            //             </div>
+                            //             <div className='status-text-like-comment'>
+                            //                 <div className='status-like-container'>
+                            //                     <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
+                            //                 </div>
+                            //                 <Comment parentId={status.id} author={status.author.id} />
+                            //             </div>
+                            //         </div>
+
+                            //     </div>
+                            // )
                         } else if (status.type === 'image') {
                             return (
-                                <div className='status-image-container'>
-                                    <div key={status.id} className='status-image-wrapper'>
-                                        <div className='status-image'>
-                                        <div className='text-image-remove__wrapper'>
-                                        {status.createdBy === this.props.currentUser.id && <div className='text-image-remove'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
+                                <div className='profile-status-image-wrapper'>
+                                    <div className='profile-status-image-container'>
+                                        <div>
+                                        <div className='profile-remove-image-wrapper'>
+                                        {status.createdBy === this.props.currentUser.id && <div className='profile-image-remove-button'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
                                             //console.log(status)
                                             this.props.startDeleteImage(status.id, status.name)
                                             this.removeHashtag(status.description)
                                             this.removeComment(status.id)
                                         }}>Delete</ion-icon></div>  }
                                         </div>
-                                            <Link to={`/profile/${status.createdBy}`}>
-                                                <img className='text-status-author-image' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                                                <h3 className='status-image-name'>{status.author.name}</h3>
-                                            </Link>
-                                            <p className='status-image-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
-                                            <h1 className='status-image-description'>{status.description}</h1>
-                                            <div className='status-image-photo-wrapper'>
-                                            <ModalImage className='status-image-photo' small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
+                                            <div className='profile-image-author-details '>
+                                                <Link style={{textDecoration: 'none', color: '#303A52'}} to={`/profile/${status.createdBy}`}>
+                                                    <img className='profile-image-author-picture' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
+                                                    <h3 className='profile-status-author-name'>{status.author.name}</h3>
+                                                </Link>
+                                            </div>
+                                            <p className='profile-status-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                            <h1 className='profile-status-description'>{status.description}</h1>
+                                            <div className='profile-status-image-picture'>
+                                            <ModalImage className='profile-status-modal-image' small={status.url} large={status.url} hideDownload={true} hideZoom={true} style={{width: '17%', height: '17%'}}/>
                                             </div>
                                         </div>
+                                            <div className='profile-status-like'>
+                                                <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
+                                            </div>
                                     </div>
-                                    <div className='status-image-comment-like-container'>
-                                        <div className='status-image-like-container'>
-                                            <LikeStatus dbLocation={'uploadedImages'} parentId={status.id} likesAmount={status.likes} />
-                                        </div>
+                                    <div>
+                                        <div className='profile-image-comment-wrapper'>
                                         <Comment parentId={status.id}  author={status.author.id}/>
+
+                                        </div>
                                     </div>
                                 </div>
                                 

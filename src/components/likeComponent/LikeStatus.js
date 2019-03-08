@@ -81,9 +81,9 @@ class LikeStatus extends React.Component {
         const id = uuid();
         if (window.location.href.split('/')[3] === 'profile') {
             return (
-                <div className='like-profile-container'>
+                <div>
                     {parseInt(this.props.likesAmount)}{this.state.likes > 1 ? " Likes" : " Like"}<button hidden={true} id={id} onClick={this.onClick} disabled={this.state.disabled}>Like</button>
-                    <label htmlFor={id}><div className='like-label-wrapper'><div className='like-label-icon'><ion-icon className='like-label-icon' style={{cursor: 'pointer'}} name="thumbs-up"></ion-icon></div></div></label>
+                    <label htmlFor={id}><div><div className='profile-status-like-icon'><ion-icon style={{cursor: 'pointer'}} name="thumbs-up"></ion-icon></div></div></label>
                 </div>
             );
         } else if (window.location.href.split('/')[3] === '') {
