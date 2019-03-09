@@ -114,7 +114,7 @@ class PostStatus extends React.Component {
                                     <input className='status-text-input-profile' type='text' onChange={this.onDescriptionChange}/>
                                     <button className='button post-button'>Post!</button>
                                     <input id={id} type="file" accept="image/*" style={{display: 'none'}} onChange={this.handleFileUploadChange}/>
-                                    <label className='profile-upload-photo-icon' htmlFor={id}><ion-icon name="image"></ion-icon></label>
+                                    <label className='profile-upload-photo-icon' htmlFor={id}><img className='profile-status-image-upload' src="https://img.icons8.com/material/24/000000/picture/303A52"/></label>
                                 </div>
                             </form>
                         </div>

@@ -56,7 +56,7 @@ class PostStatusList extends React.Component {
                                             this.removeHashtag(status.description)
                                             this.removeComment(status.id)
                                         }}>Delete</button> 
-                                            <label className='dashboard-remove-status' htmlFor={removeId} style={{cursor: 'pointer'}}><ion-icon name="trash"></ion-icon></label>
+                                            <label className='dashboard-remove-status' htmlFor={removeId} style={{cursor: 'pointer'}}><img className='dashboard-status-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52"/></label>
                                         </div>
                                         }
                                         <div className='dashboard-status-list-link-wrapper'>
@@ -104,7 +104,7 @@ class PostStatusList extends React.Component {
                                                             this.removeHashtag(status.description)
                                                             this.removeComment(status.id)
                                                         }}>Remove</button> }
-                                                        <label className='dashboard-image-remove' style={{cursor: 'pointer'}} htmlFor={removeId}><ion-icon name="trash"></ion-icon></label>
+                                                        <label className='dashboard-image-remove' style={{cursor: 'pointer'}} htmlFor={removeId}><img className='dashboard-status-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" /></label>
                                                     </div>
                                                 </div>
                                                 <div className='dashboard-image-author-wrapper'>

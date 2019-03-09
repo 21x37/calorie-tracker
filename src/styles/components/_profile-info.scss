@@ -62,9 +62,12 @@
     background: #232b3d;
 }
 
-.profile-picture-opacity:hover {
+.profile-picture-opacity {
     filter: brightness(60%);
 }
+
+
+
 
 
 
@@ -95,7 +98,7 @@
     position: relative;
 }
 
-.profile-cover-photo__container:hover {
+.profile-cover-photo__container {
     filter: brightness(60%);
 }
 
@@ -205,6 +208,14 @@
     overflow: hidden;
 }
 
+
+.profile-cover-photo-upload-image {
+    bottom: 1.5px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    right: 10px;
+}
 //-----------------------------
 
 .left-panel-padding {

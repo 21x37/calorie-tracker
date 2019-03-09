@@ -57,12 +57,14 @@ class PostStatusList extends React.Component {
                                                     </Link>
                                                 </div>
                                                 <div className='profile-status-remove-button-wrapper'>
-                                                    {status.createdBy === this.props.currentUser.id && <div className='profile-status-remove-button-container'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
+                                                    {status.createdBy === this.props.currentUser.id && <div className='profile-status-remove-button-container'> <img className='profile-status-remove-icon' src="https://img.icons8.com/material/24/000000/delete/303A52" style={{cursor: 'pointer'}} onClick={() => {
                                                         //console.log(status)
                                                         this.props.startDeleteStatus({id: status.id})
                                                         this.removeHashtag(status.description)
                                                         this.removeComment(status.id)
-                                                    }}>Delete</ion-icon></div>  }
+                                                    }}></img>
+                                                    </div> 
+                                                     }
                                                 </div>
                                                 <p className='profile-status-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
                                                 <div className='profile-status-description-wrapper'>
@@ -121,12 +123,12 @@ class PostStatusList extends React.Component {
                                     <div className='profile-status-image-container'>
                                         <div>
                                         <div className='profile-remove-image-wrapper'>
-                                        {status.createdBy === this.props.currentUser.id && <div className='profile-image-remove-button'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
+                                        {status.createdBy === this.props.currentUser.id && <div className='profile-image-remove-button'><img className='profile-status-image-remove-icon' src="https://img.icons8.com/material/24/000000/delete/303A52" style={{cursor: 'pointer'}} onClick={() => {
                                             //console.log(status)
                                             this.props.startDeleteImage(status.id, status.name)
                                             this.removeHashtag(status.description)
                                             this.removeComment(status.id)
-                                        }}>Delete</ion-icon></div>  }
+                                        }}/></div>  }
                                         </div>
                                             <div className='profile-image-author-details '>
                                                 <Link style={{textDecoration: 'none', color: '#303A52'}} to={`/profile/${status.createdBy}`}>

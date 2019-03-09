@@ -38,7 +38,7 @@ class CalorieItemList extends React.Component {
                                 this.props.startRemoveCalorieItem(this.props.currentUser.id, {id: calorie.id})
                             }}>Remove</button>
                             <div className='remove-calorie-item-wrapper'>
-                                <label className='remove-calorie-item' style={{cursor: 'pointer'}} htmlFor={id}><ion-icon name="trash"></ion-icon></label>
+                                <label className='remove-calorie-item' style={{cursor: 'pointer'}} htmlFor={id}><img className='calorie-item-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" /></label>
                             </div>
                             <Link style={{ textDecoration: 'none', color: '#333' }} to={`/calories/${calorie.id}`} >
                                 <p className='calorie-item-description'>{this.textAbstract(calorie.description)}</p>

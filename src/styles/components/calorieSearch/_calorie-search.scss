@@ -28,6 +28,7 @@
     border-bottom-left-radius: 5px;
     width: 500px;
     height: 45px;
+    padding-left: 10px;
 }
 
 .calorie-lookup-text-input::placeholder {
@@ -84,4 +85,19 @@
     font-style: italic;
     left: 2px;
     position: relative;
+}
+
+.calorie-look-up-add-image {
+    width: 16px;
+    height: 16px;
+}
+
+.calorie-look-up-increment-image {
+    width: 16px;
+    height: 16px;
+}
+
+.calorie-look-up-decrement-image {
+    width: 16px;
+    height: 16px;
 }

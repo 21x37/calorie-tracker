@@ -12,6 +12,13 @@
     top: 80px;
 }
 
+.calorie-item-remove-image {
+    height: 16px;
+    position: relative;
+    right: 5px;
+    width: 16px;
+}
+
 .calorie-item-container {
     background: rgb(242, 242, 242);
     border: 1px solid rgb(230, 230, 230);
@@ -93,13 +100,11 @@
 
 .remove-calorie-item-wrapper {
     position: relative;
-    height: 100%;
+    left: 330px;
 }
 
 .remove-calorie-item {
     color: #303A52;
     position: absolute;
-    font-size: 120%;
-    left: 330px;
-    top: 22px;
+
 }

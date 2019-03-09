@@ -22,17 +22,19 @@ class CommentList extends React.Component {
                             <div className='profile-status-comment-container' key={comment.id}>
                             <div className='profile-comment-remove-wrapper'>
                                 <div className='profile-comment-remove-button'>
-                                    {comment.createdBy === this.props.currentUser.id &&<ion-icon style={{cursor: 'pointer'}}  name='trash' onClick={() => {
+                                    {comment.createdBy === this.props.currentUser.id &&<img className='profile-comment-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" name='trash' style={{cursor: 'pointer'}} onClick={() => {
+                                        console.log
                                         this.props.startRemoveComment(comment)
-                                    }}></ion-icon> }
+                                    }}></img> }
                             </div>
                         </div>
                         <div className='profile-comment-remove-wrapper'>
                             <div className='profile-comment-remove-button'>
-                                {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <ion-icon name='trash' style={{cursor: 'pointer'}} onClick={() => {
+                                {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment &&
+                                    <img className='profile-comment-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" name='trash' style={{cursor: 'pointer'}} onClick={() => {
                                     console.log
                                     this.props.startRemoveComment(comment)
-                                }}></ion-icon> }
+                                }}></img> }
                             </div>
                         </div>
                                 <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${comment.createdBy}`}>
@@ -66,17 +68,17 @@ class CommentList extends React.Component {
                             <div className='dashboard-comment-container' key={comment.id}>
                             <div className='dashboard-comment-remove-wrapper'>
                             <div className='dashboard-comment-remove-container'>
-                                {comment.createdBy === this.props.currentUser.id &&<ion-icon style={{cursor: 'pointer'}}  name='trash' onClick={() => {
+                                {comment.createdBy === this.props.currentUser.id &&<img className='profile-comment-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" style={{cursor: 'pointer'}} onClick={() => {
                                     this.props.startRemoveComment(comment)
-                                }}></ion-icon> }
+                                }}></img> }
                             </div>
                         </div>
                         <div className='dashboard-comment-remove-wrapper'>
                             <div className='dashboard-comment-remove-container'>
-                                {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <ion-icon name='trash' style={{cursor: 'pointer'}} onClick={() => {
+                                {comment.createdBy !== this.props.currentUser.id && this.props.authorRemoveComment && <img className='profile-comment-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" style={{cursor: 'pointer'}} onClick={() => {
                                     console.log
                                     this.props.startRemoveComment(comment)
-                                }}></ion-icon> }
+                                }}></img> }
                             </div>
                         </div>
                                 <Link style={{color: '#303A52', textDecoration: 'none'}} to={`/profile/${comment.createdBy}`}>

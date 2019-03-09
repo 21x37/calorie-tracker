@@ -136,18 +136,18 @@ class UserProfileInfo extends React.Component {
                 <div style={{postion: 'relative'}} className='profile-info-wrapper'>
 
                     {/* COVER PHOTO */}
-                    <div className={`${this.props.currentUser.id === id ? 'profile-cover-photo__container' : ''}`} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto}>
+                    <div className={`${!this.state.isMouseInside ? 'profile-cover-photo__container' : ''}`} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto}>
                         <div className='black-background-cover-photo'>
                             <img className='cover-photo' src={this.props.user.coverPhoto ? this.props.user.coverPhoto.picture : 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fcoverphotodefault.jpg?alt=media&token=de484d31-95f8-4c81-8946-e959ff58ad6d'} />
                         </div>
                     </div>
-
+                    
                     <div className='profile-cover-photo-button'>
                         <p id='cover-photo-button' hidden={this.state.isMouseInside}>Upload a Cover Photo!</p>
                         <form id='coverPhotoForm' hidden={this.state.isMouseInside}>
                             <input hidden={true} id={coverPhotoId} type='file' accept='image/*' onChange={this.onFileUpload} />
                             <div className='upload-cover-photo-icon'>
-                                <label htmlFor={coverPhotoId}><ion-icon style={{cursor: 'pointer'}} name="arrow-up"></ion-icon></label>
+                                <label htmlFor={coverPhotoId}><img style={{cursor: 'pointer'}} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto} className='profile-cover-photo-upload-image' src="https://img.icons8.com/ios/50/000000/upload/FFFFFF"/></label>
                             </div>
                         </form>
                     </div>
@@ -183,7 +183,7 @@ class UserProfileInfo extends React.Component {
                             <img className={`profile-picture ' ${!this.state.isMouseInsideProfilePicture ? 'profile-picture-opacity' : ''}`} onMouseEnter={this.onMouseEnterProfilePicture} onMouseLeave={this.onMouseLeaveProfilePicture} src={this.props.user.picture} />
                             <form onSubmit={this.onSubmitProfilePicture} id='profilePictureForm'>
                                 <input id='profile-picture-input' type='file' accept='image/*' style={{ display: 'none' }} onChange={this.onUploadProfilePicture} />
-                                <label className='profile-picture-upload' htmlFor='profile-picture-input' hidden={this.state.isMouseInsideProfilePicture}><ion-icon name="images"></ion-icon></label>
+                                <label className='profile-picture-upload' htmlFor='profile-picture-input' hidden={this.state.isMouseInsideProfilePicture}><img className='profile-picture-upload-image' style={{cursor: 'pointer'}} onMouseEnter={this.onMouseEnterProfilePicture} onMouseLeave={this.onMouseLeaveProfilePicture} src="https://img.icons8.com/ios/50/000000/stack-of-photos/FFFFFF"/></label>
                             </form>
                         </div>
 

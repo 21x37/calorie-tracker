@@ -83,12 +83,12 @@ class IndividualCalorie extends React.Component {
                 <div className='calorie-item-wrapper'>
                 <button hidden={true} id={incrementId} onClick={this.onIncrement}>+</button>
                 <div className='calorie-increment-decrement-wrapper'>
-                    <label className='calorie-increment-serving' htmlFor={incrementId}><ion-icon style={{cursor: 'pointer'}} name="add-circle-outline"></ion-icon></label>
+                    <label className='calorie-increment-serving' htmlFor={incrementId}><img style={{cursor: 'pointer'}} className='calorie-look-up-increment-image' src="https://img.icons8.com/ios/50/000000/plus/303A52"/></label>
                 </div>
 
                 <button id={decrementId} hidden={true} onClick={this.onDecrement}>-</button>
                 <div className='calorie-increment-decrement-wrapper'>
-                    <label className='calorie-decrement-serving' htmlFor={decrementId}><ion-icon style={{cursor: 'pointer'}} name="remove-circle-outline"></ion-icon></label>
+                    <label className='calorie-decrement-serving' htmlFor={decrementId}><img style={{cursor: 'pointer'}} className='calorie-look-up-decrement-image' src="https://img.icons8.com/ios/50/000000/minus/303A52"/></label>
                 </div>
 
                     <h3 className='calorie-item-description'>{this.textAbstract(this.state.calorieName)} {this.servingAbstract(this.state.servingSize)} {this.servingAbstract(this.state.servingSizeUnit)}</h3>
@@ -120,7 +120,7 @@ class IndividualCalorie extends React.Component {
                         history.push('/calories');
                         this.props.clearCalorieLookUp();
                     }} >Add Calorie!</button>
-                    <label className='add-searched-calorie' htmlFor={addItemId}><ion-icon style={{cursor: 'pointer'}} name="checkmark-circle-outline"></ion-icon></label>
+                    <label className='add-searched-calorie' htmlFor={addItemId}><img style={{cursor: 'pointer'}} className='calorie-look-up-add-image' src="https://img.icons8.com/ios/50/000000/checked/303A52"/></label>
                 </div>
             </div>
         )
