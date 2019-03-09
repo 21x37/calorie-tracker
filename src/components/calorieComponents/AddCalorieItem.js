@@ -90,18 +90,22 @@ class AddCalorieItem extends React.Component {
     }
     render() {
         return (
-            <div className='calorie-wrapper'>
-                <button className='set-calorie-button add-calorie-button' onClick={this.onClick}>Log a Calorie</button>
-                <div hidden={this.state.visible} className='add-calorie-form-wrapper calorie-forms calorie-forms__add'>
-                    {this.state.error && <p>{this.state.error}</p>}
-                    <form id='calorieItemForm'onSubmit={this.onSubmit}>
-                        <input className='add-calorie-input' onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
-                        <input className='add-calorie-input' onChange={this.onCaloriesChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Calories'/>
-                        <input className='add-calorie-input' onChange={this.onProteinChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Protein'/>
-                        <input className='add-calorie-input' onChange={this.onCarbsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Carbs'/>
-                        <input className='add-calorie-input' onChange={this.onFatsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Fats'/>
-                        <button className='submit-calorie-button'>Submit</button>
-                    </form>
+            <div className='calorie-input-wrapper'>
+                <div className='calorie-input-container'>
+                    <button className='set-calorie-button add-calorie-button' onClick={this.onClick}>Log a Calorie</button>
+                    <div className='log-calorie-wrapper'>
+                        <div className='log-calorie-container' hidden={this.state.visible}>
+                            {this.state.error && <p>{this.state.error}</p>}
+                            <form id='calorieItemForm'onSubmit={this.onSubmit}>
+                                <input className='add-calorie-input' onChange={this.onDescriptionChange} type='text' placeholder='Description'/>
+                                <input className='add-calorie-input' onChange={this.onCaloriesChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Calories'/>
+                                <input className='add-calorie-input' onChange={this.onProteinChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Protein'/>
+                                <input className='add-calorie-input' onChange={this.onCarbsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Carbs'/>
+                                <input className='add-calorie-input' onChange={this.onFatsChange} type='text' onKeyPress={this.allowNumbersOnly} placeholder='Fats'/>
+                                <button className='submit-calorie-button'>Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

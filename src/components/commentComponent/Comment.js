@@ -29,7 +29,7 @@ class Comment extends React.Component {
                 description: this.state.description,
                 likes: this.state.likes
             });
-            this.setState({error: ''})
+            this.setState({error: '', description: ''})
             const form = document.getElementById(`comment-form-${this.props.parentId}`);
             form.reset();
         } else {
@@ -45,11 +45,11 @@ class Comment extends React.Component {
             return (
                 <div>
                     <CommentList parentId={this.props.parentId} authorId={this.props.author} statusId={this.props.statusId} />
-                    <p>{this.state.error}</p>
+                    <p></p>
                     <div className='profile-comment-form'>
                         <div className='profile-comment-form'>
                             <form className='aa' onSubmit={this.onSubmit} id={`comment-form-${this.props.parentId}`}>
-                                <input className='comment-input-text' type='text' onChange={this.onDescriptionChange}/>
+                                <input className='comment-input-text' type='text' placeholder={this.state.error} onChange={this.onDescriptionChange}/>
                                 <button className='comment-button' onClick={this.onClick}>Comment</button>
                             </form>
                         </div>

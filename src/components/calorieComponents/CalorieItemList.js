@@ -20,7 +20,7 @@ class CalorieItemList extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className='calorie-list-wrapper'>
             {/* CHECKING IF THERE ARE CALORIES IF THERE IS CALORIES SHOW REMOVE BUTTON */}
             {this.props.calorieItem[0] && <button className='remove-all-calories-button' onClick={() => {
                 this.props.startRemoveAllCalories(this.props.currentUser.id)

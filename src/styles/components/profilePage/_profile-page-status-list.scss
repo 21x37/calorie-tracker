@@ -32,12 +32,14 @@
 
 .profile-status-author-name {
     position: relative;
-    left: 70px;
-    margin-top: -65px;
+    left: 10px;
+    margin-top: -85px;
+    display: inline-block;
+    top: -32px;
 }
 
 .profile-status-date {
-    margin-top: -25px;
+    margin-top: -55px;
     position: relative;
     right: 184px;
 }
@@ -78,6 +80,7 @@
     position: relative;
     left: 40px;
     color: $blue;
+    z-index: 12;
 }
 
 .profile-comment-wrapper {

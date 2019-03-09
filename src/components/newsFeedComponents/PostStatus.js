@@ -55,7 +55,7 @@ class PostStatus extends React.Component {
                 this.setState({error: '', description: ''})
                 
             } else {
-                this.setState({error: 'You Need to Provide a Status or Photo to Post!'})
+                this.setState({error: 'You need to provide a status or photo to post!'})
             }
 
         } else if (this.uploadedImage) {
@@ -105,7 +105,9 @@ class PostStatus extends React.Component {
                             <h2 className='post-status-title'>Post a Status!</h2>
                          </div>
                         <div className='status-position'>
-                            {this.state.error && <p>{this.state.error}</p>}
+                            <div className='profile-post-status-error-wrapper'>
+                                {this.state.error && <p className='post-status-error'>{this.state.error}</p>}
+                            </div>
                             <p className='profile-upload-image-name'>{this.state.uploadedImageName}</p>
                             <form id='postStatusForm' onSubmit={this.onSubmit}>
                                 <div className='profile-form-wrapper'>
@@ -129,7 +131,9 @@ class PostStatus extends React.Component {
                 <div>
                 <div>
                     <h2 className='dashboard-post-status-title'>Post a Status!</h2>
-                        {this.state.error && <p>{this.state.error}</p>}
+                        <div className='post-status-error-wrapper'>
+                            {this.state.error && <p className='post-status-error'>{this.state.error}</p>}
+                        </div>
                         <p>{this.state.uploadedImageName}</p>
                         <form id='postStatusForm' onSubmit={this.onSubmit}>
                                 <input className='dashboard-status-input' type='text' onChange={this.onDescriptionChange}/>

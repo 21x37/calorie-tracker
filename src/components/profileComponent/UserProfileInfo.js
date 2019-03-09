@@ -194,38 +194,45 @@ class UserProfileInfo extends React.Component {
                         <div className='left-panel-profile'>
 
                             <div className='left-panel-padding'>
-                                <div className='left-panel-wrapper'>
-                                    <h2 className='user-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
+                                <div className='left-panel-container'>
+                                    <div className='left-panel-wrapper'>
+                                        <h2 className='user-name'>{this.props.user.given_name} {this.props.user.family_name}</h2>
 
 
-                                    {/* PROFILE FOLLOWERS */}
+                                        {/* PROFILE FOLLOWERS */}
 
-                                    <Link to={`${id}/followers`} className='profile-follow'><h3 className='profile-follow' >{this.followers.length} Followers</h3></Link>
-                                    <Link to={`${id}/following`} className='profile-follow'><h3 className='profile-follow'>{this.following.length} Following</h3></Link>
-
-
+                                        <Link to={`${id}/followers`} className='profile-follow'><h3 className='profile-follow' >{this.followers.length} <span className='follow-text'>Followers</span></h3></Link>
+                                        <Link to={`${id}/following`} className='profile-follow'><h3 className='profile-follow'>{this.following.length} <span className='follow-text'>Following</span></h3></Link>
 
 
 
-                                    {this.props.currentUser.id !== id &&
-                                        <button className='button' onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
-                                    }
-                                    {/* PROFILE BIO */}
-
-                                    <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
+                                        <h3 className='profile-info-bio profile-info-bio__info'>{this.props.user.bio}</h3>
 
 
-                                    {this.props.currentUser.id === id &&
-                                        <form hidden={this.state.editBioVisibility} className='profile-info-bio' onSubmit={this.onSubmitBio}>
-                                            <input type='text' onChange={this.onChange} defaultValue={this.props.currentUser.bio}></input>
-                                            <button className='button'>Save Bio</button>
-                                        </form>
-                                    }
+                                        {this.props.currentUser.id !== id &&
+                                            <button className='profile-info-bio button' onClick={this.onFollow} disabled={this.state.disabled}>{!!this.props.alreadyFollowing ? 'Follow' : 'Unfollow'}</button>
+                                        }
+                                        {/* PROFILE BIO */}
+
+                                        <div className='profile-edit-bio-wrapper'>
+                                            <div className='profile-edit-bio-container'>
+
+                                                <div className='profile-save-bio-wrapper'>
+                                                    {this.props.currentUser.id === id &&
+                                                        <form hidden={this.state.editBioVisibility} className='profile-info-bio' onSubmit={this.onSubmitBio}>
+                                                            <input className='profile-info-bio-input' maxLength='' type='text' onChange={this.onChange}></input>
+                                                            <button className='profile-info-bio-save button'>Save Bio</button>
+                                                        </form>
+                                                    }
+                                                </div>
 
 
-                                    {//this.props.currentUser.id === id &&
-                                       // <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
-                                    }
+                                                {this.props.currentUser.id === id &&
+                                                <button onClick={this.onClick} className='profile-info-bio button' style={{ display: this.state.editBioVisibility ? 'inline-block' : 'none' }}>Edit Bio</button>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

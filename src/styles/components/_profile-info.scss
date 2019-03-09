@@ -111,19 +111,61 @@
 }
 
 
+.profile-edit-bio-wrapper {
+    position: relative;
+}
+
+.profile-edit-bio-container {
+    position: absolute;
+}
+
+.profile-save-bio-wrapper {
+    position: relative;
+}
+
 .user-bio {
 
  }
 
  .profile-info-bio {
+     font-weight: 400;
      margin: auto 12px;
+     margin-bottom: 20px;
+     width: 200px;
+     position: relative;
+     right: 0px;
  }
+
+ .profile-info-bio-save {
+    margin: auto 12px;
+    margin-bottom: 20px;
+    width: 200px;
+    position: relative;
+    right: 12px;
+}
+
+ .profile-info-bio-input {
+     height: 30px;
+     width: 200px;
+     border-radius: 3px;
+     border: 1px solid $blue;
+ }
+
+ 
 
 
  //-----------------------------------
 
+.follow-text {
+    color: $blue;
+}
+
+
 .left-panel-wrapper {
     position: absolute;
+    left: -50px;
+    width: 200px;
+    margin: 0 auto;
 }
 
 
