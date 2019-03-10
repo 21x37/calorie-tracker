@@ -1,6 +1,8 @@
 .status-list-container {
     width: 700px;
     margin: 0 auto;
+    position: relative;
+    z-index: -1;
 }
 
 .profile-status-wrapper {

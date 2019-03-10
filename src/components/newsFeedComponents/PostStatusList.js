@@ -68,7 +68,7 @@ class PostStatusList extends React.Component {
                                                     </div>
                                                 </div>
                                             </Link>
-                                            <p className='dashboard-status-list-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                            <p className='dashboard-status-list-date'>{ '' || moment(status.createdAt).format('MMMM, Do YYYY')}</p>
                                         </div>
                                         <div className='dashboard-status-list-description-wrapper'>
                                             <h1 className='dashboard-status-list-description'>{status.description}</h1>
@@ -99,12 +99,15 @@ class PostStatusList extends React.Component {
                                             <div key={status.id}>
                                                 <div className='dashboard-image-remove-wrapper'>
                                                     <div className='dashboard=image-remove-container'>
-                                                        {status.createdBy === this.props.currentUser.id && <button hidden={true} id={removeId} onClick={() => {
+                                                        {status.createdBy === this.props.currentUser.id && <div><button hidden={true} id={removeId} onClick={() => {
                                                             this.props.startDeleteImage(status.id, status.name)
                                                             this.removeHashtag(status.description)
                                                             this.removeComment(status.id)
-                                                        }}>Remove</button> }
+                                                        }}>Remove</button> 
                                                         <label className='dashboard-image-remove' style={{cursor: 'pointer'}} htmlFor={removeId}><img className='dashboard-status-remove-image' src="https://img.icons8.com/material/24/000000/delete/303A52" /></label>
+                                                        </div>
+                                                    }
+                                                        
                                                     </div>
                                                 </div>
                                                 <div className='dashboard-image-author-wrapper'>
@@ -112,7 +115,7 @@ class PostStatusList extends React.Component {
                                                         <img className='dashboard-image-author-picture' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
                                                         <h3 className='dashboard-image-author-name'>{status.author.name}</h3>
                                                     </Link>
-                                                    <p className='dashboard-image-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
+                                                    <p className='dashboard-image-date'>{'' || moment(status.createdAt).format('MMMM, Do YYYY')}</p>
                                                 </div>
                                                 <div className='dashboard-image-description-wrapper'>
                                                     <div className='dashboard-image-description-container'>

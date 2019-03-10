@@ -138,7 +138,7 @@ class UserProfileInfo extends React.Component {
                     {/* COVER PHOTO */}
                     <div className={`${!this.state.isMouseInside ? 'profile-cover-photo__container' : ''}`} onMouseEnter={this.onMouseEnterCoverPhoto} onMouseLeave={this.onMouseLeaveCoverPhoto}>
                         <div className='black-background-cover-photo'>
-                            <img className='cover-photo' src={this.props.user.coverPhoto ? this.props.user.coverPhoto.picture : 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fcoverphotodefault.jpg?alt=media&token=de484d31-95f8-4c81-8946-e959ff58ad6d'} />
+                            <img className='cover-photo' src={this.props.user.coverPhoto ? this.props.user.coverPhoto.picture : 'https://firebasestorage.googleapis.com/v0/b/trainingpals-d320c.appspot.com/o/images%2Fbookcoverphoto.jpg?alt=media&token=0ecc3f4d-2fc2-4729-a6c1-283c05f7eed1'} />
                         </div>
                     </div>
                     

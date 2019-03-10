@@ -46,7 +46,6 @@ class PostStatusList extends React.Component {
                         if(status.type === 'post') {
                             return (
                                 <div className='profile-status-wrapper'>
-                                    {this.props.user.id !== this.props.currentUser.id && <div className='fishing-for-user-divs'></div>}
                                     <div className='profile-status-container'>
                                         <div className='profile-status'>
                                             <div>
