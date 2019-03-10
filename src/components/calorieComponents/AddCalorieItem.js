@@ -50,7 +50,6 @@ class AddCalorieItem extends React.Component {
     onSubmit = (e) => {
         // DISPATCHES CURRENT STATE TO REDUX STATE AND DATABASE
         e.preventDefault();
-        console.log(this.props);
         if (this.state.calories || this.state.carbs || this.state.fats || this.state.protein) {
             this.props.startAddCalorie(this.props.currentUser.id, {
                 calories: this.state.calories ? this.state.calories : 0,

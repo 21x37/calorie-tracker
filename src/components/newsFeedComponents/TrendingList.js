@@ -17,7 +17,6 @@ class TrendingList extends React.Component {
         }
     }
     render() {
-        console.log(this.maxHashtags());
         const arr = this.maxHashtags();
         return (
             <div className='trending-list-wrapper'>

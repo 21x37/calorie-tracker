@@ -6,8 +6,6 @@ import { history } from '../../routers/AppRouter';
 import IndividualCalorie from './IndividualCalorie';
 
 const CalorieLookUpList = (props) => {
-    console.log(props.calorieLookUp[0])
-    console.log(props.searched)
     return (
         <div>
             {props.calorieLookUp.map(calorieRes => {

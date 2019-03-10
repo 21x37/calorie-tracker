@@ -42,7 +42,6 @@ class CalorieLookUp extends React.Component {
                 if (xhr.readyState == 4) {
                     if(xhr.status == 200) {
                         const res = JSON.parse(xhr.responseText);
-                        console.log(res.hits);
                         this.props.calorieLookUp(res.hits);
                         this.setState({lookup: this.state.query});
                         this.setState({searched: true})

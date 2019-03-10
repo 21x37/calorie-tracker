@@ -16,7 +16,7 @@ import searchUser from '../reducers/searchUser';
 import followersReducer from '../reducers/followersReducer';
 import followingReducer from '../reducers/followingReducer';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = compose;
 
 export default () => {
     const store = createStore(

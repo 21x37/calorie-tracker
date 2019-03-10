@@ -90,7 +90,6 @@ export const startUploadImage = (imageStatus) => {
         return storageRef.child(`images/${imageStatus.uploadedImage.name}`).put(imageStatus.uploadedImage).on('state_changed', (snapshot) => {
             
         },(e) => {
-            console.log(e);
         }, () => {
             // ONCE ADDED, FETCHING THE DOWNLOAD URL
             storageRef.child(`images/${imageStatus.uploadedImage.name}`).getDownloadURL().then((url) => {
@@ -106,7 +105,6 @@ export const startUploadImage = (imageStatus) => {
                     dispatch(uploadImage(image))
                 });
 
-                console.log(url);
             });
         });
     };
@@ -128,7 +126,6 @@ export const startSetImages = () => {
                 })
             })
             dispatch(setImages(images));
-            console.log(images);
         })
     };
 };
@@ -142,11 +139,8 @@ export const deleteImage = (id) => ({
 
 export const startDeleteImage = (id, name) => {
     return (dispatch) => {
-        console.log(name)
         return storageRef.child(`images/${name}`).delete().then(() => {
-            console.log(2)
             database.ref(`uploadedImages/${id}`).remove().then(() => {
-                console.log(3)
                 dispatch(deleteImage(id));
             })
         });

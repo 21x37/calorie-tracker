@@ -16,7 +16,6 @@ class CaloriePage extends React.Component {
     };
     getBooleanFromForms(val, form) {
         this.setState({ [form]: val }, () => {
-            console.log(this.state);
         })
     }
     render() {

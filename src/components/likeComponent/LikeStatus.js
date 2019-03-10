@@ -24,8 +24,6 @@ class LikeStatus extends React.Component {
     };
     onClick() {
         if (this.state.userLikes.indexOf(this.props.parentId) === -1) {
-            console.log('USER LIKES', this.state.userLikes)
-            console.log('PARENT ID', this.props.parentId)
             this.setState(() => {
                 return {
                     disabled: true
@@ -36,7 +34,6 @@ class LikeStatus extends React.Component {
                 parentId: this.props.parentId,
                 likesAmount: this.props.likesAmount
             }, this.props.dbLocation, this.props.type).then((test) => {
-                console.log('TEST', test);
                 this.setState((state) => {
                     return {
                         likes: state.likes + 1,
@@ -73,11 +70,9 @@ class LikeStatus extends React.Component {
             
 
         } 
-        console.log(this.likedBy);
     };
 
     render() {
-        console.log(this.state.likes);
         const id = uuid();
         if (window.location.href.split('/')[3] === 'profile') {
             return (
@@ -113,23 +108,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LikeStatus);
-
-
-
-
-// this.props.startRemoveLike(this.props.currentUser.id, this.state.likeId).then(() => {
-//     this.setState({liked: alreadyLiked(this.props.currentUser, this.props.parentId)})
-// });
-
-
-
-
-// database.ref(`users/${this.props.currentUser.id}/likes`).once('value').then((snapshot) => {
-//     console.log('11')
-//     snapshot.forEach((childSnapshot) => {
-//         if (childSnapshot.val().parentId === this.props.parentId) {
-//             console.log('22');
-//             this.setState({likeId: childSnapshot.key})
-//         };
-//     });
-// });

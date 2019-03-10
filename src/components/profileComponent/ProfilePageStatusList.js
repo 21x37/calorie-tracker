@@ -45,7 +45,7 @@ class PostStatusList extends React.Component {
                     if (status.createdBy === this.props.user.id) {
                         if(status.type === 'post') {
                             return (
-                                <div className='profile-status-wrapper'>
+                                <div key={status.id} className='profile-status-wrapper'>
                                     <div className='profile-status-container'>
                                         <div className='profile-status'>
                                             <div>
@@ -82,43 +82,9 @@ class PostStatusList extends React.Component {
                                     </div>
                                  </div>
                             )
-
-
-                            // return (
-                            //     <div className='profile-page-status-list-container'>
-                            //         <div key={status.id}>
-                            //             <div className='text-status-container'>
-                            //                 <div className='text-status-author__flex'>
-                            //                     <Link to={`/profile/${status.createdBy}`}>
-                            //                         <img className='text-status-author-image' src={status.author.picture} style={{width: '60px', height: '60px'}}/>
-                            //                         <h3 className='text-status-author-name'>{status.author.name}</h3>
-                            //                     </Link>
-                            //                 </div>
-                            //                 <div className='text-status-remove__wrapper'>
-                            //                     {status.createdBy === this.props.currentUser.id && <div className='text-status-remove'><ion-icon name="trash" style={{cursor: 'pointer'}} onClick={() => {
-                            //                         //console.log(status)
-                            //                         this.props.startDeleteStatus({id: status.id})
-                            //                         this.removeHashtag(status.description)
-                            //                         this.removeComment(status.id)
-                            //                     }}>Delete</ion-icon></div>  }
-                            //                 </div>
-                            //                 <p className='status-text-date'>{moment(status.createdAt).format('MMMM, Do YYYY')}</p>
-                            //                 <h1 className='status-text-description'>{status.description}</h1>
-  
-                            //             </div>
-                            //             <div className='status-text-like-comment'>
-                            //                 <div className='status-like-container'>
-                            //                     <LikeStatus dbLocation={'statusItem'} parentId={status.id} likesAmount={status.likes}/>
-                            //                 </div>
-                            //                 <Comment parentId={status.id} author={status.author.id} />
-                            //             </div>
-                            //         </div>
-
-                            //     </div>
-                            // )
                         } else if (status.type === 'image') {
                             return (
-                                <div className='profile-status-image-wrapper'>
+                                <div key={status.id} className='profile-status-image-wrapper'>
                                     <div className='profile-status-image-container'>
                                         <div>
                                         <div className='profile-remove-image-wrapper'>

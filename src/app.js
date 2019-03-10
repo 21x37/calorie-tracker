@@ -27,35 +27,6 @@ const store = configureStore();
 //-----------------------------------
 // CALORIE TESTS
 
-const calorieMockup = {
-    id: 0,
-    calories: 0,
-    fats: 0,
-    protein: 0,
-    carbs: 0
-};
-
-const calorieMockup1 = {
-    id: 1,
-    calories: 200,
-    fats: 10,
-    protein: 5,
-    carbs: 15
-};
-
-// CALORIE ITEM DISPATCHES
-store.dispatch(addCalorie(calorieMockup));
-store.dispatch(addCalorie(calorieMockup1));
-//console.log(store.getState());
-store.dispatch(removeCalorieItem(calorieMockup1));
-//console.log(store.getState());
-
-store.dispatch(setGoal(3000, 160, 300, 80))
-store.dispatch(addStatus({
-    id: 1,
-    description: "This is a status",
-    createdAt: 'February 13'
-}));
 //-----------------------------------
 
 const jsx = (
@@ -73,29 +44,6 @@ const renderApp = () => {
 };
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
 
-// ReactDOM.render(jsx, document.getElementById('app'));
-
-
-// firebase.auth().onAuthStateChanged((user) => {
-//     if (user) {
-//         store.dispatch(startSetCurrentUser(user.email));
-//         store.dispatch(login(user.uid));
-
-//         renderApp();
-
-//         console.log('log in');
-
-//         if (history.location.pathname === '/login') {
-//             history.push('/');
-//         }
-//     } else {
-//         console.log('log out');
-//         store.dispatch(logout());
-//         renderApp();
-//         history.push('/login');
-        // store.dispatch(startRemoveCurrentUser())
-//     }
-// });
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {

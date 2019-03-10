@@ -37,9 +37,6 @@ const AppRouter = () => (
         </div>
     </Router>
 )
-//<Route path='/find-calorie' component={FindCalorie} />
-//<PublicRoute path="/" component={LoginPage} exact={true} />
 
-//                <PrivateRoute path='/profile/:id' render={() => (<ProfilePage key={uuid()}/>)}/>
 
 export default AppRouter;

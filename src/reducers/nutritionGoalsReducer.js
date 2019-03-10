@@ -10,7 +10,6 @@ const nutritionGoalsReducerDefaultState = {
 export const nutritionGoalsReducer = (state = nutritionGoalsReducerDefaultState, action) => {
     switch(action.type) {
         case 'SET_GOAL':
-        console.log(action);
             return {
                 ...state,
                 calorieGoal: action.calorieGoal,

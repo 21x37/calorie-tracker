@@ -45,9 +45,9 @@ class PostStatusList extends React.Component {
                         const removeId = uuid();
                         if(status.type === 'post') {
                             return (
-                            <div className='dashboard-status-list-wrapper'>
+                            <div key={status.id} className='dashboard-status-list-wrapper'>
                                 <div className='dashboard-status-list-container'>
-                                    <div key={status.id}>
+                                    <div>
                                     {status.createdBy === this.props.currentUser.id && 
                                         <div className='dashboard-remove-status-wrapper'> 
                                             <button id={removeId} hidden={true} onClick={() => {
@@ -93,10 +93,10 @@ class PostStatusList extends React.Component {
                         } else if (status.type === 'image') {
                             const removeId = uuid();
                             return (
-                                <div className='dashboard-image-wrapper'>
+                                <div key={status.id} className='dashboard-image-wrapper'>
                                     <div className='dashboard-image-list-wrapper'>
                                         <div className='dashboard-status-image-container'>
-                                            <div key={status.id}>
+                                            <div>
                                                 <div className='dashboard-image-remove-wrapper'>
                                                     <div className='dashboard=image-remove-container'>
                                                         {status.createdBy === this.props.currentUser.id && <div><button hidden={true} id={removeId} onClick={() => {

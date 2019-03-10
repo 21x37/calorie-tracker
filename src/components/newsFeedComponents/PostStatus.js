@@ -95,7 +95,6 @@ class PostStatus extends React.Component {
     };
     render() {
 
-        console.log(window.location.href.split('/')[3])
         if (window.location.href.split('/')[3] === 'profile') {
             const id = uuid();
             return (
