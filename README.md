@@ -35,17 +35,21 @@ git clone https://github.com/21x37/calorie-tracker.git
 npm install
 ```
 
-3. Start the server
+3. Create a .env.development file with firebase credentials
+
+```
+FIREBASE_API_KEY=
+FIREBASE_AUTH_DOMAIN=
+FIREBASE_DATABASE_URL=
+FIREBASE_PROJECT_ID=
+FIREBASE_STORAGE_BUCKET=
+FIREBASE_MESSAGING_SENDER_ID=
+```
+
+4. Start the server
 
 ```
 npm run start
 ```
 
-5. Set up personal firebase credentials and nutrionix api and app key on process.env variables reference webpack.config
-
-
-4. Explore
-
-```
-Enjoy :)
-```
+5. Enjoy!
