@@ -9,7 +9,8 @@
 
 .calorie-list-wrapper {
     position: relative;
-    top: 80px;
+    margin-top: 80px;
+    min-height: 100vh;
 }
 
 .calorie-item-remove-image {

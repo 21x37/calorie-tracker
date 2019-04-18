@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 45px;
+    background: #303A52;
+    padding-bottom: 50px;
+}
+
+.footer p {
+    color: #FFF;
+    margin-bottom: 30px;
+}
+
+.footer p:last-child {
+    margin-right: 40px;
+}
+
+.footer p:first-child {
+    margin-left: 30px;
+}
